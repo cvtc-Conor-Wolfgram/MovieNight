@@ -4,16 +4,45 @@
 
 <html>
 <head runat="server">
-    <title></title>
+    <title>Movie Night</title>
+    <link rel="stylesheet" href="css/style.css">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+    <div id="wrapper">
+        <header class="panel">
+
+            <h1>Movie Night</h1>
+
+        </header>
+        <div class="panel" id="nav">
+            <ul>
+                <li><a href="Default.aspx">Home</a></li>
+                <li><a href="#">View Your Group</a></li>
+                <li><a href="#">Add a Movie</a></li>
+                <li><a href="#">Sign In</a></li>
+            </ul>
         </div>
-    </form>
+
+        <form id="form1" runat="server">
+            <main class="panel">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </main>
+        </form>
+
+        <footer id="mainFooter" class="panel">
+            <p>&copy;2019 Movie Night</p>
+        </footer>
+
+    </div>
+
+
+
+
+
+
+
 </body>
 </html>
