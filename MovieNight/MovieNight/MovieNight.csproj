@@ -80,6 +80,7 @@
     <Content Include="App_Data\MovieNightDB_log.ldf">
       <DependentUpon>MovieNightDB.mdf</DependentUpon>
     </Content>
+    <Content Include="CreateAccount.aspx" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="Global.asax" />
     <Content Include="css\style.css" />
@@ -103,6 +104,13 @@
     </Compile>
     <Compile Include="accountInfo.Master.designer.cs">
       <DependentUpon>accountInfo.Master</DependentUpon>
+    </Compile>
+    <Compile Include="CreateAccount.aspx.cs">
+      <DependentUpon>CreateAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateAccount.aspx.designer.cs">
+      <DependentUpon>CreateAccount.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
