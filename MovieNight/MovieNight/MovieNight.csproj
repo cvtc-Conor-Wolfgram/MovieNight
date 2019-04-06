@@ -75,18 +75,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="accountInfo.aspx" />
     <Content Include="App_Data\MovieNightDB.mdf" />
     <Content Include="App_Data\MovieNightDB_log.ldf">
       <DependentUpon>MovieNightDB.mdf</DependentUpon>
     </Content>
+    <Content Include="css\bootstrap.min.css" />
     <Content Include="Global.asax" />
     <Content Include="css\style.css" />
     <Content Include="images\background.png" />
     <Content Include="images\stage_curtain_theater_red.png" />
+    <Content Include="js\main.js" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="accountInfo.aspx.cs">
+      <DependentUpon>accountInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="accountInfo.aspx.designer.cs">
+      <DependentUpon>accountInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="accountInfo.Master.cs">
+      <DependentUpon>accountInfo.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="accountInfo.Master.designer.cs">
+      <DependentUpon>accountInfo.Master</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -112,6 +129,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="accountInfo.Master" />
     <None Include="packages.config" />
     <Content Include="Default.Master" />
     <None Include="Web.Debug.config">
@@ -121,9 +139,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="js\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

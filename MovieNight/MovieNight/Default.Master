@@ -19,6 +19,7 @@
         <div class="panel" id="nav">
             <ul>
                 <li><a href="Default.aspx">Home</a></li>
+                <li><a href="accountInfo.aspx">Account Info</a></li>
                 <li><a href="#">View Your Group</a></li>
                 <li><a href="#">Add a Movie</a></li>
                 <li><a href="#">Sign In</a></li>
