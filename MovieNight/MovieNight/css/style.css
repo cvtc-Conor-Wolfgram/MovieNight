@@ -41,6 +41,12 @@ html {
     opacity: .98;
 }
 
+.panel2 {
+    width: 95%;
+    margin: 0 auto;
+    opacity: .98;
+}
+
 header {
     height: 300px;
     position: relative;
@@ -67,9 +73,8 @@ main{
 
 #mainFooter {
     height: 5rem;
-    margin-top: 1rem;
     margin-bottom: 1rem;
-    background: rgba(230, 227, 227, 0.9);
+    background: #073642;
 }
 
 #mainFooter p {
@@ -110,7 +115,7 @@ main{
     margin-top: 20px;
 }
 
-#accountInfo > ul > li {
+#acctInfo > li {
     padding: 20px;
 }
 
