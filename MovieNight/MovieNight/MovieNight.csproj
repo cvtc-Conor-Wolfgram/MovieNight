@@ -85,6 +85,7 @@
     <Content Include="Global.asax" />
     <Content Include="css\style.css" />
     <Content Include="images\background.png" />
+    <Content Include="images\mosaic.png" />
     <Content Include="images\stage_curtain_theater_red.png" />
     <Content Include="js\main.js" />
     <Content Include="Web.config" />
