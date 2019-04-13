@@ -91,6 +91,7 @@
     <Content Include="js\main.js" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
+    <Content Include="movieSearch.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="accountInfo.aspx.cs">
@@ -129,6 +130,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="movieSearch.aspx.cs">
+      <DependentUpon>movieSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="movieSearch.aspx.designer.cs">
+      <DependentUpon>movieSearch.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

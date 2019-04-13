@@ -35,17 +35,30 @@ html {
   
 }
 
+
 .panel {
     width: 95%;
     margin: 0 auto;
     opacity: .98;
+
 }
 
 .panel2 {
+    height: 100%;
     width: 95%;
     margin: 0 auto;
     opacity: .98;
+    
 }
+
+.panel3 {
+    width: 95%;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+    opacity: .98;
+}
+
 
 header {
     height: 300px;
@@ -75,6 +88,7 @@ main{
     height: 5rem;
     margin-bottom: 1rem;
     background: #073642;
+
 }
 
 #mainFooter p {
@@ -130,4 +144,19 @@ main{
 #accountImage > img {
     width: 200px;
     height: auto;
+}
+
+#movies img, #movie img {
+    width: 100%;
+    
+}
+
+@media(min-width:960px) {
+    #movies .col-md-3 .well {
+        height: 390px;
+    }
+
+    #movies .col-md-3 img {
+        height: 240px;
+    }
 }
