@@ -17,6 +17,8 @@ namespace MovieNight.Models
         public String email { get; set; }
         public String fName { get; set; }
         public String lName { get; set; }
+        public int joinNumber { get; set; }
+        public int turnToPick { get; set; }
         public List<Movie> moviesSubmitted { get; set; }
         public List<Group> groups { get; set; }
         public List<Event> events { get; set; }
