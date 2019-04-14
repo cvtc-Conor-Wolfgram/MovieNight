@@ -4,85 +4,81 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1 id="groupName" runat="server"></h1>
     <h3 id="ownerName" runat="server"></h3>
-    <h2 id="pickerName" runat="server"></h2>
+    <h3 id="pickerName" runat="server"></h3>
 
-    <asp:Button ID="finishedMovie" runat="server" Text="FinishedMovie" OnClick="finishedMovie_Click" />
+    
     <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
         <AlternatingItemTemplate>
-            <li style="">Column1:
-                <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' />
-                <br />
-                joinNumber:
-                <asp:Label ID="joinNumberLabel" runat="server" Text='<%# Eval("joinNumber") %>' />
-                <br />
-                turnToPick:
-                <asp:Label ID="turnToPickLabel" runat="server" Text='<%# Eval("turnToPick") %>' />
-                <br />
-            </li>
+            <tr style="">
+                <td>
+                    <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' />
+                </td>
+            </tr>
         </AlternatingItemTemplate>
         <EditItemTemplate>
-            <li style="">Column1:
-                <asp:TextBox ID="Column1TextBox" runat="server" Text='<%# Bind("Column1") %>' />
-                <br />
-                joinNumber:
-                <asp:TextBox ID="joinNumberTextBox" runat="server" Text='<%# Bind("joinNumber") %>' />
-                <br />
-                turnToPick:
-                <asp:TextBox ID="turnToPickTextBox" runat="server" Text='<%# Bind("turnToPick") %>' />
-                <br />
-                <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
-                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
-            </li>
+            <tr style="">
+                <td>
+                    <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                </td>
+                <td>
+                    <asp:TextBox ID="Column1TextBox" runat="server" Text='<%# Bind("Column1") %>' />
+                </td>
+            </tr>
         </EditItemTemplate>
         <EmptyDataTemplate>
-            No data was returned.
+            <table runat="server" style="">
+                <tr>
+                    <td>No data was returned.</td>
+                </tr>
+            </table>
         </EmptyDataTemplate>
         <InsertItemTemplate>
-            <li style="">Column1:
-                <asp:TextBox ID="Column1TextBox" runat="server" Text='<%# Bind("Column1") %>' />
-                <br />joinNumber:
-                <asp:TextBox ID="joinNumberTextBox" runat="server" Text='<%# Bind("joinNumber") %>' />
-                <br />turnToPick:
-                <asp:TextBox ID="turnToPickTextBox" runat="server" Text='<%# Bind("turnToPick") %>' />
-                <br />
-                <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
-                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
-            </li>
+            <tr style="">
+                <td>
+                    <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
+                </td>
+                <td>
+                    <asp:TextBox ID="Column1TextBox" runat="server" Text='<%# Bind("Column1") %>' />
+                </td>
+            </tr>
         </InsertItemTemplate>
-        <ItemSeparatorTemplate>
-<br />
-        </ItemSeparatorTemplate>
         <ItemTemplate>
-            <li style="">Column1:
-                <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' />
-                <br />
-                joinNumber:
-                <asp:Label ID="joinNumberLabel" runat="server" Text='<%# Eval("joinNumber") %>' />
-                <br />
-                turnToPick:
-                <asp:Label ID="turnToPickLabel" runat="server" Text='<%# Eval("turnToPick") %>' />
-                <br />
-            </li>
+            <tr style="">
+                <td>
+                    <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' />
+                </td>
+            </tr>
         </ItemTemplate>
         <LayoutTemplate>
-            <ul id="itemPlaceholderContainer" runat="server" style="">
-                <li runat="server" id="itemPlaceholder" />
-            </ul>
-            <div style="">
-            </div>
+            <table runat="server">
+                <tr runat="server">
+                    <td runat="server">
+                        <table id="itemPlaceholderContainer" runat="server" border="0" style="">
+                            <tr runat="server" style="">
+                                <th runat="server">Member Name</th>
+                            </tr>
+                            <tr id="itemPlaceholder" runat="server">
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr runat="server">
+                    <td runat="server" style=""></td>
+                </tr>
+            </table>
         </LayoutTemplate>
         <SelectedItemTemplate>
-            <li style="">Column1:
-                <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' />
-                <br />
-                joinNumber:
-                <asp:Label ID="joinNumberLabel" runat="server" Text='<%# Eval("joinNumber") %>' />
-                <br />
-                turnToPick:
-                <asp:Label ID="turnToPickLabel" runat="server" Text='<%# Eval("turnToPick") %>' />
-                <br />
-            </li>
+            <tr style="">
+                <td>
+                    <asp:Label ID="Column1Label" runat="server" Text='<%# Eval("Column1") %>' />
+                </td>
+            </tr>
         </SelectedItemTemplate>
     </asp:ListView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MovieNightContext %>" SelectCommand="SELECT CONCAT(fName, lName), joinNumber, turnToPick FROM [User] INNER JOIN [UserGroup] ON [User].userID = [UserGroup].userID WHERE [UserGroup].groupID = 1;"></asp:SqlDataSource>
+
+    <asp:Button ID="finishedMovie" runat="server" Text="FinishedMovie" OnClick="finishedMovie_Click" />
+
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MovieNightContext %>" SelectCommand="SELECT CONCAT(fName, lName) FROM [User] INNER JOIN [UserGroup] ON [User].userID = [UserGroup].userID WHERE [UserGroup].groupID = 1;"></asp:SqlDataSource>
 </asp:Content>
