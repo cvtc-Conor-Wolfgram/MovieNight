@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieNight.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,6 +24,19 @@ namespace MovieNight
 
             dateTime = DateTime.Parse(txtDateTime.Text);
             lblTest.Text = dateTime.ToString();
+
+            Event newEvent = new Event();
+
+            newEvent.eventName = txtEName.Text;
+            newEvent.eventLocation = txtLocation.Text;
+            newEvent.eventDateTime = DateTime.Parse(txtDateTime.Text);
+            newEvent.numTickets = int.Parse(txtTickets.Text);
+
+            MovieNightContext context = new MovieNightContext();
+            context.events.Add(newEvent);
+            context.SaveChanges();
+
+            Response.Redirect("Default.aspx");
 
 
         }

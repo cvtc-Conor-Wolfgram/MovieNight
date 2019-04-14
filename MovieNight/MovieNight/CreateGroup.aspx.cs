@@ -33,6 +33,9 @@ namespace MovieNight
             group.groupName = txtGroupName.Text;
             group.groupCode = new Random().Next(10000, 100000);
 
+            MovieNightContext context = new MovieNightContext();
+            context.groups.Add(group);
+            context.SaveChanges();
 
             Response.Redirect("Default.aspx");
         }
