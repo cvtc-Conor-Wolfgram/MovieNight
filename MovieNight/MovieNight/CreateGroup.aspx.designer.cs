@@ -31,24 +31,6 @@ namespace MovieNight {
         protected global::System.Web.UI.WebControls.TextBox txtGroupName;
         
         /// <summary>
-        /// lblGroupCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGroupCode;
-        
-        /// <summary>
-        /// txtGroupCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGroupCode;
-        
-        /// <summary>
         /// btnCreate control.
         /// </summary>
         /// <remarks>

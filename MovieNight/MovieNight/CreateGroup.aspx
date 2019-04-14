@@ -8,10 +8,7 @@
         <asp:Label ID="lblGroupName" runat="server" Text="Group Name"></asp:Label>
         <asp:TextBox ID="txtGroupName" runat="server" MaxLength="25"></asp:TextBox>
         <br /><br />
-        <asp:Label ID="lblGroupCode" runat="server" Text="Group Code"></asp:Label>
-        <asp:TextBox ID="txtGroupCode" runat="server" TextMode="Number"></asp:TextBox>
-        <br /><br />
-        <asp:Button ID="btnCreate" runat="server" Text="Create Group" />
+        <asp:Button ID="btnCreate" runat="server" Text="Create Group" OnClick="btnCreate_Click" />
 
 
 

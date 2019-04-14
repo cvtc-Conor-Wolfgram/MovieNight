@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieNight.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,6 +25,16 @@ namespace MovieNight
 
         }
 
-       
+        protected void btnCreate_Click(object sender, EventArgs e)
+        {
+
+            Group group = new Group();
+
+            group.groupName = txtGroupName.Text;
+            group.groupCode = new Random().Next(10000, 100000);
+
+
+            Response.Redirect("Default.aspx");
+        }
     }
 }
