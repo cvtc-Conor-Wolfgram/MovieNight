@@ -172,3 +172,8 @@ C:\Users\nimtz\Documents\GitHub\MovieNight\MovieNight\MovieNight\obj\Debug\Movie
 C:\Users\nimtz\Documents\GitHub\MovieNight\MovieNight\MovieNight\obj\Debug\MovieNight.csproj.CoreCompileInputs.cache
 C:\Users\nimtz\Documents\GitHub\MovieNight\MovieNight\MovieNight\obj\Debug\MovieNight.dll
 C:\Users\nimtz\Documents\GitHub\MovieNight\MovieNight\MovieNight\obj\Debug\MovieNight.pdb
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\EntityFramework.dll
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\EntityFramework.SqlServer.dll
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\EntityFramework.xml
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\EntityFramework.SqlServer.xml
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\obj\Debug\MovieNight.csprojAssemblyReference.cache

@@ -89,6 +89,7 @@
     <Content Include="js\main.js" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
+    <Content Include="Group.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="accountInfo.aspx.cs">
@@ -134,6 +135,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Group.aspx.cs">
+      <DependentUpon>Group.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Group.aspx.designer.cs">
+      <DependentUpon>Group.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
