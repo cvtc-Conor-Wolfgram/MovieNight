@@ -7,6 +7,12 @@
         <asp:TextBox ID="txtUserName" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ControlToValidate="txtUserName" ErrorMessage="Please Enter a Username"></asp:RequiredFieldValidator>
         <br /><br />
+        <asp:Label ID="lblFName" runat="server" Text="First Name"></asp:Label>
+        <asp:TextBox ID="txtFName" runat="server"></asp:TextBox>
+        <br /><br />
+        <asp:Label ID="lblLName" runat="server" Text="Last Name"></asp:Label>
+        <asp:TextBox ID="txtLName" runat="server"></asp:TextBox>
+        <br /><br />
         <asp:Label ID="lblUserEmail" runat="server" Text="Email"></asp:Label>
         <asp:TextBox ID="txtUserEmail" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="rfvUserEmail" runat="server" ControlToValidate="txtUserEmail" ErrorMessage="Please Enter a Password"></asp:RequiredFieldValidator>
@@ -18,7 +24,7 @@
         <br /><br />
         <asp:Label ID="lblUserPassConfirm" runat="server" Text="Confirm Password"></asp:Label>
         <asp:TextBox ID="txtUserPassConfirm" runat="server"></asp:TextBox>
-        <asp:CompareValidator ID="cvUserPassConfirm" runat="server" ControlToValidate="txtUserPassConfirm" ErrorMessage="Passwords must match" ValueToCompare="txtUserPass"></asp:CompareValidator>
+        <asp:CompareValidator ID="cvUserPassConfirm" runat="server" ControlToValidate="txtUserPassConfirm" ErrorMessage="Passwords must match" ControlToCompare="txtUserPass"></asp:CompareValidator>
         <asp:RequiredFieldValidator ID="rfvUserPassConfirm" runat="server" ControlToValidate="txtUserPassConfirm" ErrorMessage="Please Confirm Password"></asp:RequiredFieldValidator>
         <br /><br />
         <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
