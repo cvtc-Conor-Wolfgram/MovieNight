@@ -34,7 +34,7 @@ namespace MovieNight
             Session.Add("userAccount", user);
 
             MovieNightContext context= new MovieNightContext();
-            context.User.Add(user);
+            context.users.Add(user);
             context.SaveChanges();
 
             Response.Redirect("Default.aspx");
