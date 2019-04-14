@@ -28,7 +28,7 @@
                         <a class="nav-link" href="Default.aspx">Home <span class="sr-only">(current)</span></a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">Movies</a>
+                        <a class="nav-link" href="movieSearch.aspx">Movies</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#">Groups</a>
@@ -39,7 +39,7 @@
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
                    
-                      <a class="btn btn-secondary my-2 my-sm-0" href="CreateAccount.aspx">Sign Up/Sign In</a>
+                      <a class="btn btn-secondary my-2 my-sm-0" id="createButton" href="CreateAccount.aspx">Sign Up/Sign In</a>
                     </form>
                   </div>
                 </nav>
@@ -49,6 +49,11 @@
             <form id="form1" runat="server">
                 <main class="panel2">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                </main>
+                <main class="panel3">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                     </asp:ContentPlaceHolder>
                 </main>
             </form>
@@ -63,12 +68,5 @@
 
     </div>
 
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="js/main.js"></script>
 </body>
 </html>

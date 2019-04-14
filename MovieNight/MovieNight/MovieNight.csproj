@@ -91,6 +91,7 @@
     <Content Include="images\mosaic.png" />
     <Content Include="images\stage_curtain_theater_red.png" />
     <Content Include="js\main.js" />
+    <Content Include="movieSearch.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
     <Content Include="Group.aspx" />
@@ -132,6 +133,13 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieNightContext.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="movieSearch.aspx.cs">
+      <DependentUpon>movieSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="movieSearch.aspx.designer.cs">
+      <DependentUpon>movieSearch.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.Master.cs">
       <DependentUpon>Default.Master</DependentUpon>
