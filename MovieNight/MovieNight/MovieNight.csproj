@@ -82,9 +82,11 @@
     </Content>
     <Content Include="CreateAccount.aspx" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\bootstrap2.min.css" />
     <Content Include="Global.asax" />
     <Content Include="css\style.css" />
     <Content Include="images\background.png" />
+    <Content Include="images\mosaic.png" />
     <Content Include="images\stage_curtain_theater_red.png" />
     <Content Include="js\main.js" />
     <Content Include="Web.config" />
@@ -98,13 +100,6 @@
     </Compile>
     <Compile Include="accountInfo.aspx.designer.cs">
       <DependentUpon>accountInfo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="accountInfo.Master.cs">
-      <DependentUpon>accountInfo.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="accountInfo.Master.designer.cs">
-      <DependentUpon>accountInfo.Master</DependentUpon>
     </Compile>
     <Compile Include="CreateAccount.aspx.cs">
       <DependentUpon>CreateAccount.aspx</DependentUpon>
@@ -145,7 +140,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="accountInfo.Master" />
     <None Include="packages.config" />
     <Content Include="Default.Master" />
     <None Include="Web.Debug.config">
