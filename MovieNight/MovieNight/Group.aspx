@@ -6,6 +6,8 @@
     <h3 id="ownerName" runat="server"></h3>
     <h3 id="pickerName" runat="server"></h3>
 
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server"></asp:SqlDataSource>
+
     
     <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
         <AlternatingItemTemplate>

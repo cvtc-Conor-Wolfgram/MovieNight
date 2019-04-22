@@ -75,7 +75,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="accountInfo.aspx" />
     <Content Include="App_Data\MovieNightDB.mdf" />
     <Content Include="App_Data\MovieNightDB_log.ldf">
       <DependentUpon>MovieNightDB.mdf</DependentUpon>
@@ -95,15 +94,9 @@
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
     <Content Include="Group.aspx" />
+    <Content Include="accountInfo.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="accountInfo.aspx.cs">
-      <DependentUpon>accountInfo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="accountInfo.aspx.designer.cs">
-      <DependentUpon>accountInfo.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CreateAccount.aspx.cs">
       <DependentUpon>CreateAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -161,6 +154,13 @@
     </Compile>
     <Compile Include="Group.aspx.designer.cs">
       <DependentUpon>Group.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="accountInfo.aspx.cs">
+      <DependentUpon>accountInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="accountInfo.aspx.designer.cs">
+      <DependentUpon>accountInfo.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
