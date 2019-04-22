@@ -6,11 +6,12 @@
             <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
               <div class="card-header">Account Info</div>
               <div class="card-body">
-                
+                <asp:SqlDataSource ID="UserConnection" runat="server" ConnectionString="<%$ ConnectionStrings:AccountInfoConnection %>" SelectCommand="SELECT UserName, password, email, fName, lName FROM [User] WHERE userID = 2"></asp:SqlDataSource>
                 <ul id="acctInfo">
-                    <li>Name:</li>
-                    <li>Username</li>
-                    <li>Email Address:</li>
+                    <li>Name: <asp:Label ID="nameLbl" runat="server" Text="Label"></asp:Label></li>
+                   
+                    <li>Username: <asp:Label ID="userNameLbl" runat="server" Text="Label"></asp:Label></li>
+                    <li>Email Address: <asp:Label ID="emailLbl" runat="server" Text="Label"></asp:Label></li>
           <%--ChangePassword password will only be an option for users who havent signed up using google acct %>--%>
                     <li><button type="button" class="btn btn-primary">Change Password</button></li>
                 </ul>

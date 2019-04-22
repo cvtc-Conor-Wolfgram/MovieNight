@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
 
 namespace MovieNight
 {
@@ -14,6 +17,14 @@ namespace MovieNight
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
+
+            foreach (DataRowView drvSql in dvSql)
+            {
+                nameLbl.Text = drvSql["fName"].ToString();
+                userNameLbl.Text = drvSql["UserName"].ToString();
+                emailLbl.Text = drvSql["email"].ToString();
+            }
 
         }
 
