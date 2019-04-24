@@ -45,5 +45,11 @@ namespace MovieNight
 
 
         }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            var email = txtActiveEmail.Text;
+            var pass = txtActivePass.Text;
+        }
     }
 }

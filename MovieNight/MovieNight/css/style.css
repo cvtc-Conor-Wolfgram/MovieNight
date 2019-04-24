@@ -153,3 +153,36 @@ main {
         height: 240px;
     }
 }
+
+/*Login Page*/
+.forms {
+    color: whitesmoke;
+    position: relative;
+    width: 800px;
+    margin:  0 auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+.form-login {
+    position: relative;
+    display: inline-block;
+    background-color:gray;
+    padding: 50px;
+    width: 300px;
+    float: left;
+    border: 4px solid black;
+    border-radius: 5px;
+
+}
+
+.form-create {
+    position: relative;
+    display: inline-block;
+    background-color: gray;
+    padding: 50px;
+    width: 300px;
+    float: right;
+    border: 4px solid black;
+    border-radius: 5px;
+}
