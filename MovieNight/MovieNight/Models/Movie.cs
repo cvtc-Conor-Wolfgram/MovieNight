@@ -12,6 +12,6 @@ namespace MovieNight.Models
     {
         [Key]
         public int movieID { get; set; }
-        public int movieIMDBCode { get; set; }
+        public String omdbCode { get; set; }
     }
 }

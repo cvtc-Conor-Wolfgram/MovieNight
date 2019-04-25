@@ -6,6 +6,12 @@
     <h3 id="ownerName" runat="server"></h3>
     <h3 id="pickerName" runat="server"></h3>
 
+    <ul>
+
+        <asp:PlaceHolder ID="phNextMovies" runat="server"></asp:PlaceHolder>
+
+    </ul>
+
     <asp:SqlDataSource ID="SqlDataSource2" runat="server"></asp:SqlDataSource>
 
     

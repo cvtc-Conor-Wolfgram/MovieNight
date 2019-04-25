@@ -95,6 +95,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Group.aspx" />
     <Content Include="accountInfo.aspx" />
+    <Content Include="YourGroups.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateAccount.aspx.cs">
@@ -123,6 +124,7 @@
     </Compile>
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\ImdbEntity.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieNightContext.cs" />
     <Compile Include="Models\User.cs" />
@@ -161,6 +163,13 @@
     </Compile>
     <Compile Include="accountInfo.aspx.designer.cs">
       <DependentUpon>accountInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YourGroups.aspx.cs">
+      <DependentUpon>YourGroups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YourGroups.aspx.designer.cs">
+      <DependentUpon>YourGroups.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
