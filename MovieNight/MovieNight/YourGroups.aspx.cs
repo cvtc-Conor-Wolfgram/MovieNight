@@ -18,9 +18,11 @@ namespace MovieNight
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
             if (Session["userAccount"] != null)
             {
-                currentUser = (User)Session["userAccount"];
+               // currentUser = (User)Session["userAccount"];
             }
             else
             {

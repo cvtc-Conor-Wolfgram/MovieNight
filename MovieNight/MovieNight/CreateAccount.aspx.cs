@@ -50,6 +50,8 @@ namespace MovieNight
         {
             var email = txtActiveEmail.Text;
             var pass = txtActivePass.Text;
+            Session["userAccount"] = txtActiveEmail.Text.ToString();
+            Response.Redirect("accountInfo.aspx");
         }
     }
 }

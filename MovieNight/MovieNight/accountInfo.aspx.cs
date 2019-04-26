@@ -17,14 +17,27 @@ namespace MovieNight
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
 
-            foreach (DataRowView drvSql in dvSql)
+            if (Session["userAccount"] != null)
             {
-                nameLbl.Text = drvSql["fName"].ToString();
-                userNameLbl.Text = drvSql["UserName"].ToString();
-                emailLbl.Text = drvSql["email"].ToString();
+
+                var @userAccount = Session["userAccount"];
+
+                DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
+
+                foreach (DataRowView drvSql in dvSql)
+                {
+                    nameLbl.Text = drvSql["fName"].ToString();
+                    userNameLbl.Text = drvSql["UserName"].ToString();
+                    emailLbl.Text = drvSql["email"].ToString();
+                }
             }
+            else
+            {
+                Response.Redirect("CreateAccount.aspx");
+            }
+
+
 
         }
 
