@@ -13,8 +13,25 @@ namespace MovieNight
         protected void Page_Load(object sender, EventArgs e)
         {
             var localDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
-            
+
+            //if (ViewState["Date"] != null)
+            //{
+            //    txtDateTime.Text = ViewState["Date"].ToString();
+            //} else
+            //{
+            //    txtDateTime.Text = localDateTime;
+            //}
             txtDateTime.Text = localDateTime;
+
+            if (ViewState["Date"] != null)
+            {
+                txtDateTime.Text = ViewState["Date"].ToString();
+            }
+            
+
+            lblTickets.Visible = false;
+            txtTickets.Visible = false;
+            rvTickets.Visible = false;
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -29,8 +46,18 @@ namespace MovieNight
 
             newEvent.eventName = txtEName.Text;
             newEvent.eventLocation = txtLocation.Text;
-            newEvent.eventDateTime = DateTime.Parse(txtDateTime.Text);
-            newEvent.numTickets = int.Parse(txtTickets.Text);
+            newEvent.eventTime = DateTime.Parse(txtDateTime.Text);
+
+            if (cbTheater.Checked == true)
+            {
+                newEvent.ticketsBought = 1;
+                newEvent.numTickets = int.Parse(txtTickets.Text);
+            } else
+            {
+                newEvent.ticketsBought = 0;
+            }
+
+            
 
             MovieNightContext context = new MovieNightContext();
             context.events.Add(newEvent);
@@ -39,6 +66,29 @@ namespace MovieNight
             Response.Redirect("Default.aspx");
 
 
+        }
+
+        protected void cbTheater_CheckedChanged(object sender, EventArgs e)
+        {
+            var dateTimeHolder = txtDateTime.Text;
+
+            ViewState["Date"] = txtDateTime.Text;
+
+            if (cbTheater.Checked == true)
+            {
+                txtDateTime.Text = ViewState["Date"].ToString();
+                lblTickets.Visible = true;
+                txtTickets.Visible = true;
+                rvTickets.Visible = true;
+
+            }
+            else
+            {
+                txtDateTime.Text = ViewState["Date"].ToString();
+                lblTickets.Visible = false;
+                txtTickets.Visible = false;
+                rvTickets.Visible = false;
+            }
         }
     }
 }

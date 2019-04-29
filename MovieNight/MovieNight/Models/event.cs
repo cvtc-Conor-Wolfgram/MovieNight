@@ -15,8 +15,8 @@ namespace MovieNight.Models
         public int eventOwner { get; set; }
         public String eventName { get; set; }
         public String eventLocation { get; set; }
-        public DateTime eventDateTime { get; set; }
-        public bool ticketsBought { get; set; }
+        public DateTime eventTime { get; set; }
+        public int ticketsBought { get; set; }
         public int numTickets { get; set; }
         public List<User> usersAttending { get; set; }
     }

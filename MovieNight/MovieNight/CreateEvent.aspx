@@ -12,10 +12,12 @@
         <asp:RequiredFieldValidator ID="rfvLocation" runat="server" ControlToValidate="txtLocation" ErrorMessage="Location is required."></asp:RequiredFieldValidator>
         <br /><br />
         <asp:Label ID="lblDateTime" runat="server" Text="Date and Time"></asp:Label>
-        <asp:TextBox ID="txtDateTime" textmode="DateTimeLocal" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtDateTime" textmode="DateTimeLocal" runat="server"  ></asp:TextBox>
         <asp:RequiredFieldValidator ID="rfvDateTime" ControlToValidate="txtDateTime" runat="server" ErrorMessage="Date and time is required."></asp:RequiredFieldValidator>
         <br /><br />
-        <asp:Label ID="lblTickets" runat="server" Text="Spots Open"></asp:Label>
+        <asp:CheckBox ID="cbTheater" Text="In a Movie Theater?" runat="server" OnCheckedChanged="cbTheater_CheckedChanged" AutoPostBack="true" />
+        <br />
+        <asp:Label ID="lblTickets" runat="server" Text="Tickets Bought"></asp:Label>
         <asp:TextBox ID="txtTickets" TextMode="Number" runat="server"></asp:TextBox>
         <asp:RangeValidator ID="rvTickets" runat="server" ControlToValidate="txtTickets" Type="Integer" MinimumValue="0" MaximumValue="100" ErrorMessage="Spots open must be an integer"></asp:RangeValidator>
         <br /><br />
