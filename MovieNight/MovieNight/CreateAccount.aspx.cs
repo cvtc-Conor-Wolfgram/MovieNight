@@ -1,15 +1,20 @@
 ﻿using MovieNight.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Configuration;
 
 namespace MovieNight
 {
     public partial class CreateAccount : System.Web.UI.Page
     {
+        private MovieNightContext db = new MovieNightContext();
+         
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -37,21 +42,36 @@ namespace MovieNight
             context.users.Add(user);
             context.SaveChanges();
 
-            Response.Redirect("Default.aspx");
-
-
-
-
-
+        
 
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            var email = txtActiveEmail.Text;
+            
+            var email = txtActiveEmail.Text.ToString();
+
             var pass = txtActivePass.Text;
-            Session["userAccount"] = txtActiveEmail.Text.ToString();
-            Response.Redirect("accountInfo.aspx");
+            Session["userAccount"] = email;
+
+
+                DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
+
+            
+
+            if (dvSql.Count == 0)
+                emailCompare.Visible = true;
+            else
+               
+            
+
+                    Response.Redirect("accountinfo.aspx");
+                
+            
+            
+
+
+
         }
     }
 }
