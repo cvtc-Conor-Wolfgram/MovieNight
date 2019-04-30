@@ -55,19 +55,25 @@ namespace MovieNight
             Session["userAccount"] = email;
 
 
-                DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
+            DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
 
-            
+
 
             if (dvSql.Count == 0)
+            {
                 emailCompare.Visible = true;
+            }
             else
-               
-            
-
-                    Response.Redirect("accountinfo.aspx");
+            {
+                Session["userAccount"] = db.users.SqlQuery("SELECT [User].userID, [User].userName, [User].fName, [User].lName, [User].password, [User].email " +
+                "FROM [User] " +
+                "WHERE email = '" + email + "' AND password = '" + pass + "'").FirstOrDefault();
+                Response.Redirect("accountinfo.aspx");
                 
-            
+            }
+                
+
+
             
 
 

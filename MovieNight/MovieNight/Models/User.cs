@@ -7,6 +7,7 @@ using System.Web;
 
 namespace MovieNight.Models
 {
+    [Serializable]
     [Table("User")]
     public class User
     {
@@ -17,8 +18,6 @@ namespace MovieNight.Models
         public String email { get; set; }
         public String fName { get; set; }
         public String lName { get; set; }
-        public virtual int joinNumber { get; set; }
-        public virtual int turnToPick { get; set; }
         public List<Movie> moviesSubmitted { get; set; }
         public List<Group> groups { get; set; }
         public List<Event> events { get; set; }

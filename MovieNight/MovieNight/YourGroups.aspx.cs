@@ -1,6 +1,7 @@
 ﻿using MovieNight.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,11 +19,10 @@ namespace MovieNight
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
 
             if (Session["userAccount"] != null)
             {
-               // currentUser = (User)Session["userAccount"];
+               currentUser = (User)Session["userAccount"];
             }
             else
             {
@@ -30,9 +30,9 @@ namespace MovieNight
             }
 
 
-            groups = db.groups.SqlQuery("Select [Group].groupID, groupName, groupCode, ownerID, Concat(fName, lName) as ownerName " +
-                "from [Group] inner join [User] on [Group].ownerID = [User].userID INNER JOIN UserGroup on UserGroup.groupID = [Group].groupID " +
-                "Where UserGroup.userID = 4").ToList<Group>();
+            groups = db.groups.SqlQuery("Select [Group].groupID, groupName, groupCode, ownerID " +
+                "FROM [Group] INNER JOIN UserGroup on UserGroup.groupID = [Group].groupID " +
+                "WHERE UserGroup.userID = " + currentUser.userID).ToList<Group>();
 
             String html= "";
             foreach(Group group in groups)

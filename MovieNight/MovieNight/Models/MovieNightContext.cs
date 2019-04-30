@@ -12,5 +12,6 @@ namespace MovieNight.Models
         public DbSet<Event> events { get; set; }
         public DbSet<Group> groups { get; set; }
         public DbSet<User> users { get; set; }
+        public DbSet<UserGroup> userGroup { get; set; }
     }
 }

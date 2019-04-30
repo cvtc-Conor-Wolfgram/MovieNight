@@ -15,7 +15,6 @@ namespace MovieNight.Models
         public String groupName { get; set; }
         public int groupCode { get; set; }
         public int ownerID { get; set; }
-        public virtual String ownerName { get; set; }
         public List<User> groupMemebers { get; set; }
         
 
