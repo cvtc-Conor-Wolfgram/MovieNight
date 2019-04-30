@@ -15,56 +15,55 @@ namespace MovieNight
 
         List<User> members = new List<User>();
         User picker = new User();
-        Group pageGroup = new Group();
+        //Group pageGroup = new Group();
         private MovieNightContext db = new MovieNightContext();
         User currentUser;
         //List<Movie> moviesSuggested = new List<Movie>();
         List<Movie> nextMoviesAvalible = new List<Movie>();
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //if (Session["userAccount"] != null)
-            //{
-            //    currentUser = (User)Session["userAccount"];
-            //} else
-            //{
-            //    Response.Redirect("CreateAccount.aspx");
-            //}
-
-            if(Request.QueryString["groupID"] != null) { 
-            //Getting page and owner Info
-            pageGroup = db.Database.SqlQuery<Group>("Select groupID, groupName, groupCode, ownerID, Concat(fName, lName) as ownerName " +
-                "from [Group] inner join [User] on [Group].ownerID = [User].userID " +
-                "Where groupID = " + Request.QueryString["groupID"]).FirstOrDefault();
-
-            groupName.InnerText = pageGroup.groupName;
-            ownerName.InnerText = "Group Owner: " + pageGroup.ownerName.ToString();
-
-
-            //Setting members list and who's turn it is to pick
-            members = db.users.SqlQuery("SELECT [User].userID, [User].userName, [User].fName, [User].lName, [User].password, [User].email," +
-                " joinNumber, turnToPick " +
-                "FROM [User] INNER JOIN [UserGroup] ON [User].userID = [UserGroup].userID " +
-                "WHERE [UserGroup].groupID = "+ Request.QueryString["groupID"] +
-                " ORDER BY [UserGroup].joinNumber").ToList<User>();
-
-            foreach(User member in members)
+            if (Session["userAccount"] != null)
             {
-                if(member.turnToPick == 1)
-                {
-                    picker = member;
-                    pickerName.InnerText = "The current picker is " + picker.fName + " " + picker.lName;
-                }
+                currentUser = (User)Session["userAccount"];
+            }
+            else
+            {
+                Response.Redirect("CreateAccount.aspx");
             }
 
-            displayMoviesList(picker);
+
+            if (Request.QueryString["groupID"] != null) {
+
+                int currentGroupID = Convert.ToInt16(Request.QueryString["groupID"]);
+                //Getting page and owner Info
+                Group pageGroup = db.groups.SqlQuery("Select * " +
+                    "FROM [Group]").FirstOrDefault();
+
+                groupName.InnerText = pageGroup.groupName;
+                //ownerName.InnerText = "Group Owner: " + pageGroup.ownerName.ToString();
+
+
+                //Setting members list and who's turn it is to pick
+                members = db.users.SqlQuery("SELECT [User].userID, [User].userName, [User].fName, [User].lName, [User].password, [User].email " +
+                    "FROM [User] INNER JOIN [UserGroup] ON [User].userID = [UserGroup].userID " +
+                    "WHERE [UserGroup].groupID = "+ currentGroupID +
+                    " ORDER BY [UserGroup].joinNumber").ToList<User>();
+
+            
+
+                foreach(User member in members)
+                {
+                    if(db.userGroup.Find(member.userID, currentGroupID).turnToPick == 1)
+                    {
+                        picker = member;
+                        pickerName.InnerText = "The current picker is " + picker.fName + " " + picker.lName;
+                    }
+                }
+
+                displayMoviesList(picker);
                 
-
-
-
-
             } else
             {
                 Response.Redirect("Group.aspx?groupID=1");
@@ -75,16 +74,17 @@ namespace MovieNight
 
         protected void finishedMovie_Click(object sender, EventArgs e)
         {
+            int currentGroupID = Convert.ToInt16(Request.QueryString["groupID"]);
 
             //Changes who's turn it is to pick after a button click
             for (int i = 0; i < members.Count; i++) //For all the members
             {
-                if (members[i].turnToPick == 1) //Find the person who is currently picking
+                if (db.userGroup.Find(members[i].userID, currentGroupID).turnToPick == 1) //Find the person who is currently picking
                 {
                     try
                     {
-                        db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 0 WHERE userID = " + members[i].userID + "and groupID = " + Request.QueryString["groupID"]);
-                        db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 1 WHERE userID = " + members[i + 1].userID + "and groupID = " + Request.QueryString["groupID"]);
+                        db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 0 WHERE userID = " + members[i].userID + "and groupID = " + currentGroupID);
+                        db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 1 WHERE userID = " + members[i + 1].userID + "and groupID = " + currentGroupID);
                         picker = members[i + 1];
                         pickerName.InnerText = "The current picker is " + picker.fName + " " + picker.lName;
                         displayMoviesList(picker);
@@ -93,8 +93,8 @@ namespace MovieNight
                     catch (Exception)
                     {
 
-                        db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 0 WHERE userID = " + members[i].userID + "and groupID = " + Request.QueryString["groupID"]);
-                        db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 1 WHERE userID = " + members[0].userID + "and groupID = " + Request.QueryString["groupID"]);
+                        db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 0 WHERE userID = " + members[i].userID + "and groupID = " + currentGroupID);
+                        db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 1 WHERE userID = " + members[0].userID + "and groupID = " + currentGroupID);
                         picker = members[0];
                         pickerName.InnerText = "The current picker is " + picker.fName + " " + picker.lName;
                         displayMoviesList(picker);
