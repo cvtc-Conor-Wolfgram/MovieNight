@@ -17,7 +17,10 @@ namespace MovieNight
          
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (this.IsPostBack)
+            {
+                txtActivePass.Attributes["value"] = txtActivePass.Text;
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -71,6 +74,30 @@ namespace MovieNight
             
 
 
+
+        }
+
+
+        protected void Toggle_Password(object sender, EventArgs e)
+        {
+            var showBtnTextString = showPasswordBtn.Text;
+            var passText = txtActivePass.Text;
+
+            if (showBtnTextString == "Show")
+            {
+                showPasswordBtn.Text = "Hide";
+                txtActivePass.TextMode = TextBoxMode.SingleLine;
+                txtActivePass.Text = passText;
+
+            }
+
+            else
+            {
+                showPasswordBtn.Text = "Show";
+                txtActivePass.TextMode = TextBoxMode.Password;
+                txtActivePass.Text = passText;
+            }
+                
 
         }
     }
