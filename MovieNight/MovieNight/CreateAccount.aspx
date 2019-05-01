@@ -9,7 +9,7 @@
                   <asp:Label ID="Label1" runat="server" Text="Sign In"></asp:Label></div>
               <div class="card-body">
                               
-                  <asp:SqlDataSource ID="UserConnection" runat="server" ConnectionString="<%$ ConnectionStrings:MovieNightContext %>" SelectCommand="SELECT email, password FROM [User] WHERE email = @email">
+                  <asp:SqlDataSource ID="UserConnection" runat="server" ConnectionString="<%$ ConnectionStrings:MovieNightContext %>" SelectCommand="SELECT email, passwordHash FROM [User] WHERE email = @email">
                       <SelectParameters>
                             <asp:SessionParameter Name="email" SessionField ="userAccount" DefaultValue =""  />
                        </SelectParameters>
@@ -22,7 +22,7 @@
                     <li><asp:Label ID="emailCompare" runat="server" Text="Email not found. Please sign up." ForeColor="#CC0000" Display="Dynamic" Visible="False"></asp:Label></li>
                     <li><asp:Label ID="lblActivePass" runat="server" Text="Password:"></asp:Label></li>
                     <li><asp:TextBox ID="txtActivePass" runat="server" class="form-control-password" TextMode="Password"></asp:TextBox><asp:Button ID="showPasswordBtn" runat="server" Text="Show" class="btn btn-primary btn-sm" OnClick="Toggle_Password" /></li>
-                    <li class="textBox"></li>
+                    <li><asp:Label ID="passCompare" runat="server" Text="Password Incorrect." ForeColor="#CC0000" Display="Dynamic" Visible="False"></asp:Label></li>
                     <li><asp:RequiredFieldValidator ID="rfvActivePass" runat="server" ControlToValidate="txtActivePass" ErrorMessage="Please Enter Your Password" ValidationGroup="login" ForeColor="#CC0000" Display="Dynamic"></asp:RequiredFieldValidator></li>
                     <li><asp:Button ID="btnLogin" runat="server" class="btn btn-primary btn-lg" Text="Login" ValidationGroup="login" OnClick="btnLogin_Click" /> </li>
                  </ul>
@@ -86,7 +86,7 @@
       <th scope="row"><asp:Label ID="lblUserPass" runat="server" Text="Password:"></asp:Label></th>
      <td>
           <ul>
-            <li><asp:TextBox ID="txtUserPass" runat="server" class="form-control"></asp:TextBox></li>
+            <li><asp:TextBox ID="txtUserPass" runat="server" class="form-control" TextMode="Password"></asp:TextBox></li>
             <li><asp:RequiredFieldValidator ID="rfvUserPass" runat="server" ControlToValidate="txtUserPass" ErrorMessage="Please Enter a Password" ValidationGroup="create" ForeColor="#CC0000" Display="Dynamic"></asp:RequiredFieldValidator></li>
           </ul>  
 
@@ -98,7 +98,7 @@
       <th scope="row"><asp:Label ID="lblUserPassConfirm" runat="server" Text="Confirm Password:"></asp:Label></th>
      <td>
           <ul>
-                <li><asp:TextBox ID="txtUserPassConfirm" runat="server" class="form-control"></asp:TextBox></li>
+                <li><asp:TextBox ID="txtUserPassConfirm" runat="server" class="form-control" TextMode="Password"></asp:TextBox></li>
                 <li><asp:CompareValidator ID="cvUserPassConfirm" runat="server" ControlToValidate="txtUserPassConfirm" ErrorMessage="Passwords must match" ControlToCompare="txtUserPass" ValidationGroup="create" ForeColor="#CC0000" Display="Dynamic"></asp:CompareValidator></li>
                 <li><asp:RequiredFieldValidator ID="rfvUserPassConfirm" runat="server" ControlToValidate="txtUserPassConfirm" ErrorMessage="Please Confirm Password" ValidationGroup="create" ForeColor="#CC0000" Display="Dynamic"></asp:RequiredFieldValidator></li>
           </ul>  
