@@ -1669,24 +1669,29 @@ pre code {
 
 .table {
   width: 100%;
-  margin-bottom: 1rem;
   color: #839496;
 }
 
-.table th,
+
 .table td {
-  padding: 0.75rem;
-  vertical-align: top;
-  border-top: 1px solid #073642;
+  padding-top: .75rem;   
+  vertical-align:middle;
+ 
+}
+
+
+.table th {
+
+  vertical-align: middle;
+ 
 }
 
 .table thead th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #073642;
+    vertical-align: middle;
 }
 
 .table tbody + tbody {
-  border-top: 2px solid #073642;
+
 }
 
 .table-sm th,
@@ -1719,10 +1724,7 @@ pre code {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.table-hover tbody tr:hover {
-  color: #839496;
-  background-color: rgba(255, 255, 255, 0.075);
-}
+
 
 .table-primary,
 .table-primary > th,
@@ -1737,14 +1739,6 @@ pre code {
   border-color: #d9c27a;
 }
 
-.table-hover .table-primary:hover {
-  background-color: #e4d5a4;
-}
-
-.table-hover .table-primary:hover > td,
-.table-hover .table-primary:hover > th {
-  background-color: #e4d5a4;
-}
 
 .table-secondary,
 .table-secondary > th,
@@ -1756,17 +1750,10 @@ pre code {
 .table-secondary td,
 .table-secondary thead th,
 .table-secondary tbody + tbody {
-  border-color: #bfc7c8;
+  border-color: #dce1e2;
 }
 
-.table-hover .table-secondary:hover {
-  background-color: #ced5d6;
-}
 
-.table-hover .table-secondary:hover > td,
-.table-hover .table-secondary:hover > th {
-  background-color: #ced5d6;
-}
 
 .table-success,
 .table-success > th,
@@ -1779,15 +1766,6 @@ pre code {
 .table-success thead th,
 .table-success tbody + tbody {
   border-color: #90cec9;
-}
-
-.table-hover .table-success:hover {
-  background-color: #b1ddd9;
-}
-
-.table-hover .table-success:hover > td,
-.table-hover .table-success:hover > th {
-  background-color: #b1ddd9;
 }
 
 .table-info,
@@ -1803,14 +1781,7 @@ pre code {
   border-color: #8ec3e8;
 }
 
-.table-hover .table-info:hover {
-  background-color: #add4ee;
-}
 
-.table-hover .table-info:hover > td,
-.table-hover .table-info:hover > th {
-  background-color: #add4ee;
-}
 
 .table-warning,
 .table-warning > th,
@@ -1825,14 +1796,7 @@ pre code {
   border-color: #e4a186;
 }
 
-.table-hover .table-warning:hover {
-  background-color: #ebbda9;
-}
 
-.table-hover .table-warning:hover > td,
-.table-hover .table-warning:hover > th {
-  background-color: #ebbda9;
-}
 
 .table-danger,
 .table-danger > th,
@@ -1847,14 +1811,7 @@ pre code {
   border-color: #e896be;
 }
 
-.table-hover .table-danger:hover {
-  background-color: #efb2cf;
-}
 
-.table-hover .table-danger:hover > td,
-.table-hover .table-danger:hover > th {
-  background-color: #efb2cf;
-}
 
 .table-light,
 .table-light > th,
@@ -1869,14 +1826,6 @@ pre code {
   border-color: #fefaf0;
 }
 
-.table-hover .table-light:hover {
-  background-color: #fbf4e0;
-}
-
-.table-hover .table-light:hover > td,
-.table-hover .table-light:hover > th {
-  background-color: #fbf4e0;
-}
 
 .table-dark,
 .table-dark > th,
@@ -1891,14 +1840,6 @@ pre code {
   border-color: #7e969d;
 }
 
-.table-hover .table-dark:hover {
-  background-color: #acbbbf;
-}
-
-.table-hover .table-dark:hover > td,
-.table-hover .table-dark:hover > th {
-  background-color: #acbbbf;
-}
 
 .table-active,
 .table-active > th,
@@ -1906,14 +1847,6 @@ pre code {
   background-color: rgba(255, 255, 255, 0.075);
 }
 
-.table-hover .table-active:hover {
-  background-color: rgba(242, 242, 242, 0.075);
-}
-
-.table-hover .table-active:hover > td,
-.table-hover .table-active:hover > th {
-  background-color: rgba(242, 242, 242, 0.075);
-}
 
 .table .thead-dark th {
   color: #002B36;
@@ -1946,10 +1879,7 @@ pre code {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.table-dark.table-hover tbody tr:hover {
-  color: #002B36;
-  background-color: rgba(255, 255, 255, 0.075);
-}
+
 
 @media (max-width: 575.98px) {
   .table-responsive-sm {

@@ -5,7 +5,7 @@
 <html>
 <head runat="server">
     <title>Movie Night</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
 
     <asp:ContentPlaceHolder ID="head" runat="server">
