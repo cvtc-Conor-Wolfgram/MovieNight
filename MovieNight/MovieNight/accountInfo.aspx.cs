@@ -59,7 +59,7 @@ namespace MovieNight
 
                 lastUserJoinNum++;
 
-                //db.Database.ExecuteSqlCommand("INSERT INTO UserGroup (userID, groupID, joinNumber, turnToPick) VALUES ('4', '" + group.groupID + "', '" + lastUserJoinNum + "', '0')");
+                db.Database.ExecuteSqlCommand("INSERT INTO UserGroup (userID, groupID, joinNumber, turnToPick) VALUES (" + currentUser.userID + ", '" + group.groupID + "', '" + lastUserJoinNum + "', '0')");
 
                 UserGroup newUserGroup = new UserGroup();
                 newUserGroup.userID = currentUser.userID;
@@ -67,7 +67,8 @@ namespace MovieNight
                 newUserGroup.joinNumber = lastUserJoinNum;
                 newUserGroup.turnToPick = 0;
                 db.userGroup.Add(newUserGroup);
-                db.SaveChanges();
+
+                lblJoinResponse.Text = "Group has been Joined.";
 
             } else
             {
