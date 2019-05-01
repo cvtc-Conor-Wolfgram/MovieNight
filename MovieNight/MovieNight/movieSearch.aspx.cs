@@ -29,17 +29,21 @@ namespace MovieNight
                     imdbEntityArray = oJS.Deserialize<ImdbEntityArray>(json);
                     if (imdbEntityArray.Search != null)
                     {
-
+                        String html = "";
                         phMovieResults.Controls.Clear();
+                        html += "<div class=\"row\">\n";
+                        phMovieResults.Controls.Add(new Literal { Text = html });
 
                         foreach (ImdbEntity movie in imdbEntityArray.Search)
                         {
-                            String html = "";
+
+                            html = "";
                             html += "<div class=\"col - md - 3\">\n";
                             html += "\t<div class=\"well text-center\">\n";
                             html += "\t\t<img src='" + movie.Poster + "'>\n";
                             html += "\t\t<h5>" + movie.Title + " (" + movie.Year + ")</h5>";
                             html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + movie.imdbID + "\">Link to IMDB</a>";
+                            
                             phMovieResults.Controls.Add(new Literal { Text = html });
 
                             Button btnAddMovie = new Button();
@@ -53,10 +57,13 @@ namespace MovieNight
                             phMovieResults.Controls.Add(btnAddMovie);
 
                             html = "";
+                            html += "</div>";
                             html += "\t</div>";
-                            html += "</div>\n";
                             phMovieResults.Controls.Add(new Literal { Text = html });
                         }
+                        html = "";
+                        html += "</div>\n";
+                        phMovieResults.Controls.Add(new Literal { Text = html });
 
                     }
                     else
