@@ -14,7 +14,7 @@ namespace MovieNight.Models
         [Key]
         public int userID { get; set; }
         public String userName { get; set; }
-        public String password { get; set; }
+        public String passwordHash { get; set; }
         public String email { get; set; }
         public String fName { get; set; }
         public String lName { get; set; }
