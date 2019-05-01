@@ -29,12 +29,14 @@ namespace MovieNight
                     imdbEntityArray = oJS.Deserialize<ImdbEntityArray>(json);
                     if (imdbEntityArray.Search != null)
                     {
-
+                        String html = "";
                         phMovieResults.Controls.Clear();
+                        html += "<div class=\"row\">\n";
+                        phMovieResults.Controls.Add(new Literal { Text = html });
 
                         foreach (ImdbEntity movie in imdbEntityArray.Search)
                         {
-                            String html = "";
+                            html = "";
                             html += "<div class=\"col - md - 3\">\n";
                             html += "\t<div class=\"well text-center\">\n";
                             html += "\t\t<img src='" + movie.Poster + "'>\n";
