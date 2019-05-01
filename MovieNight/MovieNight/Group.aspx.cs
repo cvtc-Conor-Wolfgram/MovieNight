@@ -46,7 +46,7 @@ namespace MovieNight
 
 
                 //Setting members list and who's turn it is to pick
-                members = db.users.SqlQuery("SELECT [User].userID, [User].userName, [User].fName, [User].lName, [User].password, [User].email " +
+                members = db.users.SqlQuery("SELECT [User].userID, [User].userName, [User].fName, [User].lName, [User].passwordHash, [User].email " +
                     "FROM [User] INNER JOIN [UserGroup] ON [User].userID = [UserGroup].userID " +
                     "WHERE [UserGroup].groupID = "+ currentGroupID +
                     " ORDER BY [UserGroup].joinNumber").ToList<User>();
