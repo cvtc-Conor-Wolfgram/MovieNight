@@ -237,3 +237,5 @@ E:\OneDrive\CVTC\Capstone\MovieNightProject\MovieNight\MovieNight\obj\Debug\Movi
 E:\OneDrive\CVTC\Capstone\MovieNightProject\MovieNight\MovieNight\obj\Debug\MovieNight.csproj.CopyComplete
 E:\OneDrive\CVTC\Capstone\MovieNightProject\MovieNight\MovieNight\obj\Debug\MovieNight.dll
 E:\OneDrive\CVTC\Capstone\MovieNightProject\MovieNight\MovieNight\obj\Debug\MovieNight.pdb
+E:\OneDrive\CVTC\Capstone\MovieNightProject\MovieNight\MovieNight\bin\Newtonsoft.Json.dll
+E:\OneDrive\CVTC\Capstone\MovieNightProject\MovieNight\MovieNight\bin\Newtonsoft.Json.xml
