@@ -39,7 +39,7 @@ namespace MovieNight
                 int currentGroupID = Convert.ToInt16(Request.QueryString["groupID"]);
                 //Getting page and owner Info
                 Group pageGroup = db.groups.SqlQuery("Select * " +
-                    "FROM [Group]").FirstOrDefault();
+                    "FROM [Group] WHERE groupID=" + currentGroupID).FirstOrDefault();
 
                 groupName.InnerText = pageGroup.groupName;
                 //ownerName.InnerText = "Group Owner: " + pageGroup.ownerName.ToString();
@@ -51,16 +51,21 @@ namespace MovieNight
                     "WHERE [UserGroup].groupID = "+ currentGroupID +
                     " ORDER BY [UserGroup].joinNumber").ToList<User>();
 
-            
-
+                String html = "<h4>Members:</h4>";
                 foreach(User member in members)
                 {
+                    html += "<li>" + member.fName + " " + member.lName + "</li>";
+
+
+
                     if(db.userGroup.Find(member.userID, currentGroupID).turnToPick == 1)
                     {
                         picker = member;
                         pickerName.InnerText = "The current picker is " + picker.fName + " " + picker.lName;
                     }
                 }
+                phMembers.Controls.Clear();
+                phMembers.Controls.Add(new Literal { Text = html });
 
                 displayMoviesList(picker);
                 
