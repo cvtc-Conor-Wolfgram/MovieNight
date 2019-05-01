@@ -50,6 +50,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -91,6 +94,8 @@
     <Content Include="images\stage_curtain_theater_red.png" />
     <Content Include="js\main.js" />
     <Content Include="movieSearch.aspx" />
+    <Content Include="Scripts\json-serialize.js" />
+    <Content Include="Scripts\json-serialize.min.js" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
     <Content Include="Group.aspx" />
@@ -124,6 +129,7 @@
     </Compile>
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\ImdbEntityArray.cs" />
     <Compile Include="Models\ImdbEntity.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieNightContext.cs" />
