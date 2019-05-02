@@ -10,6 +10,7 @@ namespace MovieNight
 {
     public partial class CreateEvent : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             var localDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');

@@ -14,14 +14,22 @@
                             <asp:SessionParameter Name="email" SessionField ="userAccount" DefaultValue =""  />
                        </SelectParameters>
                   </asp:SqlDataSource>
+                  <asp:SqlDataSource ID="UserConnection2" runat="server" ConnectionString="<%$ ConnectionStrings:MovieNightContext %>" SelectCommand="SELECT Username FROM [User] WHERE Username = @Username">
+                      <SelectParameters>
+                            <asp:SessionParameter Name="UserName" SessionField ="createAccount" DefaultValue =""  />
+                       </SelectParameters>
+                  </asp:SqlDataSource>
                   <ul>
                     <li><asp:Label ID="lblActiveEmail" runat="server" Text="Email:"></asp:Label></li>
-                    <li class="textBox"><asp:TextBox ID="txtActiveEmail" runat="server" class="form-control"></asp:TextBox></li>
+                    <li class="textBox"><asp:TextBox ID="txtActiveEmail" runat="server" class="form-control" ToolTip="Enter Email"></asp:TextBox></li>
                     <li><asp:RequiredFieldValidator ID="rfvActiveEmail" runat="server" ControlToValidate="txtActiveEmail" ErrorMessage="Please Enter Your Email" ValidationGroup="login" ForeColor="#CC0000" Display="Dynamic"></asp:RequiredFieldValidator></li>
                     <li><asp:RegularExpressionValidator ID="revActiveEmail" runat="server" ControlToValidate="txtActiveEmail" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ErrorMessage="Please Enter a Valid Email Address" ValidationGroup="login" ForeColor="#CC0000" Display="Dynamic"></asp:RegularExpressionValidator></li>
                     <li><asp:Label ID="emailCompare" runat="server" Text="Email not found. Please sign up." ForeColor="#CC0000" Display="Dynamic" Visible="False"></asp:Label></li>
-                    <li><asp:Label ID="lblActivePass" runat="server" Text="Password:"></asp:Label></li>
-                    <li><asp:TextBox ID="txtActivePass" runat="server" class="form-control-password" TextMode="Password"></asp:TextBox><asp:Button ID="showPasswordBtn" runat="server" Text="Show" class="btn btn-primary btn-sm" OnClick="Toggle_Password" /></li>
+                    
+                    <li><asp:Label ID="lblActivePass" runat="server" Text="Password:" ></asp:Label></li>
+                    <li><asp:TextBox ID="txtActivePass" runat="server" class="form-control" TextMode="Password"></asp:TextBox></li>
+                    <li><asp:CheckBox ID="checkBoxPasswordToggle" Text="Show Password" runat="server" OnCheckedChanged="Toggle_Password" AutoPostBack="true"  /></li>
+                        
                     <li><asp:Label ID="passCompare" runat="server" Text="Password Incorrect." ForeColor="#CC0000" Display="Dynamic" Visible="False"></asp:Label></li>
                     <li><asp:RequiredFieldValidator ID="rfvActivePass" runat="server" ControlToValidate="txtActivePass" ErrorMessage="Please Enter Your Password" ValidationGroup="login" ForeColor="#CC0000" Display="Dynamic"></asp:RequiredFieldValidator></li>
                     <li><asp:Button ID="btnLogin" runat="server" class="btn btn-primary btn-lg" Text="Login" ValidationGroup="login" OnClick="btnLogin_Click" /> </li>
@@ -41,6 +49,7 @@
       <td>
           <ul>
               <li><asp:TextBox ID="txtUserName" runat="server" class="form-control"></asp:TextBox></li>
+              <li><asp:Label ID="usernameMatchFound" runat="server" Text="Username taken. Try again." ForeColor="#CC0000" Display="Dynamic" Visible="False"></asp:Label></li>
               <li><asp:RequiredFieldValidator ID="rfvUserName" runat="server" ControlToValidate="txtUserName" ErrorMessage="Please Enter a Username" ValidationGroup="create" ForeColor="#CC0000" Display="Dynamic"></asp:RequiredFieldValidator></li>
           </ul>
     </td>
@@ -53,6 +62,7 @@
       <td>
           <ul>
               <li><asp:TextBox ID="txtUserEmail" runat="server" class="form-control"></asp:TextBox></li>
+              <li><asp:Label ID="emailMatchFound" runat="server" Text="Email already on file please log in." ForeColor="#CC0000" Display="Dynamic" Visible="False"></asp:Label></li>
               <li><asp:RequiredFieldValidator ID="rfvUserEmail" runat="server" ControlToValidate="txtUserEmail" ErrorMessage="Please Enter Your Email Address" ValidationGroup="create" ForeColor="#CC0000" Display="Dynamic"></asp:RequiredFieldValidator></li>
               <li><asp:RegularExpressionValidator ID="regexUserEmail" runat="server" ControlToValidate="txtUserEmail" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ErrorMessage="Please Enter a Valid Email Address" ForeColor="#CC0000" ValidationGroup="create" Display="Dynamic"></asp:RegularExpressionValidator></li>
           </ul>

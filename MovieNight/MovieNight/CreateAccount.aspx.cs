@@ -12,7 +12,7 @@ namespace MovieNight
     public partial class CreateAccount : System.Web.UI.Page
     {
         private MovieNightContext db = new MovieNightContext();
-         
+        public event EventHandler OnTextChanged;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (this.IsPostBack)
@@ -23,42 +23,67 @@ namespace MovieNight
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            //string userName = txtUserName.Text;
-            //string fName = txtFName.Text;
-            //string lName = txtLName.Text;
-            //string email = txtUserEmail.Text;
-            //string password = txtUserPass.Text;
+            
+            var userName = txtUserName.Text.ToString();
+            var email = txtUserEmail.Text.ToString();
 
-            string password = txtUserPass.Text;
+            Session["userAccount"] = email;
 
-            byte[] salt;
+            DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
 
-            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+            if (dvSql.Count == 0)
+            {
+                
 
-            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
+                Session["createAccount"] = userName;
 
-            byte[] hash = pbkdf2.GetBytes(20);
-            byte[] hashBytes = new byte[36];
+                DataView dvSql2 = (DataView)UserConnection2.Select(DataSourceSelectArguments.Empty);
+                if (dvSql2.Count == 0)
+                {
+                    string password = txtUserPass.Text;
 
-            Array.Copy(salt, 0, hashBytes, 0, 16);
-            Array.Copy(hash, 0, hashBytes, 16, 20);
+                    byte[] salt;
 
-            string savedPasswordHash = Convert.ToBase64String(hashBytes);
-      
-            User user = new User();
+                    new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
 
-            user.userName = txtUserName.Text;
-            user.fName = txtFName.Text;
-            user.lName = txtLName.Text;
-            user.email = txtUserEmail.Text;
-            user.passwordHash = savedPasswordHash;
-           
+                    var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
 
-            Session.Add("userAccount", user);
+                    byte[] hash = pbkdf2.GetBytes(20);
+                    byte[] hashBytes = new byte[36];
 
-            MovieNightContext context= new MovieNightContext();
-            context.users.Add(user);
-            context.SaveChanges();
+                    Array.Copy(salt, 0, hashBytes, 0, 16);
+                    Array.Copy(hash, 0, hashBytes, 16, 20);
+
+                    string savedPasswordHash = Convert.ToBase64String(hashBytes);
+
+                    User user = new User();
+
+                    user.userName = txtUserName.Text;
+                    user.fName = txtFName.Text;
+                    user.lName = txtLName.Text;
+                    user.email = txtUserEmail.Text;
+                    user.passwordHash = savedPasswordHash;
+
+
+                    Session.Add("userAccount", user);
+
+                    MovieNightContext context = new MovieNightContext();
+                    context.users.Add(user);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    usernameMatchFound.Visible = true;
+                }
+                
+            }
+            else
+            {
+                emailMatchFound.Visible = true;
+
+
+                
+            }
 
         
 
@@ -66,7 +91,6 @@ namespace MovieNight
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-           
             var email = txtActiveEmail.Text.ToString();
 
             var pass = txtActivePass.Text;
@@ -132,12 +156,12 @@ namespace MovieNight
 
         protected void Toggle_Password(object sender, EventArgs e)
         {
-            var showBtnTextString = showPasswordBtn.Text;
+           
             var passText = txtActivePass.Text;
 
-            if (showBtnTextString == "Show")
+            if (checkBoxPasswordToggle.Checked == true)
             {
-                showPasswordBtn.Text = "Hide";
+                checkBoxPasswordToggle.Text = "Hide Password";
                 txtActivePass.TextMode = TextBoxMode.SingleLine;
                 txtActivePass.Text = passText;
 
@@ -145,11 +169,26 @@ namespace MovieNight
 
             else
             {
-                showPasswordBtn.Text = "Show";
+                checkBoxPasswordToggle.Text = "Show Password";
                 txtActivePass.TextMode = TextBoxMode.Password;
                 txtActivePass.Text = passText;
             }
                 
+     
+
+        }
+
+        protected void Email_TextChanged(object sender, EventArgs e)
+        {
+
+            
+        }
+
+        protected void Clear_Active_Pass_Errors(object sender, EventArgs e)
+        {
+
+            
+            
 
         }
     }
