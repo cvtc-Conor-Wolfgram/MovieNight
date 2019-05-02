@@ -61,7 +61,7 @@
   </tbody>
   <tbody>
     <tr class="table-secondary">
-      <th scope="row"><asp:Label ID="lblFName" runat="server" Text="First Name:"></asp:Label></asp:Label></th>
+      <th scope="row"><asp:Label ID="lblFName" runat="server" Text="First Name:"></asp:Label></th>
       <td>
           <ul>
             <li><asp:TextBox ID="txtFName" runat="server" class="form-control"></asp:TextBox></li>
