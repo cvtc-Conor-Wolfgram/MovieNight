@@ -94,15 +94,6 @@ namespace MovieNight {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDateTime;
         
         /// <summary>
-        /// cbTheater control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbTheater;
-        
-        /// <summary>
         /// lblTickets control.
         /// </summary>
         /// <remarks>
@@ -121,6 +112,15 @@ namespace MovieNight {
         protected global::System.Web.UI.WebControls.TextBox txtTickets;
         
         /// <summary>
+        /// cbTheater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbTheater;
+        
+        /// <summary>
         /// rvTickets control.
         /// </summary>
         /// <remarks>
@@ -137,14 +137,5 @@ namespace MovieNight {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCreate;
-        
-        /// <summary>
-        /// lblTest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTest;
     }
 }

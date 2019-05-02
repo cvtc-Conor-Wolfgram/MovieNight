@@ -31,6 +31,15 @@ namespace MovieNight {
         protected global::System.Web.UI.WebControls.SqlDataSource UserConnection;
         
         /// <summary>
+        /// UserConnection2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource UserConnection2;
+        
+        /// <summary>
         /// lblActiveEmail control.
         /// </summary>
         /// <remarks>
@@ -94,13 +103,13 @@ namespace MovieNight {
         protected global::System.Web.UI.WebControls.TextBox txtActivePass;
         
         /// <summary>
-        /// showPasswordBtn control.
+        /// checkBoxPasswordToggle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button showPasswordBtn;
+        protected global::System.Web.UI.WebControls.CheckBox checkBoxPasswordToggle;
         
         /// <summary>
         /// passCompare control.
@@ -148,6 +157,15 @@ namespace MovieNight {
         protected global::System.Web.UI.WebControls.TextBox txtUserName;
         
         /// <summary>
+        /// usernameMatchFound control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label usernameMatchFound;
+        
+        /// <summary>
         /// rfvUserName control.
         /// </summary>
         /// <remarks>
@@ -173,6 +191,15 @@ namespace MovieNight {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUserEmail;
+        
+        /// <summary>
+        /// emailMatchFound control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label emailMatchFound;
         
         /// <summary>
         /// rfvUserEmail control.

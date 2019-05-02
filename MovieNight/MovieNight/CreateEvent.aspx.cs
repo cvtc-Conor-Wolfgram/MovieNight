@@ -10,6 +10,7 @@ namespace MovieNight
 {
     public partial class CreateEvent : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             var localDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
@@ -27,11 +28,11 @@ namespace MovieNight
             {
                 txtDateTime.Text = ViewState["Date"].ToString();
             }
-            
 
-            lblTickets.Visible = false;
-            txtTickets.Visible = false;
-            rvTickets.Visible = false;
+
+            lblTickets.ForeColor = System.Drawing.Color.Gray;
+            txtTickets.Enabled = false;
+            rvTickets.Enabled = false;
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -40,7 +41,7 @@ namespace MovieNight
             DateTime dateTime;
 
             dateTime = DateTime.Parse(txtDateTime.Text);
-            lblTest.Text = dateTime.ToString();
+           
 
             Event newEvent = new Event();
 
@@ -77,17 +78,18 @@ namespace MovieNight
             if (cbTheater.Checked == true)
             {
                 txtDateTime.Text = ViewState["Date"].ToString();
-                lblTickets.Visible = true;
-                txtTickets.Visible = true;
-                rvTickets.Visible = true;
+                lblTickets.ForeColor = System.Drawing.Color.White;
+                txtTickets.Enabled = true;
+                rvTickets.Enabled = true;
 
             }
             else
             {
                 txtDateTime.Text = ViewState["Date"].ToString();
-                lblTickets.Visible = false;
-                txtTickets.Visible = false;
-                rvTickets.Visible = false;
+                
+                lblTickets.ForeColor = System.Drawing.Color.Gray;
+                txtTickets.Enabled = false;
+                rvTickets.Enabled = false;
             }
         }
     }
