@@ -24,8 +24,9 @@
 
                       <li>
                           <asp:Label ID="lblDateTime" runat="server" Text="Date and Time"></asp:Label>
-                          <asp:TextBox ID="txtDateTime" textmode="DateTimeLocal" runat="server" CssClass="form-control" ></asp:TextBox>
-                          <asp:RequiredFieldValidator ID="rfvDateTime" ControlToValidate="txtDateTime" runat="server" ErrorMessage="Date and time is required."></asp:RequiredFieldValidator>
+                          <asp:TextBox ID="txtDate" textmode="Date" runat="server" CssClass="form-control"></asp:TextBox>
+                          <asp:TextBox ID="txtTime" textmode="Time" runat="server" CssClass="form-control"></asp:TextBox>
+                          <asp:Label ID="lblDateTimeError" Visible="false" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
 
                       </li>
 

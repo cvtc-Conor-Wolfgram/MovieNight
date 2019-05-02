@@ -76,22 +76,31 @@ namespace MovieNight {
         protected global::System.Web.UI.WebControls.Label lblDateTime;
         
         /// <summary>
-        /// txtDateTime control.
+        /// txtDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDateTime;
+        protected global::System.Web.UI.WebControls.TextBox txtDate;
         
         /// <summary>
-        /// rfvDateTime control.
+        /// txtTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDateTime;
+        protected global::System.Web.UI.WebControls.TextBox txtTime;
+        
+        /// <summary>
+        /// lblDateTimeError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDateTimeError;
         
         /// <summary>
         /// lblTickets control.
