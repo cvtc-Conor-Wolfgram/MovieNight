@@ -13,15 +13,17 @@ namespace MovieNight
     public partial class WebForm2 : System.Web.UI.Page
     {
 
-        List<User> members = new List<User>();
-        User picker = new User();
-        //Group pageGroup = new Group();
+        
+        private User picker;
+        private User currentUser;
+        User groupOwner;
+        private Group pageGroup = new Group();
         private MovieNightContext db = new MovieNightContext();
-        User currentUser;
-        //List<Movie> moviesSuggested = new List<Movie>();
-        List<Movie> nextMoviesAvalible = new List<Movie>();
+        private List<Movie> nextMoviesAvalible = new List<Movie>();
+        private List<User> members = new List<User>();
 
-        protected void Page_Load(object sender, EventArgs e)
+
+        protected void Page_Init(object sender, EventArgs e)
         {
 
             if (Session["userAccount"] != null)
@@ -34,31 +36,42 @@ namespace MovieNight
             }
 
 
-            if (Request.QueryString["groupID"] != null) {
+            if (Request.QueryString["groupID"] != null)
+            {
 
                 int currentGroupID = Convert.ToInt16(Request.QueryString["groupID"]);
                 //Getting page and owner Info
-                Group pageGroup = db.groups.SqlQuery("Select * " +
+                pageGroup = db.groups.SqlQuery("Select * " +
                     "FROM [Group] WHERE groupID=" + currentGroupID).FirstOrDefault();
 
                 groupName.InnerText = pageGroup.groupName;
-                //ownerName.InnerText = "Group Owner: " + pageGroup.ownerName.ToString();
+                String sql = "SELECT * FROM [User] WHERE [User].userID = " + pageGroup.ownerID;
+                groupOwner = db.users.SqlQuery("SELECT * FROM [User] WHERE [User].userID = " + pageGroup.ownerID).FirstOrDefault();
+
+                if (groupOwner != null)
+                {
+                    ownerName.InnerText = "Group Owner: " + groupOwner.fName + " " + groupOwner.lName;
+                }
+                else
+                {
+                    ownerName.InnerText = "Unable to Retrieve Owner";
+                }
 
 
                 //Setting members list and who's turn it is to pick
-                members = db.users.SqlQuery("SELECT [User].userID, [User].userName, [User].fName, [User].lName, [User].passwordHash, [User].email " +
+                members = db.users.SqlQuery("SELECT * " +
                     "FROM [User] INNER JOIN [UserGroup] ON [User].userID = [UserGroup].userID " +
-                    "WHERE [UserGroup].groupID = "+ currentGroupID +
+                    "WHERE [UserGroup].groupID = " + currentGroupID +
                     " ORDER BY [UserGroup].joinNumber").ToList<User>();
 
                 String html = "<h4>Members:</h4>";
-                foreach(User member in members)
+                foreach (User member in members)
                 {
                     html += "<li>" + member.fName + " " + member.lName + "</li>";
 
 
 
-                    if(db.userGroup.Find(member.userID, currentGroupID).turnToPick == 1)
+                    if (db.userGroup.Find(member.userID, currentGroupID).turnToPick == 1)
                     {
                         picker = member;
                         pickerName.InnerText = "The current picker is " + picker.fName + " " + picker.lName;
@@ -68,13 +81,21 @@ namespace MovieNight
                 phMembers.Controls.Add(new Literal { Text = html });
 
                 displayMoviesList(picker);
-                
-            } else
+
+            }
+            else
             {
                 Response.Redirect("Group.aspx?groupID=1");
             }
 
         }
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
 
         protected void finishedMovie_Click(object sender, EventArgs e)
@@ -111,12 +132,16 @@ namespace MovieNight
         }
 
 
+
         protected void displayMoviesList(User picker)
         {
             //List of current movies to be picked
             nextMoviesAvalible = db.movies.SqlQuery("SELECT Movie.movieID, Movie.omdbCode FROM Movie INNER JOIN UserMovie on Movie.movieID = UserMovie.movieID WHERE userID = " + picker.userID).ToList<Movie>();
 
-            String html = "";
+            phNextMovies.Controls.Clear();
+            String html = "<div class=\"row\">\n";
+            phNextMovies.Controls.Add(new Literal { Text = html });
+
             foreach (Movie movie in nextMoviesAvalible)
             {
 
@@ -129,16 +154,34 @@ namespace MovieNight
                     imdbEntity = oJS.Deserialize<ImdbEntity>(json);
                     if (imdbEntity.Response == "True")
                     {
-                        html += "<li style='display: inline-block'>\n";
-                        html += "\t<img src='"+ imdbEntity.Poster +"' width='150px'>\n";
-                        html += "\t<p>"+ imdbEntity.Title + "</p>";
-                        html += "</li>\n";
+                        html = "";
+                        html += "<div class=\"col - md - 3\" style=\"padding: 1rem;\">\n";
+                        html += "\t<div class=\"well text-center\">\n";
+                        html += "\t\t<img height=\"420px\" src='" + imdbEntity.Poster + "'>\n";
+                        html += "\t\t<h5>" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h5>";
+                        html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
+                        phNextMovies.Controls.Add(new Literal { Text = html });
+                        if (picker.userID == currentUser.userID || currentUser.userID == groupOwner.userID) {
+                            Button btnAddMovie = new Button();
+                            btnAddMovie.ID = "addMovie" + imdbEntity.imdbID;
+                            btnAddMovie.Click += new EventHandler(btnRemove_Click);
+                            btnAddMovie.CssClass = "btn btn-primary";
+                            btnAddMovie.Text = "Remove Movie";
+                            btnAddMovie.CommandName = "removeMovie";
+                            btnAddMovie.CommandArgument = imdbEntity.imdbID;
+                            phNextMovies.Controls.Add(btnAddMovie);
+                        }
+
+                        html = "";
+                        html += "</div>";
+                        html += "</div>";
+                        phNextMovies.Controls.Add(new Literal { Text = html });
 
                     }
                     else
                     {
                         html += "<li>\n";
-                        html += "\t<p>Movie not Found!!!</p>\n";
+                        html += "\t<p>Movie not added</p>\n";
                         html += "</li>\n";
 
                     }
@@ -152,8 +195,23 @@ namespace MovieNight
                 
             }
 
-            phNextMovies.Controls.Clear();
+            html = "";
+            html += "</div>\n";
             phNextMovies.Controls.Add(new Literal { Text = html });
+        }
+
+        protected void btnRemove_Click(object sender, EventArgs e)
+        {
+            var btn = (Button)sender;
+
+            switch (btn.CommandName)
+            {
+                case "removeMovie":
+                    //SQL to add movie goes here
+
+                    break;
+            }
+
         }
 
     }
