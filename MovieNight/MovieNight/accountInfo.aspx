@@ -38,6 +38,13 @@
         
     </div>
 
+    <div>
+
+        <asp:PlaceHolder ID="phUserMovies" runat="server"></asp:PlaceHolder>
+
+    </div>
+
+
         <div class="form-group">
 
             
