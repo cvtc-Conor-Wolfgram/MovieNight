@@ -331,6 +331,7 @@
     <Compile Include="Models\MovieNightContext.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserGroup.cs" />
+    <Compile Include="Models\UserMovie.cs" />
     <Compile Include="movieSearch.aspx.cs">
       <DependentUpon>movieSearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

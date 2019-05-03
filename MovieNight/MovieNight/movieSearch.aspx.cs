@@ -12,12 +12,24 @@ using System.Web.UI.WebControls;
 
 namespace MovieNight
 {
+
     public partial class movieSearch : System.Web.UI.Page
     {
+        private MovieNightContext db = new MovieNightContext();
+        User currentUser;
 
         // Buttons need to be created in the Page_Init function if you want their click event handlers to have any effect.  Thus, we redirect the user to the same page(with an extra url parameter) with the search click handler. We then check for the parameter to see if we need to call the api and create the new html to display movies.
         protected void Page_Init(object sender, EventArgs e)
         {
+            if (Session["userAccount"] != null)
+            {
+                currentUser = (User)Session["userAccount"];
+            }
+            else
+            {
+                Response.Redirect("CreateAccount.aspx");
+            }
+
             if (Request.QueryString["title"] != null)
             {
                 using (WebClient wc = new WebClient())
@@ -41,11 +53,10 @@ namespace MovieNight
                             html += "\t<div class=\"well text-center\">\n";
                             html += "\t\t<img height=\"420px\" src='" + movie.Poster + "'>\n";
                             html += "\t\t<h5>" + movie.Title + " (" + movie.Year + ")</h5>";
-                            html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + movie.imdbID + "\">Link to IMDB</a>";
+                            html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + movie.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
                             phMovieResults.Controls.Add(new Literal { Text = html });
 
                             Button btnAddMovie = new Button();
-                            btnAddMovie.ID = "addMovie" + movie.imdbID;
                             btnAddMovie.Click += new EventHandler(btnAddMovie_Click);
                             btnAddMovie.CssClass = "btn btn-primary";
                             btnAddMovie.Text = "Add Movie";
@@ -103,6 +114,19 @@ namespace MovieNight
             {
                 case "addMovie":
                     //SQL to add movie goes here
+                    Movie newMovie = new Movie();
+                    newMovie = db.movies.SqlQuery("SELECT * FROM Movie WHERE omdbCode= '" + btn.CommandArgument + "'").FirstOrDefault();
+
+                    if (newMovie == null)
+                    {
+                        db.Database.ExecuteSqlCommand("INSERT INTO Movie (omdbCode) VALUES ('" + btn.CommandArgument + "')");
+                        newMovie = db.movies.SqlQuery("SELECT * FROM Movie WHERE omdbCode= '" + btn.CommandArgument + "'").FirstOrDefault();
+
+                    }
+                    
+
+                    db.Database.ExecuteSqlCommand("INSERT INTO UserMovie (userID, movieID) VALUES (" + currentUser.userID + "," + newMovie.movieID +")");
+                    lblResult.Text = "Movie has been added.";                   
 
                     break;
             }
