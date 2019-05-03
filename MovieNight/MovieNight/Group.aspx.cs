@@ -208,6 +208,18 @@ namespace MovieNight
             {
                 case "removeMovie":
                     //SQL to add movie goes here
+                    Movie movieToRemove = new Movie();
+                    movieToRemove = db.movies.SqlQuery("SELECT * FROM Movie WHERE omdbCode = '" + btn.CommandArgument + "'").FirstOrDefault();
+
+                    UserMovie userMovieToRemove = new UserMovie();
+                    userMovieToRemove.userID = currentUser.userID;
+                    userMovieToRemove.movieID = movieToRemove.movieID;
+
+                    db.userMovie.Attach(userMovieToRemove);
+                    db.userMovie.Remove(userMovieToRemove);
+                    db.SaveChanges();
+
+                    displayMoviesList(currentUser);
 
                     break;
             }

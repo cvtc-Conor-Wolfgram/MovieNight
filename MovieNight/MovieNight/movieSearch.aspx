@@ -8,6 +8,7 @@
     <div id="movies" class="row">Search movies to see list.</div>
     <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
     <asp:Button ID="btnSearch" runat="server" Text="Search Movies" OnClick="btnSearch_Click" PostBackUrl="movieSearch.aspx" />
+    <asp:Label ID="lblResult" runat="server" Text=""></asp:Label>
     <asp:PlaceHolder ID="phMovieResults" runat="server"></asp:PlaceHolder>
-    <asp:Label ID="lblTesting" runat="server" Text=""></asp:Label>
+    
 </asp:Content>
