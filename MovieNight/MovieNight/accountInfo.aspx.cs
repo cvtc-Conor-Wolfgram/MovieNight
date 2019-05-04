@@ -18,6 +18,8 @@ namespace MovieNight
         private MovieNightContext db = new MovieNightContext();
         private User currentUser;
         private List<Movie> usersMovies;
+        List<Group> groups = new List<Group>();
+        private List<User> members = new List<User>();
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -43,7 +45,34 @@ namespace MovieNight
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            var count = 1;
+            groups = db.groups.SqlQuery("Select [Group].groupID, groupName, groupCode, ownerID " +
+            "FROM [Group] INNER JOIN UserGroup on UserGroup.groupID = [Group].groupID " +
+            "WHERE UserGroup.userID = " + currentUser.userID +
+            " ORDER BY [UserGroup].joinNumber DESC").ToList<Group>();
+            
+            String html = "";
+            foreach (Group group in groups)
+            {
+               
+                    int currentGroupID = group.groupID;
+                    members = db.users.SqlQuery("SELECT * " +
+                    "FROM [User] INNER JOIN [UserGroup] ON [User].userID = [UserGroup].userID " +
+                    "WHERE [UserGroup].groupID = " + currentGroupID +
+                    " ORDER BY [UserGroup].joinNumber").ToList<User>();
 
+                html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">\n";
+                html += "\t<a href='Group.aspx?groupID=" + group.groupID + "'>" + group.groupName + "</a>\n";
+                html += "\t<span class=\"badge badge-primary badge - pill\">Members: " + members.Count() + "</span>";
+                html += "</li>\n";
+
+                count += 1;
+                    
+               
+                
+            }
+
+            phGroupList.Controls.Add(new Literal { Text = html });
         }
 
         protected void btnJoinGroup_Click(object sender, EventArgs e)
@@ -85,7 +114,8 @@ namespace MovieNight
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-
+           
+            
             Group group = new Group();
 
             group.groupName = txtGroupName.Text;

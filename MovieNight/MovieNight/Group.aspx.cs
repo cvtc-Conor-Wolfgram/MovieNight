@@ -64,12 +64,10 @@ namespace MovieNight
                     "WHERE [UserGroup].groupID = " + currentGroupID +
                     " ORDER BY [UserGroup].joinNumber").ToList<User>();
 
-                String html = "<h4>Members:</h4>";
+                String html = "";
                 foreach (User member in members)
                 {
-                    html += "<li>" + member.fName + " " + member.lName + "</li>";
-
-
+                    html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "</li>";
 
                     if (db.userGroup.Find(member.userID, currentGroupID).turnToPick == 1)
                     {
@@ -139,11 +137,28 @@ namespace MovieNight
             nextMoviesAvalible = db.movies.SqlQuery("SELECT Movie.movieID, Movie.omdbCode FROM Movie INNER JOIN UserMovie on Movie.movieID = UserMovie.movieID WHERE userID = " + picker.userID).ToList<Movie>();
 
             phNextMovies.Controls.Clear();
-            String html = "<div class=\"row\">\n";
+            String html = "";
             phNextMovies.Controls.Add(new Literal { Text = html });
-
+            int count = 0;
+            var active = "";
+            var show = "";
+            var space = "";
             foreach (Movie movie in nextMoviesAvalible)
             {
+                count += 1;
+
+                if (count == 1)
+                {
+                    active = "active";
+                    show = "show";
+                    space = " ";
+                }
+                else
+                {
+                    active = "";
+                    show = "";
+                    space = "";
+                }
 
                 string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&i=" + movie.omdbCode;
                 using (WebClient wc = new WebClient())
@@ -155,11 +170,20 @@ namespace MovieNight
                     if (imdbEntity.Response == "True")
                     {
                         html = "";
-                        html += "<div class=\"col - md - 3\" style=\"padding: 1rem;\">\n";
+
+                        html += "<li class=\"nav-item\">";
+                        html += "<a class=\"nav-link" + space + active + "\" data-toggle=\"tab\" href=\"#" + movie.omdbCode + "\">Movie " + count + "</a>";
+                        html += "</li>";
+                        phNextMovieTab.Controls.Add(new Literal { Text = html });
+
+                        html = "";
+
+                        html += "<div class=\"tab-pane fade" + space + active + space + show + space + "\" id=\"" + imdbEntity.imdbID + "\">";
+
                         html += "\t<div class=\"well text-center\">\n";
                         html += "\t\t<img height=\"420px\" src='" + imdbEntity.Poster + "'>\n";
                         html += "\t\t<h5>" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h5>";
-                        html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
+                        html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" target=\"_blank\" style=\"margin-right: 1rem\">Link to IMDB</a>";
                         phNextMovies.Controls.Add(new Literal { Text = html });
                         if (picker.userID == currentUser.userID || currentUser.userID == groupOwner.userID) {
                             Button btnAddMovie = new Button();
@@ -196,7 +220,7 @@ namespace MovieNight
             }
 
             html = "";
-            html += "</div>\n";
+            html += "";
             phNextMovies.Controls.Add(new Literal { Text = html });
         }
 

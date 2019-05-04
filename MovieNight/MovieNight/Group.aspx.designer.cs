@@ -40,15 +40,6 @@ namespace MovieNight {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl pickerName;
         
         /// <summary>
-        /// phNextMovies control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phNextMovies;
-        
-        /// <summary>
         /// phMembers control.
         /// </summary>
         /// <remarks>
@@ -56,6 +47,24 @@ namespace MovieNight {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder phMembers;
+        
+        /// <summary>
+        /// phNextMovieTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phNextMovieTab;
+        
+        /// <summary>
+        /// phNextMovies control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phNextMovies;
         
         /// <summary>
         /// finishedMovie control.

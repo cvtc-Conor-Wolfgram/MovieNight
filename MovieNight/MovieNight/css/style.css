@@ -131,7 +131,7 @@ main {
     display: inline-block;
     float: right;
 }
-#accountContent {
+.innerContent {
     padding: 20px;
     width: 875px;
     margin: auto;
@@ -315,3 +315,18 @@ main {
 .nav-tabs {
     align-content: center;
 }
+
+.list-group{
+
+}
+
+#groupList {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 20px;
+}
+.list-group li {
+    background-color: #073642;
+}
+
