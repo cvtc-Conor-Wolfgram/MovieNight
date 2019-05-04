@@ -5,13 +5,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="innerContent">
         <div id="accountInfo" class="card text-white bg-secondary mb-3" style="width: 25rem; height: 100%;">
-            <div class="card-header">Manage Account</div>
+            <div id="groupName" runat="server" class="card-header">Manage Account</div>
             <div class="card-body">
-                <h1 id="groupName" runat="server"></h1>
-                <h3 id="ownerName" runat="server"></h3>
-                <h3 id="pickerName" runat="server"></h3>
 
-
+                <h5 id="ownerName" runat="server"></h5>
+            
                 <div class="card-header">Members</div>
                 <div class="card-body">
                     <ul class="list-group">
@@ -21,12 +19,15 @@
                     </ul>
 
                 </div>
+            </div>
+
         </div>
 
-    </div>
-
-    <div id="movieShowcase" class="card text-white bg-secondary mb-3" style="max-width: 26rem;">
-        <div class="card-header">Movies</div>
+        <div id="movieShowcase" class="card text-white bg-secondary mb-3" style="max-width: 26rem;">
+            <div class="card-header">Movies
+                <div style="position: absolute; right: 10px; top: 10px">
+                <asp:Button ID="finishedMovie" runat="server" Text="Finished Movie" OnClick="finishedMovie_Click" CssClass="btn btn-primary btn-sm" /></div>
+            </div>
         <div class="card-body">
             <ul>
                 <li>
@@ -51,7 +52,7 @@
 
 
         </div>
-        <asp:Button ID="finishedMovie" runat="server" Text="Finished Movie" OnClick="finishedMovie_Click" />
+
 
     </div>
 

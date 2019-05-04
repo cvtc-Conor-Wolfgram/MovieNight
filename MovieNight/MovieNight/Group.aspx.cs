@@ -36,6 +36,13 @@ namespace MovieNight
             }
 
 
+           
+
+        }
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
             if (Request.QueryString["groupID"] != null)
             {
 
@@ -67,12 +74,18 @@ namespace MovieNight
                 String html = "";
                 foreach (User member in members)
                 {
-                    html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "</li>";
+
 
                     if (db.userGroup.Find(member.userID, currentGroupID).turnToPick == 1)
                     {
                         picker = member;
-                        pickerName.InnerText = "The current picker is " + picker.fName + " " + picker.lName;
+                        html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "";
+                        html += "\t<span class=\"badge badge-primary badge - pill\">Picker</span>";
+                        html += "</li>\n";
+                    }
+                    else
+                    {
+                        html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "</li>";
                     }
                 }
                 phMembers.Controls.Clear();
@@ -85,13 +98,6 @@ namespace MovieNight
             {
                 Response.Redirect("Group.aspx?groupID=1");
             }
-
-        }
-
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
         }
 
 
@@ -110,7 +116,7 @@ namespace MovieNight
                         db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 0 WHERE userID = " + members[i].userID + "and groupID = " + currentGroupID);
                         db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 1 WHERE userID = " + members[i + 1].userID + "and groupID = " + currentGroupID);
                         picker = members[i + 1];
-                        pickerName.InnerText = "The current picker is " + picker.fName + " " + picker.lName;
+                        
                         displayMoviesList(picker);
 
                     }
@@ -120,7 +126,7 @@ namespace MovieNight
                         db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 0 WHERE userID = " + members[i].userID + "and groupID = " + currentGroupID);
                         db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 1 WHERE userID = " + members[0].userID + "and groupID = " + currentGroupID);
                         picker = members[0];
-                        pickerName.InnerText = "The current picker is " + picker.fName + " " + picker.lName;
+                        
                         displayMoviesList(picker);
                     }
                     break;
@@ -135,7 +141,7 @@ namespace MovieNight
         {
             //List of current movies to be picked
             nextMoviesAvalible = db.movies.SqlQuery("SELECT Movie.movieID, Movie.omdbCode FROM Movie INNER JOIN UserMovie on Movie.movieID = UserMovie.movieID WHERE userID = " + picker.userID).ToList<Movie>();
-
+            phNextMovieTab.Controls.Clear();
             phNextMovies.Controls.Clear();
             String html = "";
             phNextMovies.Controls.Add(new Literal { Text = html });
@@ -249,6 +255,8 @@ namespace MovieNight
             }
 
         }
+
+
 
     }
 }

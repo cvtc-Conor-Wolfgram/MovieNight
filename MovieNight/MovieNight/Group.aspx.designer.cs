@@ -31,15 +31,6 @@ namespace MovieNight {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ownerName;
         
         /// <summary>
-        /// pickerName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pickerName;
-        
-        /// <summary>
         /// phMembers control.
         /// </summary>
         /// <remarks>
@@ -47,6 +38,15 @@ namespace MovieNight {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder phMembers;
+        
+        /// <summary>
+        /// finishedMovie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button finishedMovie;
         
         /// <summary>
         /// phNextMovieTab control.
@@ -65,14 +65,5 @@ namespace MovieNight {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder phNextMovies;
-        
-        /// <summary>
-        /// finishedMovie control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button finishedMovie;
     }
 }

@@ -28,7 +28,8 @@
                     
                     <li><asp:Label ID="lblActivePass" runat="server" Text="Password:" ></asp:Label></li>
                     <li><asp:TextBox ID="txtActivePass" runat="server" class="form-control" TextMode="Password"></asp:TextBox></li>
-                    <li><asp:CheckBox ID="checkBoxPasswordToggle" Text="Show Password" runat="server" OnCheckedChanged="Toggle_Password" AutoPostBack="true"  /></li>
+                    
+                      <li><asp:CheckBox ID="checkBoxPasswordToggle" Text="Show Password" runat="server" OnCheckedChanged="Toggle_Password" AutoPostBack="true"  /></li>
                         
                     <li><asp:Label ID="passCompare" runat="server" Text="Password Incorrect." ForeColor="#CC0000" Display="Dynamic" Visible="False"></asp:Label></li>
                     <li><asp:RequiredFieldValidator ID="rfvActivePass" runat="server" ControlToValidate="txtActivePass" ErrorMessage="Please Enter Your Password" ValidationGroup="login" ForeColor="#CC0000" Display="Dynamic"></asp:RequiredFieldValidator></li>
