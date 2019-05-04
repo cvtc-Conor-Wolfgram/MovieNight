@@ -13,15 +13,6 @@ namespace MovieNight {
     public partial class WebForm3 {
         
         /// <summary>
-        /// UserConnection control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource UserConnection;
-        
-        /// <summary>
         /// nameLbl control.
         /// </summary>
         /// <remarks>
@@ -110,6 +101,15 @@ namespace MovieNight {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblJoinResponse;
+        
+        /// <summary>
+        /// phUserMovieTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phUserMovieTab;
         
         /// <summary>
         /// phUserMovies control.

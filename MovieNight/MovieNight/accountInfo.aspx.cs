@@ -112,10 +112,29 @@ namespace MovieNight
             //List of current movies to be picked
             usersMovies = db.movies.SqlQuery("SELECT Movie.movieID, Movie.omdbCode FROM Movie INNER JOIN UserMovie on Movie.movieID = UserMovie.movieID WHERE userID = " + picker.userID).ToList<Movie>();
             phUserMovies.Controls.Clear();
-            String html = "<div class=\"row\">\n";
+            phUserMovieTab.Controls.Clear();
+            String html = "";
             phUserMovies.Controls.Add(new Literal { Text = html });
+            int count = 0;
+            var active = "";
+            var show = "";
+            var space = "";
             foreach (Movie movie in usersMovies)
             {
+                count += 1;
+
+                if (count == 1)
+                {
+                    active = "active";
+                    show = "show";
+                    space = " ";
+                }
+                else
+                {
+                    active = "";
+                    show = "";
+                    space = "";
+                }
 
                 string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&i=" + movie.omdbCode;
                 using (WebClient wc = new WebClient())
@@ -124,14 +143,24 @@ namespace MovieNight
                     JavaScriptSerializer oJS = new JavaScriptSerializer();
                     ImdbEntity imdbEntity = new ImdbEntity();
                     imdbEntity = oJS.Deserialize<ImdbEntity>(json);
-                    if (imdbEntity.Response == "True")
+                    if (imdbEntity.Response == "True" && count <= 4)
                     {
                         html = "";
-                        html += "<div class=\"col - md - 3\" style=\"padding: 1rem;\">\n";
+
+                        html += "<li class=\"nav-item\">";
+                        html += "<a class=\"nav-link" + space + active + "\" data-toggle=\"tab\" href=\"#" + movie.omdbCode + "\">Movie " + count + "</a>";
+                        html += "</li>";
+                        phUserMovieTab.Controls.Add(new Literal { Text = html });
+
+
+                        html = "";
+
+                        html += "<div class=\"tab-pane fade" + space + active + space + show + space + "\" id=\"" + movie.omdbCode + "\">";
+
                         html += "\t<div class=\"well text-center\">\n";
                         html += "\t\t<img height=\"420px\" src='" + imdbEntity.Poster + "'>\n";
                         html += "\t\t<h5>" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h5>";
-                        html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
+                        html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" target=\"_blank\" style=\"margin-right: 1rem\">Link to IMDB</a>";
                         phUserMovies.Controls.Add(new Literal { Text = html });
 
                         Button btnAddMovie = new Button();
@@ -166,8 +195,8 @@ namespace MovieNight
 
             }
             html = "";
-            html += "</div>\n";
-            phUserMovies.Controls.Add(new Literal { Text = html });
+            
+            //phUserMovies.Controls.Add(new Literal { Text = html });
         }
 
         protected void btnRemove_Click(object sender, EventArgs e)

@@ -29,7 +29,7 @@ html {
     width: 80%;
     height: 100%;
     margin: 0 auto;
-    min-width: 900px;
+    min-width: 1000px;
     max-width: 1100px;
 }
 
@@ -120,8 +120,21 @@ main {
 
 #accountInfo {
     display: inline-block;
-    margin-left: 20px;
-    margin-top: 20px;
+    
+}
+
+    #accountInfo > .card-body {
+        height: 588px;
+    }
+
+#movieShowcase {
+    display: inline-block;
+    float: right;
+}
+#accountContent {
+    padding: 20px;
+    width: 875px;
+    margin: auto;
 }
 
 #createEvent {
@@ -135,17 +148,6 @@ main {
 }
 
 
-#accountImage {
-    display: inline-block;
-    margin-right: 20px;
-    margin-top: 20px;
-    float: right;
-}
-
-#accountImage > img {
-    width: 200px;
-    height: auto;
-}
 
 #movies img, #movie img {
     width: 100%;
@@ -166,7 +168,7 @@ main {
     color: whitesmoke;
     position: relative;
     width: 800px;
-    margin:  0 auto;
+    margin: 0 auto;
     overflow: hidden;
     text-align: center;
 }
@@ -174,7 +176,7 @@ main {
 .form-login {
     display: inline-block;
     float: left;
-    margin-top:20px;
+    margin-top: 20px;
 }
 
 .form-create {
@@ -183,9 +185,8 @@ main {
     margin-top: 20px;
 }
 
-.textBox{
+.textBox {
     padding-bottom: 20px;
-
 }
 
 .form-control-password {
@@ -225,12 +226,13 @@ main {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
+
 #map {
     height: 406px;
     width: 624px;
 }
 
-#mapContainer{
+#mapContainer {
     display: inline-block;
 }
 
@@ -304,4 +306,12 @@ main {
 
 #target {
     width: 345px;
+}
+
+.nav-tabs .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.nav-tabs {
+    align-content: center;
 }
