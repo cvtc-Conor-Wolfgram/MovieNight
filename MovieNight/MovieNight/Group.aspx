@@ -11,14 +11,14 @@
                 <h5 id="ownerName" runat="server"></h5>
             
                 <div class="card-header">Members</div>
-                <div class="card-body">
-                    <ul class="list-group">
+                
+                    <ul class="list-group" style="height: 500px; overflow-y: scroll;">
 
                         <asp:PlaceHolder ID="phMembers" runat="server"></asp:PlaceHolder>
 
                     </ul>
 
-                </div>
+              
             </div>
 
         </div>

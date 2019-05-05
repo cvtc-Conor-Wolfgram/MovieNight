@@ -35,14 +35,6 @@ namespace MovieNight
                 Response.Redirect("CreateAccount.aspx");
             }
 
-
-           
-
-        }
-
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
             if (Request.QueryString["groupID"] != null)
             {
 
@@ -98,6 +90,15 @@ namespace MovieNight
             {
                 Response.Redirect("Group.aspx?groupID=1");
             }
+
+           
+
+        }
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            
         }
 
 
@@ -129,6 +130,7 @@ namespace MovieNight
                         
                         displayMoviesList(picker);
                     }
+                    
                     break;
 
                 }
