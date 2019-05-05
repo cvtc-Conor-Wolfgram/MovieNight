@@ -23,6 +23,7 @@ namespace MovieNight
         private List<User> members = new List<User>();
 
 
+
         protected void Page_Init(object sender, EventArgs e)
         {
 
@@ -230,6 +231,29 @@ namespace MovieNight
             html = "";
             html += "";
             phNextMovies.Controls.Add(new Literal { Text = html });
+
+
+            int currentGroupID = Convert.ToInt16(Request.QueryString["groupID"]);
+            phMembers.Controls.Clear();
+            html = "";
+
+            foreach (User member in members)
+            {
+
+
+                if (member == picker)
+                {
+                    html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "";
+                    html += "\t<span class=\"badge badge-primary badge - pill\">Picker</span>";
+                    html += "</li>\n";
+                }
+                else
+                {
+                    html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "</li>";
+                }
+            }
+            
+            phMembers.Controls.Add(new Literal { Text = html });
         }
 
         protected void btnRemove_Click(object sender, EventArgs e)
