@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
+        <h3 id="welcomeText" runat="server"></h3>
         <div id="createEvent">
             <div class="card text-white bg-secondary mb-3" style="max-width: 30rem;">
               <div class="card-header">Creat Event</div>
@@ -27,7 +28,8 @@
                           <asp:TextBox ID="txtDate" textmode="Date" runat="server" CssClass="form-control"></asp:TextBox>
                           <asp:TextBox ID="txtTime" textmode="Time" runat="server" CssClass="form-control"></asp:TextBox>
                           <asp:Label ID="lblDateTimeError" Visible="false" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
-
+                          <asp:RequiredFieldValidator ID="rfvDate" runat="server" ControlToValidate="txtDate" ErrorMessage="A date is required"></asp:RequiredFieldValidator><br />
+                          <asp:RequiredFieldValidator ID="rfvTime" runat="server" ControlToValidate="txtTime" ErrorMessage="A time is required"></asp:RequiredFieldValidator>
                       </li>
 
                       <li>

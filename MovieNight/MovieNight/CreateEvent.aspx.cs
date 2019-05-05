@@ -10,26 +10,33 @@ namespace MovieNight
 {
     public partial class CreateEvent : System.Web.UI.Page
     {
-        
+
+        private User currentUser;
+        private Group pageGroup = new Group();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (Session["userAccount"] != null)
+            {
+                currentUser = (User)Session["userAccount"];
+                
+            }
+            else
+            {
+                Response.Redirect("Default.aspx");
+            }
+
+            
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            welcomeText.InnerText = "Welcome " + currentUser.userName + ", please create a new event.";
+
+
             DateTime currentDate = DateTime.Now;
 
-            //if (ViewState["Date"] != null)
-            //{
-            //    txtDateTime.Text = ViewState["Date"].ToString();
-            //} else
-            //{
-            //    txtDateTime.Text = localDateTime;
-            //}
-            //txtDate.Text = currentDate.ToString("yyyy-MM-dd");
-            //txtTime.Text = currentDate.AddHours(1).Hour.ToString() + ":00";
-
-            //if (ViewState["Date"] != null)
-            //{
-            //    //txtDateTime.Text = ViewState["Date"].ToString();
-            //}
+            
 
 
             lblTickets.ForeColor = System.Drawing.Color.Gray;
@@ -98,13 +105,25 @@ namespace MovieNight
 
                 if (cbTheater.Checked == true)
                 {
-                    newEvent.ticketsBought = 1;
-                    newEvent.numTickets = int.Parse(txtTickets.Text);
+                    
+                    int tickets; //number of tickets bought
+                    bool ticketsBought = int.TryParse(txtTickets.Text, out tickets);
+
+                    if (ticketsBought == true) // prevent int error
+                    {
+                        newEvent.numTickets = tickets;
+                    } else
+                    {
+                        newEvent.ticketsBought = 1;
+                    }
+                    
                 }
                 else
                 {
                     newEvent.ticketsBought = 0;
                 }
+
+                newEvent.eventOwner = currentUser.userID;
 
 
 

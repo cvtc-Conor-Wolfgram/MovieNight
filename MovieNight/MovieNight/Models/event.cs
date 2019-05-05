@@ -16,8 +16,8 @@ namespace MovieNight.Models
         public String eventName { get; set; }
         public String eventLocation { get; set; }
         public DateTime eventTime { get; set; }
-        public int ticketsBought { get; set; }
-        public int numTickets { get; set; }
+        public int ticketsBought { get; set; } //Number of tickets purchased
+        public int numTickets { get; set; } //Number of tickets left to be claimed
         public List<User> usersAttending { get; set; }
     }
 }
