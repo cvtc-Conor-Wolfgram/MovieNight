@@ -189,7 +189,14 @@ namespace MovieNight
                         html += "<div class=\"tab-pane fade" + space + active + space + show + space + "\" id=\"" + movie.omdbCode + "\">";
 
                         html += "\t<div class=\"well text-center\">\n";
-                        html += "\t\t<img height=\"420px\" src='" + imdbEntity.Poster + "'>\n";
+                        if (imdbEntity.Poster == "N/A")
+                        {
+                            html += "\t\t<img height=\"420px\" src='images/defaultPoster.jpg'>\n";
+                        }
+                        else
+                        {
+                            html += "\t\t<img height=\"420px\" src='" + imdbEntity.Poster + "'>\n";
+                        }
                         html += "\t\t<h5>" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h5>";
                         html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" target=\"_blank\" style=\"margin-right: 1rem\">Link to IMDB</a>";
                         phUserMovies.Controls.Add(new Literal { Text = html });

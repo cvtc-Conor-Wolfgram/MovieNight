@@ -286,6 +286,7 @@
     <Content Include="Global.asax" />
     <Content Include="css\style.css" />
     <Content Include="images\background.png" />
+    <Content Include="images\defaultPoster.jpg" />
     <Content Include="images\mosaic.png" />
     <Content Include="images\stage_curtain_theater_red.png" />
     <Content Include="js\main.js" />
@@ -296,6 +297,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Group.aspx" />
     <Content Include="accountInfo.aspx" />
+    <Content Include="AllMovies.aspx" />
     <Content Include="YourGroups.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -367,6 +369,13 @@
     </Compile>
     <Compile Include="accountInfo.aspx.designer.cs">
       <DependentUpon>accountInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AllMovies.aspx.cs">
+      <DependentUpon>AllMovies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AllMovies.aspx.designer.cs">
+      <DependentUpon>AllMovies.aspx</DependentUpon>
     </Compile>
     <Compile Include="YourGroups.aspx.cs">
       <DependentUpon>YourGroups.aspx</DependentUpon>
