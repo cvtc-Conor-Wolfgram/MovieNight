@@ -51,7 +51,14 @@ namespace MovieNight
                             html = "";
                             html += "<div class=\"col - md - 3\" style=\"padding: 1rem;\">\n";
                             html += "\t<div class=\"well text-center\">\n";
-                            html += "\t\t<img height=\"420px\" src='" + movie.Poster + "'>\n";
+                            if (movie.Poster == "N/A")
+                            {
+                                html += "\t\t<img height=\"420px\" src='images/defaultPoster.jpg'>\n";
+                            }
+                            else
+                            {
+                                html += "\t\t<img height=\"420px\" src='" + movie.Poster + "'>\n";
+                            }
                             html += "\t\t<h5>" + movie.Title + " (" + movie.Year + ")</h5>";
                             html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + movie.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
                             phMovieResults.Controls.Add(new Literal { Text = html });
