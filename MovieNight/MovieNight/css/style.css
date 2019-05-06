@@ -26,11 +26,10 @@ html {
 }
 
 #content {
-    width: 80%;
+    width: 1105px;
     height: 100%;
     margin: 0 auto;
-    min-width: 1000px;
-    max-width: 1100px;
+
 }
 
 
@@ -228,8 +227,8 @@ main {
 }
 
 #map {
-    height: 406px;
-    width: 624px;
+    height: 410px;
+    width: 600px;
 }
 
 #mapContainer {

@@ -21,7 +21,7 @@ namespace MovieNight
         private MovieNightContext db = new MovieNightContext();
         private List<Movie> nextMoviesAvalible = new List<Movie>();
         private List<User> members = new List<User>();
-
+        
 
 
         protected void Page_Init(object sender, EventArgs e)
@@ -282,7 +282,10 @@ namespace MovieNight
 
         }
 
-
-
+        protected void createEvent_Click(object sender, EventArgs e)
+        {
+            Session.Add("group", pageGroup);
+            Response.Redirect("createEvent.aspx");
+        }
     }
 }

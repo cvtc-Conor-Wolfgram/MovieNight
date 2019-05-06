@@ -6,11 +6,18 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="innerContent">
         <div id="accountInfo" class="card text-white bg-secondary mb-3" style="width: 25rem; height: 100%;">
-            <div id="groupName" runat="server" class="card-header">Manage Account<span class="badge badge-warning" id="ownerName" runat="server" style="float:right; margin-top: 2px;"></span></div>
+            <div id="groupName" runat="server" class="card-header"></div><span class="badge badge-warning" id="ownerName" runat="server" style="position:absolute; right:10px; top: 15px;"></span>
+            
             <div class="card-body">
 
                     
-                <div class="card-header">Members</div>
+                <div class="card-header">Members
+                    <div style="position:absolute; right: 30px; top: 78px; ">
+                        <asp:Button ID="createEvent" runat="server" Text="Create Event" OnClick="createEvent_Click" CssClass="btn btn-primary btn-sm" />
+
+                    </div>
+
+                </div>
                 
                     <ul data-simplebar class="list-group" style="height: 500px;">
 
