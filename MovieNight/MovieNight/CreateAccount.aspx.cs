@@ -178,18 +178,23 @@ namespace MovieNight
 
         }
 
-        protected void Email_TextChanged(object sender, EventArgs e)
+        //Login Form
+        protected void txtActiveEmail_TextChanged(object sender, EventArgs e)
         {
-
-            
+            btnSubmit.UseSubmitBehavior = false;
+            btnLogin.UseSubmitBehavior = true;
+            txtActivePass.Focus();
         }
 
-        protected void Clear_Active_Pass_Errors(object sender, EventArgs e)
+        //Create Account Form
+        protected void txtUserName_TextChanged(object sender, EventArgs e)
         {
-
-            
-            
-
+            btnSubmit.UseSubmitBehavior = true;
+            btnLogin.UseSubmitBehavior = false;
+            txtUserEmail.Focus();
         }
+
+
+
     }
 }

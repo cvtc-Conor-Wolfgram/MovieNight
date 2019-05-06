@@ -6,15 +6,21 @@
 <head runat="server">
     <title>Movie Night</title>
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <div id="wrapper">
         <div id="content">
+            <form id="form1" runat="server">
             <div class="panel">
 
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -38,16 +44,17 @@
                         <a class="nav-link" href="accountInfo.aspx">Account Info</a>
                       </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                   
-                      <a class="btn btn-secondary my-2 my-sm-0" id="createButton" href="CreateAccount.aspx">Sign Up/Sign In</a>
-                    </form>
+                    
+                        <asp:Button ID="createButton" OnClick="createButtonClick" Text="Sign In/Sign Up" CssClass="btn btn-secondary my-2 my-sm-0" runat="server" TabIndex="99" UseSubmitBehavior="False"></asp:Button>
+                      
+                      
+                  
                   </div>
                 </nav>
 
             </div>
 
-            <form id="form1" runat="server">
+            
                 <main class="panel2">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
@@ -67,7 +74,7 @@
         </div>
 
 
-    </div>
+
 
 </body>
 </html>

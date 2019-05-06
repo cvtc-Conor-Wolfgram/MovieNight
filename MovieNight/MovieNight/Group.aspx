@@ -2,17 +2,17 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="innerContent">
         <div id="accountInfo" class="card text-white bg-secondary mb-3" style="width: 25rem; height: 100%;">
-            <div id="groupName" runat="server" class="card-header">Manage Account</div>
+            <div id="groupName" runat="server" class="card-header">Manage Account<span class="badge badge-warning" id="ownerName" runat="server" style="float:right; margin-top: 2px;"></span></div>
             <div class="card-body">
 
-                <h5 id="ownerName" runat="server"></h5>
-            
+                    
                 <div class="card-header">Members</div>
                 
-                    <ul class="list-group" style="height: 500px; overflow-y: scroll;">
+                    <ul data-simplebar class="list-group" style="height: 500px;">
 
                         <asp:PlaceHolder ID="phMembers" runat="server"></asp:PlaceHolder>
 

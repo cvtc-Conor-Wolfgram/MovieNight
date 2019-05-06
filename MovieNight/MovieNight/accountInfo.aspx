@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="innerContent">
         <div id="accountInfo" class="card text-white bg-secondary mb-3" style="width: 25rem; height: 100%;">
@@ -60,7 +61,7 @@
 
                 </div>
                 <div class="card-header">Your Groups</div>
-                <ul class="list-group" style="height: 45%; overflow-y: scroll;">
+                <ul data-simplebar class="list-group" style="height: 45%;">
                     <asp:PlaceHolder ID="phGroupList" runat="server"></asp:PlaceHolder>
                 </ul>
             </div>
