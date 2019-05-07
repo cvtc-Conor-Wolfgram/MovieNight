@@ -141,7 +141,7 @@ namespace MovieNight
         protected void displayMoviesList(User picker)
         {
             //List of current movies to be picked
-            usersMovies = db.movies.SqlQuery("SELECT Movie.movieID, Movie.omdbCode FROM Movie INNER JOIN UserMovie on Movie.movieID = UserMovie.movieID WHERE userID = " + picker.userID).ToList<Movie>();
+            usersMovies = db.movies.SqlQuery("SELECT Movie.movieID, Movie.omdbCode FROM Movie INNER JOIN UserMovie on Movie.movieID = UserMovie.movieID WHERE userID = " + picker.userID + "ORDER BY dateAdded Desc ").ToList<Movie>();
             phUserMovies.Controls.Clear();
             phUserMovieTab.Controls.Clear();
             String html = "";

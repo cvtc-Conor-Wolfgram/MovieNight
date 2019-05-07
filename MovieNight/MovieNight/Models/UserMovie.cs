@@ -14,5 +14,7 @@ namespace MovieNight.Models
         public int userID { get; set; }
         [Key, Column(Order = 1)]
         public int movieID { get; set; }
+
+        public DateTime dateAdded { get; set; }
     }
 }

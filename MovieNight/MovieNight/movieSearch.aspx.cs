@@ -53,11 +53,11 @@ namespace MovieNight
                             html += "\t<div class=\"well text-center\">\n";
                             if (movie.Poster == "N/A")
                             {
-                                html += "\t\t<img height=\"420px\" src='images/defaultPoster.jpg'>\n";
+                                html += "\t\t<img height=\"420px\"  src='images/defaultPoster.jpg'>\n";
                             }
                             else
                             {
-                                html += "\t\t<img height=\"420px\" src='" + movie.Poster + "'>\n";
+                                html += "\t\t<img height=\"420px\" style=\"object-fit: cover;\" src='" + movie.Poster + "'>\n";
                             }
                             html += "\t\t<h5>" + movie.Title + " (" + movie.Year + ")</h5>";
                             html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + movie.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
@@ -116,7 +116,7 @@ namespace MovieNight
         protected void btnAddMovie_Click(object sender, EventArgs e)
         {
             var btn = (Button)sender;
-
+            var date = DateTime.Now;
             switch(btn.CommandName)
             {
                 case "addMovie":
@@ -130,10 +130,19 @@ namespace MovieNight
                         newMovie = db.movies.SqlQuery("SELECT * FROM Movie WHERE omdbCode= '" + btn.CommandArgument + "'").FirstOrDefault();
 
                     }
-                    
 
-                    db.Database.ExecuteSqlCommand("INSERT INTO UserMovie (userID, movieID) VALUES (" + currentUser.userID + "," + newMovie.movieID +")");
-                    lblResult.Text = "Movie has been added.";                   
+                    UserMovie newUserMovie = new UserMovie();
+
+                    newUserMovie.userID = currentUser.userID;
+                    newUserMovie.movieID = newMovie.movieID;
+                    newUserMovie.dateAdded = DateTime.Now;
+
+                    MovieNightContext context = new MovieNightContext();
+                    context.userMovie.Add(newUserMovie);
+                    context.SaveChanges();
+
+                    //db.Database.ExecuteSqlCommand("INSERT INTO UserMovie (userID, movieID, dateAdded) VALUES (" + currentUser.userID + "," + newMovie.movieID + "," + Convert.ToDateTime(DateTime.Now.ToString()) +")");
+                    //lblResult.Text = "Movie has been added.";                   
 
                     break;
             }
