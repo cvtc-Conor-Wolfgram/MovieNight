@@ -7,7 +7,7 @@
     <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
     <div class="innerContent">
         <div id="groupList" class="card text-white bg-secondary mb-3" style="width: 25rem; height: 100%;">
-            <div class="card-header">Your Groups</div>
+            <div class="card-header">Groups to Join</div>
             <ul class="list-group">
                 <asp:PlaceHolder ID="phGroupList" runat="server"></asp:PlaceHolder>
             </ul>
