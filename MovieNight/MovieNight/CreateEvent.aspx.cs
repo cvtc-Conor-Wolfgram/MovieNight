@@ -31,7 +31,7 @@ namespace MovieNight
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            welcomeText.InnerText = "Welcome " + currentUser.userName + ", please create a new event.";
+            welcomeText.InnerText = "Welcome " + currentUser.userName.TrimEnd(' ', '\t') + ", please create a new event.";
 
 
             DateTime currentDate = DateTime.Now;
