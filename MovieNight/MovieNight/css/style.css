@@ -138,8 +138,7 @@ main {
 
 #createEvent {
     display: inline-block;
-    margin-left: 20px;
-    margin-top: 20px;
+
 }
 
 .acctInfo > li {
@@ -329,3 +328,15 @@ main {
     background-color: #073642;
 }
 
+.movieDropdown {
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #60797d;
+    margin-left: 10.5%;
+    margin-right: 10%;
+    width: 284px;
+    text-align: center;
+    box-shadow: 5px 5px 5px grey;
+}

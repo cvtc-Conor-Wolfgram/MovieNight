@@ -58,13 +58,13 @@ namespace MovieNight {
         protected global::System.Web.UI.WebControls.Button finishedMovie;
         
         /// <summary>
-        /// phNextMovieTab control.
+        /// movieDropdown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phNextMovieTab;
+        protected global::System.Web.UI.WebControls.DropDownList movieDropdown;
         
         /// <summary>
         /// phNextMovies control.

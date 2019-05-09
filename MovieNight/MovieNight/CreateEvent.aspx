@@ -4,12 +4,13 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+   
         <h3 id="welcomeText" runat="server"></h3>
+        <div class="innerContent">
         <div id="createEvent">
-            <div class="card text-white bg-secondary mb-3" style="max-width: 30rem;">
+            <div class="card text-white bg-secondary mb-3" style="width: 25rem;">
                 <div class="card-header">Creat Event</div>
-                <div class="card-body" style="height: 450px;">
+                <div class="card-body" style="height: 588px; width: 398px;">
                     <ul>
                         <li>
                             <asp:Label ID="lblEventName" runat="server" Text="Event Name"></asp:Label>
@@ -91,7 +92,39 @@
 
         </div>
 
-        <div id="mapContainer">
+        <div id="movieShowcase" class="card text-white bg-secondary mb-3" style="max-width: 26rem;">
+            <div class="card-header">
+                Movies
+            </div>
+            <div class="card-body" style="height: 588px; width: 398px;">
+
+                <ul>
+                    <li>
+
+                        <asp:DropDownList ID="movieDropdown" runat="server" CssClass="movieDropdown" OnSelectedIndexChanged="movieDropdown_SelectedIndexChanged" AutoPostBack="true">
+                        </asp:DropDownList>
+
+
+
+                    </li>
+
+                    <li>
+
+                        <asp:PlaceHolder ID="phNextMovies" runat="server"></asp:PlaceHolder>
+
+
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+        </div>
+        
+<%--        <div id="mapContainer">
             <div class="card text-white bg-secondary mb-3" style="max-width: 40rem;">
                 <div class="card-header">Map</div>
                 <div class="card-body">
@@ -109,7 +142,8 @@
                 </div>
 
             </div>
-        </div>
+        </div>--%>
+
 
     </div>
 

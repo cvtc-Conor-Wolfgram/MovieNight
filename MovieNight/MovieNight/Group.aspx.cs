@@ -13,7 +13,7 @@ namespace MovieNight
     public partial class WebForm2 : System.Web.UI.Page
     {
 
-        
+
         private User picker;
         private User currentUser;
         User groupOwner;
@@ -21,7 +21,7 @@ namespace MovieNight
         private MovieNightContext db = new MovieNightContext();
         private List<Movie> nextMoviesAvalible = new List<Movie>();
         private List<User> members = new List<User>();
-        
+
 
 
         protected void Page_Init(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace MovieNight
                 String html = "";
                 foreach (User member in members)
                 {
-
+                    
 
                     if (db.userGroup.Find(member.userID, currentGroupID).turnToPick == 1)
                     {
@@ -75,6 +75,7 @@ namespace MovieNight
                         html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "";
                         html += "\t<span class=\"badge badge-primary badge - pill\">Picker</span>";
                         html += "</li>\n";
+               
                     }
                     else
                     {
@@ -92,14 +93,13 @@ namespace MovieNight
                 Response.Redirect("Group.aspx?groupID=1");
             }
 
-           
 
         }
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -118,7 +118,7 @@ namespace MovieNight
                         db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 0 WHERE userID = " + members[i].userID + "and groupID = " + currentGroupID);
                         db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 1 WHERE userID = " + members[i + 1].userID + "and groupID = " + currentGroupID);
                         picker = members[i + 1];
-                        
+
                         displayMoviesList(picker);
 
                     }
@@ -128,10 +128,10 @@ namespace MovieNight
                         db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 0 WHERE userID = " + members[i].userID + "and groupID = " + currentGroupID);
                         db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 1 WHERE userID = " + members[0].userID + "and groupID = " + currentGroupID);
                         picker = members[0];
-                        
+
                         displayMoviesList(picker);
                     }
-                    
+
                     break;
 
                 }
@@ -142,32 +142,18 @@ namespace MovieNight
 
         protected void displayMoviesList(User picker)
         {
+            movieDropdown.Items.Clear();
+            movieDropdown.Items.Add("Select a Movie");
+  
             //List of current movies to be picked
             nextMoviesAvalible = db.movies.SqlQuery("SELECT Movie.movieID, Movie.omdbCode FROM Movie INNER JOIN UserMovie on Movie.movieID = UserMovie.movieID WHERE userID = " + picker.userID + "ORDER BY dateAdded Desc").ToList<Movie>();
-            phNextMovieTab.Controls.Clear();
+
             phNextMovies.Controls.Clear();
             String html = "";
             phNextMovies.Controls.Add(new Literal { Text = html });
-            int count = 0;
-            var active = "";
-            var show = "";
-            var space = "";
+          
             foreach (Movie movie in nextMoviesAvalible)
             {
-                count += 1;
-
-                if (count == 1)
-                {
-                    active = "active";
-                    show = "show";
-                    space = " ";
-                }
-                else
-                {
-                    active = "";
-                    show = "";
-                    space = "";
-                }
 
                 string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&i=" + movie.omdbCode;
                 using (WebClient wc = new WebClient())
@@ -178,48 +164,12 @@ namespace MovieNight
                     imdbEntity = oJS.Deserialize<ImdbEntity>(json);
                     if (imdbEntity.Response == "True")
                     {
-                        html = "";
-
-                        html += "<li class=\"nav-item\">";
-                        html += "<a class=\"nav-link" + space + active + "\" data-toggle=\"tab\" href=\"#" + movie.omdbCode + "\">Movie " + count + "</a>";
-                        html += "</li>";
-                        phNextMovieTab.Controls.Add(new Literal { Text = html });
-
-                        html = "";
-
-                        html += "<div class=\"tab-pane fade" + space + active + space + show + space + "\" id=\"" + imdbEntity.imdbID + "\">";
-
-                        html += "\t<div class=\"well text-center\">\n";
-
-                        if (imdbEntity.Poster == "N/A")
-                        {
-                            html += "\t\t<img height=\"420px\" src='images/defaultPoster.jpg'>\n";
-                        } else
-                        {
-                            html += "\t\t<img height=\"420px\" src='" + imdbEntity.Poster + "'>\n";
-                        }
+                        ListItem item = new ListItem(imdbEntity.Title.ToString());
                         
-                        html += "\t\t<h5>" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h5>";
+                        movieDropdown.Items.Add(item);
 
                         
-                        html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" target=\"_blank\" style=\"margin-right: 1rem\">Link to IMDB</a>";
-                        phNextMovies.Controls.Add(new Literal { Text = html });
-                        if (picker.userID == currentUser.userID || currentUser.userID == groupOwner.userID) {
-                            Button btnAddMovie = new Button();
-                            btnAddMovie.ID = "addMovie" + imdbEntity.imdbID;
-                            btnAddMovie.Click += new EventHandler(btnRemove_Click);
-                            btnAddMovie.CssClass = "btn btn-primary";
-                            btnAddMovie.Text = "Remove Movie";
-                            btnAddMovie.CommandName = "removeMovie";
-                            btnAddMovie.CommandArgument = imdbEntity.imdbID;
-                            phNextMovies.Controls.Add(btnAddMovie);
-                        }
-
-                        html = "";
-                        html += "</div>";
-                        html += "</div>";
-                        phNextMovies.Controls.Add(new Literal { Text = html });
-
+                        
                     }
                     else
                     {
@@ -229,18 +179,14 @@ namespace MovieNight
 
                     }
 
-
+                    
                 }
 
 
 
 
-                
-            }
 
-            html = "";
-            html += "";
-            phNextMovies.Controls.Add(new Literal { Text = html });
+            }
 
 
             int currentGroupID = Convert.ToInt16(Request.QueryString["groupID"]);
@@ -253,6 +199,7 @@ namespace MovieNight
 
                 if (member == picker)
                 {
+                    
                     html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "";
                     html += "\t<span class=\"badge badge-primary badge - pill\">Picker</span>";
                     html += "</li>\n";
@@ -262,7 +209,7 @@ namespace MovieNight
                     html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "</li>";
                 }
             }
-            
+
             phMembers.Controls.Add(new Literal { Text = html });
         }
 
@@ -296,6 +243,63 @@ namespace MovieNight
         {
             Session.Add("group", pageGroup);
             Response.Redirect("createEvent.aspx");
+        }
+
+        protected void movieDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedMovie = movieDropdown.SelectedItem.Text;
+            var html = "";
+            phNextMovies.Controls.Clear();
+            string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&t=" + selectedMovie;
+            using (WebClient wc = new WebClient())
+            {
+                var json = wc.DownloadString(url);
+                JavaScriptSerializer oJS = new JavaScriptSerializer();
+                ImdbEntity imdbEntity = new ImdbEntity();
+                imdbEntity = oJS.Deserialize<ImdbEntity>(json);
+                if (imdbEntity.Response == "True")
+                {
+
+                    html = "";
+
+
+                    html += "<div \" id=\"" + imdbEntity.imdbID + "\">";
+
+                    html += "\t<div class=\"well text-center\">\n";
+
+                    if (imdbEntity.Poster == "N/A")
+                    {
+                        html += "\t\t<img height=\"420px\" src='images/defaultPoster.jpg'>\n";
+                    }
+                    else
+                    {
+                        html += "\t\t<img height=\"420px\" width=\"284px\" style=\"border-radius: 5px; box-shadow: 5px 5px 5px grey; \"src='" + imdbEntity.Poster + "'>\n";
+                    }
+
+                    html += "\t\t<h5 style=\"text-shadow: 5px 5px 5px grey; \">" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h5>";
+
+
+                    html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" target=\"_blank\" style=\"margin-right: 1rem\">Link to IMDB</a>";
+                    phNextMovies.Controls.Add(new Literal { Text = html });
+                    if (picker.userID == currentUser.userID || currentUser.userID == groupOwner.userID)
+                    {
+                        Button btnAddMovie = new Button();
+                        btnAddMovie.ID = "addMovie" + imdbEntity.imdbID;
+                        btnAddMovie.Click += new EventHandler(btnRemove_Click);
+                        btnAddMovie.CssClass = "btn btn-primary";
+                        btnAddMovie.Text = "Remove Movie";
+                        btnAddMovie.CommandName = "removeMovie";
+                        btnAddMovie.CommandArgument = imdbEntity.imdbID;
+                        phNextMovies.Controls.Add(btnAddMovie);
+                    }
+
+                    html = "";
+                    html += "</div>";
+                    html += "</div>";
+
+                    phNextMovies.Controls.Add(new Literal { Text = html });
+                }
+            }
         }
     }
 }
