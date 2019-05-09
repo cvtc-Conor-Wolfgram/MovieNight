@@ -48,17 +48,34 @@ namespace MovieNight
 
                         foreach (ImdbEntity movie in imdbEntityArray.Search)
                         {
+                            String url2 = "http://www.omdbapi.com/?&apikey=b9bb3ece&i=" + movie.imdbID;
+                            var json2 = wc.DownloadString(url2);
+                            JavaScriptSerializer oJS2 = new JavaScriptSerializer();
+                            ImdbEntity imdbEntity = new ImdbEntity();
+                            imdbEntity = oJS2.Deserialize<ImdbEntity>(json2);
+
                             html = "";
                             html += "<div class=\"col - md - 3\" style=\"padding: 1rem;\">\n";
                             html += "\t<div class=\"well text-center\">\n";
+                            html += "\t\t<figure class=\"imghvr-fade\" style=\"width: 284px;\">";
                             if (movie.Poster == "N/A")
                             {
-                                html += "\t\t<img height=\"420px\"  src='images/defaultPoster.jpg'>\n";
+                                
+                                html += "\t\t\t<img height=\"420px\"  src='images/defaultPoster.jpg'>\n";
+
+
                             }
                             else
                             {
-                                html += "\t\t<img height=\"420px\" style=\"object-fit: cover;\" src='" + movie.Poster + "'>\n";
+                                
+                                html += "\t\t<img height=\"420px\" width=\"284px\" src='" + movie.Poster + "'>\n";
+                 
                             }
+
+                            html += "<figcaption>";
+                            html += "" + imdbEntity.Plot + "";
+                            html += "</figcaption>";
+                            html += "</figure>";
                             html += "\t\t<h5>" + movie.Title + " (" + movie.Year + ")</h5>";
                             html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + movie.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
                             phMovieResults.Controls.Add(new Literal { Text = html });
