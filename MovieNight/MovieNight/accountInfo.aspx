@@ -60,7 +60,7 @@
                     </div>
 
                 </div>
-                <div class="card-header">Your Groups</div>
+                <div class="card-header text-dark bg-light">Your Groups</div>
                 <ul data-simplebar class="list-group" style="height: 45%;">
                     <asp:PlaceHolder ID="phGroupList" runat="server"></asp:PlaceHolder>
                 </ul>

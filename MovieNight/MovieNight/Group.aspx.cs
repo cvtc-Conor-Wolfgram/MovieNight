@@ -200,7 +200,7 @@ namespace MovieNight
                 if (member == picker)
                 {
                     
-                    html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "";
+                    html += "<li class=\"list-group-item d-flex bg-secondary justify-content-between align-items-center\">" + member.fName + " " + member.lName + "";
                     html += "\t<span class=\"badge badge-primary badge - pill\">Picker</span>";
                     html += "</li>\n";
                 }

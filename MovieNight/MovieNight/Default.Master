@@ -35,17 +35,16 @@
                                     <a class="nav-link" href="Default.aspx">Home</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="accountInfo.aspx">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="movieSearch.aspx">Add Movies</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="AllMovies.aspx">Your Movies</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="YourGroups.aspx">Groups</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="accountInfo.aspx">Account Info</a>
-                                </li>
+
+
                             </ul>
 
                             <asp:Button ID="createButton" OnClick="createButtonClick" Text="Sign In/Sign Up" CssClass="btn btn-secondary my-2 my-sm-0" runat="server" TabIndex="99" UseSubmitBehavior="False"></asp:Button>
