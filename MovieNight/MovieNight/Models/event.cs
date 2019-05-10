@@ -18,6 +18,8 @@ namespace MovieNight.Models
         public DateTime eventTime { get; set; }
         public int ticketsBought { get; set; } //Number of tickets purchased
         public int numTickets { get; set; } //Number of tickets left to be claimed
+        public int groupID { get; set; } 
+        public int movieID { get; set; } 
         public List<User> usersAttending { get; set; }
     }
 }

@@ -40,6 +40,33 @@ namespace MovieNight {
         protected global::System.Web.UI.WebControls.PlaceHolder phMembers;
         
         /// <summary>
+        /// lblPicker control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPicker;
+        
+        /// <summary>
+        /// lblEventInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventInfo;
+        
+        /// <summary>
+        /// btnCreateEvent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnCreateEvent;
+        
+        /// <summary>
         /// finishedMovie control.
         /// </summary>
         /// <remarks>
@@ -47,15 +74,6 @@ namespace MovieNight {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton finishedMovie;
-        
-        /// <summary>
-        /// movieDropdown control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList movieDropdown;
         
         /// <summary>
         /// phNextMovies control.

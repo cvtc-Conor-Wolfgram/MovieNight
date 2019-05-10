@@ -23,9 +23,9 @@
                   <div class="card bg-light mb-3" style="height: 200px;">
                     <div class="card-body">
                         <h4 class="card-title text-dark">Current Event</h4>
-                        <h6 class="card-subtitle mb-2 text-dark">*Picker*</h6>
-                        <p class="card-text text-dark">Meet at *Location* on *Date* at *Time*.</p>
-                        <a href="createEvent.aspx" class="card-link">Create Event</a>
+                        <h6 runat="server" id="lblPicker" class="card-subtitle mb-2 text-dark">*Picker*</h6>
+                        <p runat="server" id="lblEventInfo" class="card-text text-dark">There is no event set up yet.</p>
+                        <asp:LinkButton ID="btnCreateEvent" runat="server" OnClick="createEvent_Click" CssClass="card-link">Create Event</asp:LinkButton>
                         <asp:LinkButton ID="finishedMovie" runat="server" OnClick="finishedMovie_Click" CssClass="card-link">Close Event</asp:LinkButton>
                        
                     </div>
@@ -38,19 +38,12 @@
 
         <div id="movieShowcase" class="card text-white bg-secondary mb-3" style="max-width: 26rem;">
             <div class="card-header">
-                Movies
+                Movie
             </div>
             <div class="card-body" style="height: 588px; width: 398px;">
 
                 <ul>
-                    <li>
 
-                        <asp:DropDownList ID="movieDropdown" runat="server" CssClass="movieDropdown" OnSelectedIndexChanged="movieDropdown_SelectedIndexChanged" AutoPostBack="true">
-                        </asp:DropDownList>
-
-
-
-                    </li>
 
                     <li>
 

@@ -14,9 +14,11 @@ namespace MovieNight
     {
 
         private User currentUser;
+        private User picker;
         private Group pageGroup = new Group();
         private MovieNightContext db = new MovieNightContext();
         private List<Movie> nextMoviesAvalible = new List<Movie>();
+        int selectedMovieIndex;
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -27,10 +29,21 @@ namespace MovieNight
             }
             else
             {
-                Response.Redirect("Default.aspx");
+                Response.Redirect("accountinfo.aspx");
             }
 
-            displayMoviesList(currentUser);
+            if (Session["group"] != null || Session["picker"] != null)
+            {
+                pageGroup = (Group)Session["group"];
+                picker = (User)Session["picker"];
+
+            }
+            else
+            {
+                Response.Redirect("accountinfo.aspx");
+            }
+
+            displayMoviesList(picker);
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -46,6 +59,7 @@ namespace MovieNight
             lblTickets.ForeColor = System.Drawing.Color.Gray;
             txtTickets.Enabled = false;
             rvTickets.Enabled = false;
+            
 
             if (IsPostBack) //Post back rollover of date/time
             {
@@ -71,7 +85,7 @@ namespace MovieNight
                 txtDate.Text = currentDate.ToString("yyyy-MM-dd");
                 txtTime.Text = currentDate.AddHours(1).Hour.ToString() + ":00";
             }
-            
+
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -109,37 +123,50 @@ namespace MovieNight
                 newEvent.eventName = txtEName.Text;
                 newEvent.eventLocation = txtLocation.Text;
                 newEvent.eventTime = dateTime;
-
-                if (cbTheater.Checked == true)
+                newEvent.groupID = pageGroup.groupID;
+                try
                 {
+                    newEvent.movieID = nextMoviesAvalible[selectedMovieIndex].movieID;
+                
 
-                    int tickets; //number of tickets bought
-                    bool ticketsBought = int.TryParse(txtTickets.Text, out tickets);
-
-                    if (ticketsBought == true) // prevent int error
+                    if (cbTheater.Checked == true)
                     {
-                        newEvent.numTickets = tickets;
+
+                        int tickets; //number of tickets bought
+                        bool ticketsBought = int.TryParse(txtTickets.Text, out tickets);
+
+                        if (ticketsBought == true) // prevent int error
+                        {
+                            newEvent.numTickets = tickets;
+                        }
+                        else
+                        {
+                            newEvent.ticketsBought = 1;
+                        }
+
                     }
                     else
                     {
-                        newEvent.ticketsBought = 1;
+                        newEvent.ticketsBought = 0;
                     }
 
+                    newEvent.eventOwner = currentUser.userID;
+
+
+
+                    MovieNightContext context = new MovieNightContext();
+                    context.events.Add(newEvent);
+                    context.SaveChanges();
+                    Response.Write("<script>alert('Event created successfully')</script>");
+                    Response.Redirect("Group.aspx?groupID=" + pageGroup.groupID);
                 }
-                else
+                catch (ArgumentOutOfRangeException ex)
                 {
-                    newEvent.ticketsBought = 0;
+                    lblMovie.InnerText = "Movie - Please select a movie";
+                } catch (Exception)
+                {
+                    lblMovie.InnerText = "Movie - Unable to create Event";
                 }
-
-                newEvent.eventOwner = currentUser.userID;
-
-
-
-                MovieNightContext context = new MovieNightContext();
-                context.events.Add(newEvent);
-                context.SaveChanges();
-
-                Response.Redirect("Default.aspx");
             }
 
 
@@ -171,10 +198,10 @@ namespace MovieNight
 
         protected void movieDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedMovie = movieDropdown.SelectedItem.Text;
+            selectedMovieIndex = movieDropdown.SelectedIndex;
             var html = "";
             phNextMovies.Controls.Clear();
-            string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&t=" + selectedMovie;
+            string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&t=" + movieDropdown.SelectedItem.Text;
             using (WebClient wc = new WebClient())
             {
                 var json = wc.DownloadString(url);
@@ -206,14 +233,14 @@ namespace MovieNight
                     html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" target=\"_blank\" style=\"margin-right: 1rem\">Link to IMDB</a>";
                     phNextMovies.Controls.Add(new Literal { Text = html });
 
-                        Button btnAddMovie = new Button();
-                        btnAddMovie.ID = "addMovie" + imdbEntity.imdbID;
-                        btnAddMovie.Click += new EventHandler(btnRemove_Click);
-                        btnAddMovie.CssClass = "btn btn-primary";
-                        btnAddMovie.Text = "Remove Movie";
-                        btnAddMovie.CommandName = "removeMovie";
-                        btnAddMovie.CommandArgument = imdbEntity.imdbID;
-                        phNextMovies.Controls.Add(btnAddMovie);
+                        //Button btnAddMovie = new Button();
+                        //btnAddMovie.ID = "addMovie" + imdbEntity.imdbID;
+                        //btnAddMovie.Click += new EventHandler(btnRemove_Click);
+                        //btnAddMovie.CssClass = "btn btn-primary";
+                        //btnAddMovie.Text = "Remove Movie";
+                        //btnAddMovie.CommandName = "removeMovie";
+                        //btnAddMovie.CommandArgument = imdbEntity.imdbID;
+                        //phNextMovies.Controls.Add(btnAddMovie);
          
 
                     html = "";
@@ -287,7 +314,7 @@ namespace MovieNight
                     db.userMovie.Remove(userMovieToRemove);
                     db.SaveChanges();
 
-                    displayMoviesList(currentUser);
+                    displayMoviesList(picker);
 
                     break;
             }

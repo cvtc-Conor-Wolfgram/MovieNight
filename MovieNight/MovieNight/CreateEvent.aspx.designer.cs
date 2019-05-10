@@ -184,6 +184,15 @@ namespace MovieNight {
         protected global::System.Web.UI.WebControls.Button btnCreate;
         
         /// <summary>
+        /// lblMovie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMovie;
+        
+        /// <summary>
         /// movieDropdown control.
         /// </summary>
         /// <remarks>
@@ -191,6 +200,15 @@ namespace MovieNight {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList movieDropdown;
+        
+        /// <summary>
+        /// rfvMovieDropdown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMovieDropdown;
         
         /// <summary>
         /// phNextMovies control.

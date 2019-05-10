@@ -93,7 +93,7 @@
         </div>
 
         <div id="movieShowcase" class="card text-white bg-secondary mb-3" style="max-width: 26rem;">
-            <div class="card-header">
+            <div class="card-header" runat="server" id="lblMovie">
                 Movies
             </div>
             <div class="card-body" style="height: 588px; width: 398px;">
@@ -103,6 +103,7 @@
 
                         <asp:DropDownList ID="movieDropdown" runat="server" CssClass="movieDropdown" OnSelectedIndexChanged="movieDropdown_SelectedIndexChanged" AutoPostBack="true">
                         </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvMovieDropdown" runat="server" ControlToValidate="movieDropdown" ErrorMessage="A movie is required" Display="Dynamic"></asp:RequiredFieldValidator>
 
 
 
