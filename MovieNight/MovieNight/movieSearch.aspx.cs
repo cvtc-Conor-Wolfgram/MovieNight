@@ -48,24 +48,43 @@ namespace MovieNight
 
                         foreach (ImdbEntity movie in imdbEntityArray.Search)
                         {
+                            String url2 = "http://www.omdbapi.com/?&apikey=b9bb3ece&i=" + movie.imdbID;
+                            var json2 = wc.DownloadString(url2);
+                            JavaScriptSerializer oJS2 = new JavaScriptSerializer();
+                            ImdbEntity imdbEntity = new ImdbEntity();
+                            imdbEntity = oJS2.Deserialize<ImdbEntity>(json2);
+
                             html = "";
-                            html += "<div class=\"col - md - 3\" style=\"padding: 1rem;\">\n";
-                            html += "\t<div class=\"well text-center\">\n";
+                            html += "<div class=\"col-lg-4\" style=\" margin-top: 1rem; height: 450px; width: 314px\">\n";
+                            html += "\t<div class=\"hovereffect\" style=\"height: 450px; width: 314px\">\n";
+                           
                             if (movie.Poster == "N/A")
                             {
-                                html += "\t\t<img height=\"420px\"  src='images/defaultPoster.jpg'>\n";
+                                
+                                html += "\t\t\t<img height=\"450px\" width=\"314px\" class=\"img - responsive\"  src='images/defaultPoster.jpg'>\n";
+
+
                             }
                             else
                             {
-                                html += "\t\t<img height=\"420px\" style=\"object-fit: cover;\" src='" + movie.Poster + "'>\n";
+                                
+                                html += "\t\t<img height=\"450px\" width= \"314px\"  class=\"img - responsive\" src='" + movie.Poster + "'>\n";
+                 
                             }
-                            html += "\t\t<h5>" + movie.Title + " (" + movie.Year + ")</h5>";
-                            html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + movie.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
+
+                            html += "<div class=\"overlay\">";
+                            html += "\t\t<h2>" + movie.Title + " (" + movie.Year + ")</h2>";
+                            html += "<p class=\"text-muted\" style=\"text-align: left; padding: 1rem;\">" + imdbEntity.Plot + "</p>";
+                            html += "<ul>";
+                            html += "<li><p style=\"float: left; padding-left: 1rem;\">Runtime: " + imdbEntity.Runtime + "</p><p style=\"float: right; padding-right: 1rem;\">Rated:" + imdbEntity.Rated + "</li>";
+                            html += "</ul>";
+
+                            html += "\t\t<a class=\"info link1\" href=\"https://www.imdb.com/title/" + movie.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
                             phMovieResults.Controls.Add(new Literal { Text = html });
 
-                            Button btnAddMovie = new Button();
+                            LinkButton btnAddMovie = new LinkButton();
                             btnAddMovie.Click += new EventHandler(btnAddMovie_Click);
-                            btnAddMovie.CssClass = "btn btn-primary";
+                            btnAddMovie.CssClass = "info link2";
                             btnAddMovie.Text = "Add Movie";
                             btnAddMovie.CommandName = "addMovie";
                             btnAddMovie.CommandArgument = movie.imdbID;
@@ -75,6 +94,7 @@ namespace MovieNight
                             html = "";
                             html += "\t</div>";
                             html += "</div>\n";
+                            html += "</div>";
                             phMovieResults.Controls.Add(new Literal { Text = html });
                         }
 
@@ -115,7 +135,7 @@ namespace MovieNight
 
         protected void btnAddMovie_Click(object sender, EventArgs e)
         {
-            var btn = (Button)sender;
+            var btn = (LinkButton)sender;
             var date = DateTime.Now;
             switch(btn.CommandName)
             {

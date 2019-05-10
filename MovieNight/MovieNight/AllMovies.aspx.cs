@@ -52,31 +52,38 @@ namespace MovieNight
                     if (imdbEntity.Response == "True")
                     {
                         html = "";
-                        html += "<div class=\"col - md - 3\" style=\"padding: 1rem;\">\n";
-                        html += "\t<div class=\"well text-center\">\n";
+                        html += "<div class=\"col-lg-4\" style=\" margin-top: 1rem; height: 450px; width: 314px\">\n";
+                        html += "\t<div class=\"hovereffect\" style=\"height: 450px; width: 314px\">\n";
                         if (imdbEntity.Poster == "N/A")
                         {
-                            html += "\t\t<img height=\"420px\" src='images/defaultPoster.jpg'>\n";
+                            html += "\t\t\t<img height=\"450px\" width=\"314px\" class=\"img - responsive\"  src='images/defaultPoster.jpg'>\n";
                         }
                         else
                         {
-                            html += "\t\t<img height=\"420px\" src='" + imdbEntity.Poster + "'>\n";
+                            html += "\t\t<img height=\"450px\" width= \"314px\"  class=\"img - responsive\" src='" + imdbEntity.Poster + "'>\n";
                         }
-                        html += "\t\t<h3>" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h3>";
-                        html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
+                        html += "<div class=\"overlay\">";
+                        html += "\t\t<h2>" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h2>";
+                        html += "<p class=\"text-muted\" style=\"text-align: left; padding: 1rem;\">" + imdbEntity.Plot + "</p>";
+                        html += "<ul>";
+                        html += "<li><p style=\"float: left; padding-left: 1rem;\">Runtime: " + imdbEntity.Runtime + "</p><p style=\"float: right; padding-right: 1rem;\">Rated:" + imdbEntity.Rated + "</li>";
+                        html += "</ul>";
+
+                        html += "\t\t<a class=\"info link1 text-small\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
                         phMovies.Controls.Add(new Literal { Text = html });
 
-                        Button btnAddMovie = new Button();
+                        LinkButton btnAddMovie = new LinkButton();
                         btnAddMovie.ID = "addMovie" + imdbEntity.imdbID;
                         btnAddMovie.Click += new EventHandler(btnRemove_Click);
-                        btnAddMovie.CssClass = "btn btn-primary";
+                        btnAddMovie.CssClass = "info link2 text-small";
                         btnAddMovie.Text = "Remove Movie";
                         btnAddMovie.CommandName = "removeMovie";
                         btnAddMovie.CommandArgument = imdbEntity.imdbID;
                         phMovies.Controls.Add(btnAddMovie);
 
                         html = "";
-                        html += "</div>";
+                        html += "\t</div>";
+                        html += "</div>\n";
                         html += "</div>";
                         phMovies.Controls.Add(new Literal { Text = html });
 
@@ -108,7 +115,7 @@ namespace MovieNight
 
         protected void btnRemove_Click(object sender, EventArgs e)
         {
-            var btn = (Button)sender;
+            var btn = (LinkButton)sender;
 
             switch (btn.CommandName)
             {

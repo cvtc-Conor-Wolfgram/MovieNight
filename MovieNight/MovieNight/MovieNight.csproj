@@ -283,6 +283,7 @@
     <Content Include="CreateEvent.aspx" />
     <Content Include="CreateGroup.aspx" />
     <Content Include="css\bootstrap.css" />
+    <Content Include="css\imagehover.min.css" />
     <Content Include="Global.asax" />
     <Content Include="css\style.css" />
     <Content Include="images\background.png" />
