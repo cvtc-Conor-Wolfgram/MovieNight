@@ -61,7 +61,7 @@ namespace MovieNight
                             if (movie.Poster == "N/A")
                             {
                                 
-                                html += "\t\t\t<img height=\"420px\" class=\"img - responsive\"  src='images/defaultPoster.jpg'>\n";
+                                html += "\t\t\t<img height=\"450px\" width=\"314px\" class=\"img - responsive\"  src='images/defaultPoster.jpg'>\n";
 
 
                             }
@@ -74,17 +74,17 @@ namespace MovieNight
 
                             html += "<div class=\"overlay\">";
                             html += "\t\t<h2>" + movie.Title + " (" + movie.Year + ")</h2>";
-                            html += "<p>" + imdbEntity.Plot + "</p>";
+                            html += "<p class=\"text-muted\" style=\"text-align: left; padding: 1rem;\">" + imdbEntity.Plot + "</p>";
                             html += "<ul>";
-                            html += "<li><p>Runtime: " + imdbEntity.Runtime + "</p><p>Rated:" + imdbEntity.Rated + "</li>";
+                            html += "<li><p style=\"float: left; padding-left: 1rem;\">Runtime: " + imdbEntity.Runtime + "</p><p style=\"float: right; padding-right: 1rem;\">Rated:" + imdbEntity.Rated + "</li>";
                             html += "</ul>";
 
-                            html += "\t\t<a class=\"info\" href=\"https://www.imdb.com/title/" + movie.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
+                            html += "\t\t<a class=\"info link1\" href=\"https://www.imdb.com/title/" + movie.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
                             phMovieResults.Controls.Add(new Literal { Text = html });
 
                             LinkButton btnAddMovie = new LinkButton();
                             btnAddMovie.Click += new EventHandler(btnAddMovie_Click);
-                            btnAddMovie.CssClass = "info";
+                            btnAddMovie.CssClass = "info link2";
                             btnAddMovie.Text = "Add Movie";
                             btnAddMovie.CommandName = "addMovie";
                             btnAddMovie.CommandArgument = movie.imdbID;

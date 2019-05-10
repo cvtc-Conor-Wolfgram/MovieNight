@@ -362,7 +362,7 @@ main {
         top: 0;
         left: 0;
         opacity: 0;
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(7,54,56,0.9);
         -webkit-transition: all .4s ease-in-out;
         transition: all .4s ease-in-out
     }
@@ -375,6 +375,7 @@ main {
     }
 
     .hovereffect h2 {
+        
         text-transform: uppercase;
         color: #fff;
         text-align: center;
@@ -400,7 +401,8 @@ main {
         filter: alpha(opacity=0);
         -webkit-transition: all .2s ease-in-out;
         transition: all .2s ease-in-out;
-        margin: 50px 0 0;
+        position: absolute;
+        bottom: 1rem;
         padding: 7px 14px;
     }
 
@@ -430,4 +432,20 @@ main {
     .hovereffect:hover a.info {
         -webkit-transition-delay: .2s;
         transition-delay: .2s;
+    }
+
+    .hovereffect p{
+        color: #fff 
+    }
+
+    .link1{
+        left: 1rem;
+    }
+
+    .link2{
+        right: 1rem;
+    }
+
+    .text-small{
+        font-size: .9em;
     }
