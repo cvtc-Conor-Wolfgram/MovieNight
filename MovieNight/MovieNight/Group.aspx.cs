@@ -41,101 +41,115 @@ namespace MovieNight
 
             if (Request.QueryString["groupID"] != null)
             {
-
-                int currentGroupID = Convert.ToInt16(Request.QueryString["groupID"]);
-                //Getting page and owner Info
-                pageGroup = db.groups.SqlQuery("Select * " +
-                    "FROM [Group] WHERE groupID=" + currentGroupID).FirstOrDefault();
-
-                groupName.InnerText = pageGroup.groupName;
-                String sql = "SELECT * FROM [User] WHERE [User].userID = " + pageGroup.ownerID;
-                groupOwner = db.users.SqlQuery("SELECT * FROM [User] WHERE [User].userID = " + pageGroup.ownerID).FirstOrDefault();
-
-                if (groupOwner != null)
+                try
                 {
-                    ownerName.InnerText = "Group Owner: " + groupOwner.fName + " " + groupOwner.lName;
-                }
-                else
-                {
-                    ownerName.InnerText = "Unable to Retrieve Owner";
-                }
+                    int currentGroupID = Convert.ToInt16(Request.QueryString["groupID"]);
+                    //Getting page and owner Info
+                    pageGroup = db.groups.SqlQuery("Select * " +
+                        "FROM [Group] WHERE groupID=" + currentGroupID).FirstOrDefault();
 
+                    groupName.InnerText = pageGroup.groupName;
+                    String sql = "SELECT * FROM [User] WHERE [User].userID = " + pageGroup.ownerID;
+                    groupOwner = db.users.SqlQuery("SELECT * FROM [User] WHERE [User].userID = " + pageGroup.ownerID).FirstOrDefault();
 
-                //Setting members list and who's turn it is to pick
-                members = db.users.SqlQuery("SELECT * " +
-                    "FROM [User] INNER JOIN [UserGroup] ON [User].userID = [UserGroup].userID " +
-                    "WHERE [UserGroup].groupID = " + currentGroupID +
-                    " ORDER BY [UserGroup].joinNumber").ToList<User>();
-
-                String html = "";
-                foreach (User member in members)
-                {
-                    
-
-                    if (db.userGroup.Find(member.userID, currentGroupID).turnToPick == 1)
+                    if (groupOwner != null)
                     {
-                        picker = member;
-                        html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "";
-                        html += "\t<span class=\"badge badge-primary badge - pill\">Picker</span>";
-                        html += "</li>\n";
-                        lblPicker.InnerText = "Picker: " + picker.fName + " " + picker.lName;
-               
+                        ownerName.InnerText = "Group Owner: " + groupOwner.fName + " " + groupOwner.lName;
                     }
                     else
                     {
-                        html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "</li>";
+                        ownerName.InnerText = "Unable to Retrieve Owner.";
                     }
-                }
-                phMembers.Controls.Clear();
-                phMembers.Controls.Add(new Literal { Text = html });
 
-                
+                    try
+                    {
+                        //Setting members list and who's turn it is to pick
+                        members = db.users.SqlQuery("SELECT * " +
+                            "FROM [User] INNER JOIN [UserGroup] ON [User].userID = [UserGroup].userID " +
+                            "WHERE [UserGroup].groupID = " + currentGroupID +
+                            " ORDER BY [UserGroup].joinNumber").ToList<User>();
+
+                        String html = "";
+                        foreach (User member in members)
+                        {
 
 
-                //Setting up event
-                currentEvent = db.events.SqlQuery("SELECT * FROM Event WHERE groupID=" + currentGroupID).FirstOrDefault();
+                            if (db.userGroup.Find(member.userID, currentGroupID).turnToPick == 1)
+                            {
+                                picker = member;
+                                html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "";
+                                html += "\t<span class=\"badge badge-primary badge - pill\">Picker</span>";
+                                html += "</li>\n";
+                                lblPicker.InnerText = "Picker: " + picker.fName + " " + picker.lName;
 
-                if(currentEvent != null)
+                            }
+                            else
+                            {
+                                html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" + member.fName + " " + member.lName + "</li>";
+                            }
+                        }
+                        phMembers.Controls.Clear();
+                        phMembers.Controls.Add(new Literal { Text = html });
+                    } catch (Exception)
+                    {
+                        lblError.Text = "Unable to get members.";
+                    }
+
+
+                    try
+                    {
+                        //Setting up event
+                        currentEvent = db.events.SqlQuery("SELECT * FROM Event WHERE groupID=" + currentGroupID).FirstOrDefault();
+
+                        if (currentEvent != null)
+                        {
+                            lblEventInfo.InnerText = "Meet at " + currentEvent.eventLocation + " on " + currentEvent.eventTime.Date + " at " + currentEvent.eventTime.TimeOfDay;
+                            displayMovie();
+
+                            if (currentUser.userID == picker.userID || currentUser.userID == groupOwner.userID)
+                            {
+                                finishedMovie.Visible = true;
+                            }
+                            else
+                            {
+                                finishedMovie.Visible = false;
+
+                            }
+
+                            btnCreateEvent.Visible = false;
+
+                        }
+                        else
+                        {
+
+                            if (currentUser.userID == picker.userID || currentUser.userID == groupOwner.userID)
+                            {
+                                btnCreateEvent.Visible = true;
+                                finishedMovie.Visible = true;
+                                finishedMovie.Text = "Abdicate Picker Turn";
+                            }
+                            else
+                            {
+                                btnCreateEvent.Visible = false;
+                                finishedMovie.Visible = false;
+                            }
+
+                        }
+                    } catch (Exception)
+                    {
+                        lblError.Text = "Unable to get event.";
+                    }
+
+                } catch (Exception)
                 {
-                    lblEventInfo.InnerText = "Meet at " + currentEvent.eventLocation + " on " + currentEvent.eventTime.Date + " at " + currentEvent.eventTime.TimeOfDay;
-                    displayMovie();
-
-                    if (currentUser.userID == picker.userID || currentUser.userID == groupOwner.userID)
-                    {
-                        finishedMovie.Visible = true;
-                    }
-                    else
-                    {
-                        finishedMovie.Visible = false;
-                        
-                    }
-
-                    btnCreateEvent.Visible = false;
-
-                } else
-                {
-
-                    if (currentUser.userID == picker.userID || currentUser.userID == groupOwner.userID)
-                    {
-                        btnCreateEvent.Visible = true;
-                        finishedMovie.Visible = true;
-                        finishedMovie.Text = "Abdicate Picker Turn";
-                    }
-                    else
-                    {
-                        btnCreateEvent.Visible = false;
-                        finishedMovie.Visible = false;
-                    }
-
+                    lblError.Text = "Unable to get group.";
                 }
-
-                
                 
 
             }
             else
             {
-                Response.Redirect("Group.aspx?groupID=1");
+                Response.Redirect("accountinfo.aspx");
             }
 
 
@@ -155,88 +169,102 @@ namespace MovieNight
 
             if (currentEvent != null)
             {
-                db.events.Remove(currentEvent);
-                db.SaveChanges();
+                try
+                {
+                    db.events.Remove(currentEvent);
+                    db.SaveChanges();
+                } catch (Exception)
+                {
+                    lblError.Text = "Unable to remove event.";
+                }
 
                 removeUserMovie(picker, currentEvent.movieID);
             }
-
-            //Changes who's turn it is to pick after a button click
-            for (int i = 0; i < members.Count; i++) //For all the members
+            try
             {
-                if (db.userGroup.Find(members[i].userID, currentGroupID).turnToPick == 1) //Find the person who is currently picking
+                //Changes who's turn it is to pick after a button click
+                for (int i = 0; i < members.Count; i++) //For all the members
                 {
-                    try
+                    if (db.userGroup.Find(members[i].userID, currentGroupID).turnToPick == 1) //Find the person who is currently picking
                     {
-                        db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 0 WHERE userID = " + members[i].userID + "and groupID = " + currentGroupID);
-                        db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 1 WHERE userID = " + members[i + 1].userID + "and groupID = " + currentGroupID);
-                        picker = members[i + 1];
+                        try
+                        {
+                            db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 0 WHERE userID = " + members[i].userID + "and groupID = " + currentGroupID);
+                            db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 1 WHERE userID = " + members[i + 1].userID + "and groupID = " + currentGroupID);
+                            picker = members[i + 1];
 
+
+                        }
+                        catch (Exception)
+                        {
+
+                            db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 0 WHERE userID = " + members[i].userID + "and groupID = " + currentGroupID);
+                            db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 1 WHERE userID = " + members[0].userID + "and groupID = " + currentGroupID);
+                            picker = members[0];
+
+                        }
+
+                        break;
 
                     }
-                    catch (Exception)
-                    {
-
-                        db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 0 WHERE userID = " + members[i].userID + "and groupID = " + currentGroupID);
-                        db.Database.ExecuteSqlCommand("UPDATE UserGroup SET turnToPick = 1 WHERE userID = " + members[0].userID + "and groupID = " + currentGroupID);
-                        picker = members[0];
-
-                    }
-
-                    break;
-
                 }
+
+                Response.Redirect("Group.aspx?groupID=" + currentGroupID);
+
+            } catch (Exception)
+            {
+                lblError.Text = "Unable to progress picker rotation.";
             }
-
-            
-
-            
-
-            Response.Redirect("Group.aspx?groupID=" + currentGroupID);
         }
 
 
 
         protected void displayMovie()
         {
-            Movie selectedMovie = db.movies.SqlQuery("SELECT * FROM Movie WHERE movieID=" + currentEvent.movieID).FirstOrDefault();
-            var html = "";
-            phNextMovies.Controls.Clear();
-            string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&i=" + selectedMovie.omdbCode;
-            using (WebClient wc = new WebClient())
-            {
-                var json = wc.DownloadString(url);
-                JavaScriptSerializer oJS = new JavaScriptSerializer();
-                ImdbEntity imdbEntity = new ImdbEntity();
-                imdbEntity = oJS.Deserialize<ImdbEntity>(json);
-                if (imdbEntity.Response == "True")
+            try {
+                Movie selectedMovie = db.movies.SqlQuery("SELECT * FROM Movie WHERE movieID=" + currentEvent.movieID).FirstOrDefault();
+                var html = "";
+                phNextMovies.Controls.Clear();
+                string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&i=" + selectedMovie.omdbCode;
+                using (WebClient wc = new WebClient())
                 {
-
-                    html = "";
-
-
-                    html += "<div \" id=\"" + imdbEntity.imdbID + "\">";
-
-                    html += "\t<div class=\"well text-center\">\n";
-
-                    if (imdbEntity.Poster == "N/A")
+                    var json = wc.DownloadString(url);
+                    JavaScriptSerializer oJS = new JavaScriptSerializer();
+                    ImdbEntity imdbEntity = new ImdbEntity();
+                    imdbEntity = oJS.Deserialize<ImdbEntity>(json);
+                    if (imdbEntity.Response == "True")
                     {
-                        html += "\t\t<img height=\"420px\" src='images/defaultPoster.jpg'>\n";
+
+                        html = "";
+
+
+                        html += "<div \" id=\"" + imdbEntity.imdbID + "\">";
+
+                        html += "\t<div class=\"well text-center\">\n";
+
+                        if (imdbEntity.Poster == "N/A")
+                        {
+                            html += "\t\t<img height=\"420px\" src='images/defaultPoster.jpg'>\n";
+                        }
+                        else
+                        {
+                            html += "\t\t<img height=\"420px\" width=\"284px\" style=\"border-radius: 5px; box-shadow: 5px 5px 5px grey; \"src='" + imdbEntity.Poster + "'>\n";
+                        }
+
+                        html += "\t\t<h5 style=\"text-shadow: 5px 5px 5px grey; \">" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h5>";
+
+
+                        html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" target=\"_blank\" style=\"margin-right: 1rem\">Link to IMDB</a>";
+                        html += "</div>";
+                        html += "</div>";
+
+                        phNextMovies.Controls.Add(new Literal { Text = html });
                     }
-                    else
-                    {
-                        html += "\t\t<img height=\"420px\" width=\"284px\" style=\"border-radius: 5px; box-shadow: 5px 5px 5px grey; \"src='" + imdbEntity.Poster + "'>\n";
-                    }
-
-                    html += "\t\t<h5 style=\"text-shadow: 5px 5px 5px grey; \">" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h5>";
-
-
-                    html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" target=\"_blank\" style=\"margin-right: 1rem\">Link to IMDB</a>";
-                    html += "</div>";
-                    html += "</div>";
-
-                    phNextMovies.Controls.Add(new Literal { Text = html });
                 }
+
+            } catch (Exception)
+            {
+                lblError.Text = "Unable to display movie";
             }
 
         }
@@ -252,19 +280,10 @@ namespace MovieNight
 
         protected void removeUserMovie(User picker, int movieToRemoveID)
         {
-
-            db.Database.ExecuteSqlCommand("DELETE FROM [UserMovie] WHERE userID = " + picker.userID + " AND movieID = " + movieToRemoveID);
-
-            //UserMovie userMovieToRemove = new UserMovie();
-            //userMovieToRemove.userID = picker.userID;
-            //userMovieToRemove.movieID = movieToRemove.movieID;
-
-            //db.userMovie.Attach(userMovieToRemove);
-
-            //db.userMovie.Remove(userMovieToRemove);
-
             try
             {
+                db.Database.ExecuteSqlCommand("DELETE FROM [UserMovie] WHERE userID = " + picker.userID + " AND movieID = " + movieToRemoveID);
+
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException ex)

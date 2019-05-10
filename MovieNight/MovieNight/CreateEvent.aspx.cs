@@ -117,7 +117,6 @@ namespace MovieNight
             {
 
                 //lblDateTimeError.Visible = false;  // error display test
-
                 Event newEvent = new Event();
 
                 newEvent.eventName = txtEName.Text;
@@ -198,40 +197,42 @@ namespace MovieNight
 
         protected void movieDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedMovieIndex = movieDropdown.SelectedIndex;
-            var html = "";
-            phNextMovies.Controls.Clear();
-            string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&t=" + movieDropdown.SelectedItem.Text;
-            using (WebClient wc = new WebClient())
+            try
             {
-                var json = wc.DownloadString(url);
-                JavaScriptSerializer oJS = new JavaScriptSerializer();
-                ImdbEntity imdbEntity = new ImdbEntity();
-                imdbEntity = oJS.Deserialize<ImdbEntity>(json);
-                if (imdbEntity.Response == "True")
+                selectedMovieIndex = movieDropdown.SelectedIndex;
+                var html = "";
+                phNextMovies.Controls.Clear();
+                string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&t=" + movieDropdown.SelectedItem.Text;
+                using (WebClient wc = new WebClient())
                 {
-
-                    html = "";
-
-
-                    html += "<div \" id=\"" + imdbEntity.imdbID + "\">";
-
-                    html += "\t<div class=\"well text-center\">\n";
-
-                    if (imdbEntity.Poster == "N/A")
+                    var json = wc.DownloadString(url);
+                    JavaScriptSerializer oJS = new JavaScriptSerializer();
+                    ImdbEntity imdbEntity = new ImdbEntity();
+                    imdbEntity = oJS.Deserialize<ImdbEntity>(json);
+                    if (imdbEntity.Response == "True")
                     {
-                        html += "\t\t<img height=\"420px\" src='images/defaultPoster.jpg'>\n";
-                    }
-                    else
-                    {
-                        html += "\t\t<img height=\"420px\" width=\"284px\" style=\"border-radius: 5px; box-shadow: 5px 5px 5px grey; \"src='" + imdbEntity.Poster + "'>\n";
-                    }
 
-                    html += "\t\t<h5 style=\"text-shadow: 5px 5px 5px grey; \">" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h5>";
+                        html = "";
 
 
-                    html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" target=\"_blank\" style=\"margin-right: 1rem\">Link to IMDB</a>";
-                    phNextMovies.Controls.Add(new Literal { Text = html });
+                        html += "<div \" id=\"" + imdbEntity.imdbID + "\">";
+
+                        html += "\t<div class=\"well text-center\">\n";
+
+                        if (imdbEntity.Poster == "N/A")
+                        {
+                            html += "\t\t<img height=\"420px\" src='images/defaultPoster.jpg'>\n";
+                        }
+                        else
+                        {
+                            html += "\t\t<img height=\"420px\" width=\"284px\" style=\"border-radius: 5px; box-shadow: 5px 5px 5px grey; \"src='" + imdbEntity.Poster + "'>\n";
+                        }
+
+                        html += "\t\t<h5 style=\"text-shadow: 5px 5px 5px grey; \">" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h5>";
+
+
+                        html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" target=\"_blank\" style=\"margin-right: 1rem\">Link to IMDB</a>";
+                        phNextMovies.Controls.Add(new Literal { Text = html });
 
                         //Button btnAddMovie = new Button();
                         //btnAddMovie.ID = "addMovie" + imdbEntity.imdbID;
@@ -241,22 +242,28 @@ namespace MovieNight
                         //btnAddMovie.CommandName = "removeMovie";
                         //btnAddMovie.CommandArgument = imdbEntity.imdbID;
                         //phNextMovies.Controls.Add(btnAddMovie);
-         
 
-                    html = "";
-                    html += "</div>";
-                    html += "</div>";
 
-                    phNextMovies.Controls.Add(new Literal { Text = html });
+                        html = "";
+                        html += "</div>";
+                        html += "</div>";
+
+                        phNextMovies.Controls.Add(new Literal { Text = html });
+                    }
                 }
+            } catch (Exception)
+            {
+                lblMovie.InnerText = "Movie - Unable to get movie";
             }
         }
 
-            protected void displayMoviesList(User picker)
-            {
-                movieDropdown.Items.Clear();
-                movieDropdown.Items.Add("Select a Movie");
+        protected void displayMoviesList(User picker)
+        {
+            movieDropdown.Items.Clear();
+            movieDropdown.Items.Add("Select a Movie");
 
+            try
+            {
                 //List of current movies to be picked
                 nextMoviesAvalible = db.movies.SqlQuery("SELECT Movie.movieID, Movie.omdbCode FROM Movie INNER JOIN UserMovie on Movie.movieID = UserMovie.movieID WHERE userID = " + picker.userID + "ORDER BY dateAdded Desc").ToList<Movie>();
 
@@ -294,32 +301,11 @@ namespace MovieNight
 
                     }
                 }
-            }
-        protected void btnRemove_Click(object sender, EventArgs e)
-        {
-            var btn = (Button)sender;
-
-            switch (btn.CommandName)
+            } catch (Exception)
             {
-                case "removeMovie":
-                    //SQL to add movie goes here
-                    Movie movieToRemove = new Movie();
-                    movieToRemove = db.movies.SqlQuery("SELECT * FROM Movie WHERE omdbCode = '" + btn.CommandArgument + "'").FirstOrDefault();
-
-                    UserMovie userMovieToRemove = new UserMovie();
-                    userMovieToRemove.userID = currentUser.userID;
-                    userMovieToRemove.movieID = movieToRemove.movieID;
-
-                    db.userMovie.Attach(userMovieToRemove);
-                    db.userMovie.Remove(userMovieToRemove);
-                    db.SaveChanges();
-
-                    displayMoviesList(picker);
-
-                    break;
+                lblMovie.InnerText = "Movie - Cannot get movies";
             }
-
         }
 
     }
-    }
+}

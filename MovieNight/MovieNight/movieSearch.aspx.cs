@@ -32,87 +32,93 @@ namespace MovieNight
 
             if (Request.QueryString["title"] != null)
             {
-                using (WebClient wc = new WebClient())
+                try
                 {
-                    String url = "http://www.omdbapi.com/?&apikey=b9bb3ece&s=" + Request.QueryString["title"];
-                    var json = wc.DownloadString(url);
-                    JavaScriptSerializer oJS = new JavaScriptSerializer();
-                    ImdbEntityArray imdbEntityArray = new ImdbEntityArray();
-                    imdbEntityArray = oJS.Deserialize<ImdbEntityArray>(json);
-                    if (imdbEntityArray.Search != null)
+                    using (WebClient wc = new WebClient())
                     {
-                        String html = "";
-                        phMovieResults.Controls.Clear();
-                        html += "<div class=\"row\">\n";
-                        phMovieResults.Controls.Add(new Literal { Text = html });
-
-                        foreach (ImdbEntity movie in imdbEntityArray.Search)
+                        String url = "http://www.omdbapi.com/?&apikey=b9bb3ece&s=" + Request.QueryString["title"];
+                        var json = wc.DownloadString(url);
+                        JavaScriptSerializer oJS = new JavaScriptSerializer();
+                        ImdbEntityArray imdbEntityArray = new ImdbEntityArray();
+                        imdbEntityArray = oJS.Deserialize<ImdbEntityArray>(json);
+                        if (imdbEntityArray.Search != null)
                         {
-                            String url2 = "http://www.omdbapi.com/?&apikey=b9bb3ece&i=" + movie.imdbID;
-                            var json2 = wc.DownloadString(url2);
-                            JavaScriptSerializer oJS2 = new JavaScriptSerializer();
-                            ImdbEntity imdbEntity = new ImdbEntity();
-                            imdbEntity = oJS2.Deserialize<ImdbEntity>(json2);
-
-                            html = "";
-                            html += "<div class=\"col-lg-4\" style=\" margin-top: 1rem; height: 450px; width: 314px\">\n";
-                            html += "\t<div class=\"hovereffect\" style=\"height: 450px; width: 314px\">\n";
-                           
-                            if (movie.Poster == "N/A")
-                            {
-                                
-                                html += "\t\t\t<img height=\"450px\" width=\"314px\" class=\"img - responsive\"  src='images/defaultPoster.jpg'>\n";
-
-
-                            }
-                            else
-                            {
-                                
-                                html += "\t\t<img height=\"450px\" width= \"314px\"  class=\"img - responsive\" src='" + movie.Poster + "'>\n";
-                 
-                            }
-
-                            html += "<div class=\"overlay\">";
-                            html += "\t\t<h2>" + movie.Title + " (" + movie.Year + ")</h2>";
-                            html += "<p class=\"text-muted\" style=\"text-align: left; padding: 1rem;\">" + imdbEntity.Plot + "</p>";
-                            html += "<ul>";
-                            html += "<li><p style=\"float: left; padding-left: 1rem;\">Runtime: " + imdbEntity.Runtime + "</p><p style=\"float: right; padding-right: 1rem;\">Rated:" + imdbEntity.Rated + "</li>";
-                            html += "</ul>";
-
-                            html += "\t\t<a class=\"info link1\" href=\"https://www.imdb.com/title/" + movie.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
+                            String html = "";
+                            phMovieResults.Controls.Clear();
+                            html += "<div class=\"row\">\n";
                             phMovieResults.Controls.Add(new Literal { Text = html });
 
-                            LinkButton btnAddMovie = new LinkButton();
-                            btnAddMovie.Click += new EventHandler(btnAddMovie_Click);
-                            btnAddMovie.CssClass = "info link2";
-                            btnAddMovie.Text = "Add Movie";
-                            btnAddMovie.CommandName = "addMovie";
-                            btnAddMovie.CommandArgument = movie.imdbID;
+                            foreach (ImdbEntity movie in imdbEntityArray.Search)
+                            {
+                                String url2 = "http://www.omdbapi.com/?&apikey=b9bb3ece&i=" + movie.imdbID;
+                                var json2 = wc.DownloadString(url2);
+                                JavaScriptSerializer oJS2 = new JavaScriptSerializer();
+                                ImdbEntity imdbEntity = new ImdbEntity();
+                                imdbEntity = oJS2.Deserialize<ImdbEntity>(json2);
 
-                            phMovieResults.Controls.Add(btnAddMovie);
+                                html = "";
+                                html += "<div class=\"col-lg-4\" style=\" margin-top: 1rem; height: 450px; width: 314px\">\n";
+                                html += "\t<div class=\"hovereffect\" style=\"height: 450px; width: 314px\">\n";
+
+                                if (movie.Poster == "N/A")
+                                {
+
+                                    html += "\t\t\t<img height=\"450px\" width=\"314px\" class=\"img - responsive\"  src='images/defaultPoster.jpg'>\n";
+
+
+                                }
+                                else
+                                {
+
+                                    html += "\t\t<img height=\"450px\" width= \"314px\"  class=\"img - responsive\" src='" + movie.Poster + "'>\n";
+
+                                }
+
+                                html += "<div class=\"overlay\">";
+                                html += "\t\t<h2>" + movie.Title + " (" + movie.Year + ")</h2>";
+                                html += "<p class=\"text-muted\" style=\"text-align: left; padding: 1rem;\">" + imdbEntity.Plot + "</p>";
+                                html += "<ul>";
+                                html += "<li><p style=\"float: left; padding-left: 1rem;\">Runtime: " + imdbEntity.Runtime + "</p><p style=\"float: right; padding-right: 1rem;\">Rated:" + imdbEntity.Rated + "</li>";
+                                html += "</ul>";
+
+                                html += "\t\t<a class=\"info link1\" href=\"https://www.imdb.com/title/" + movie.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
+                                phMovieResults.Controls.Add(new Literal { Text = html });
+
+                                LinkButton btnAddMovie = new LinkButton();
+                                btnAddMovie.Click += new EventHandler(btnAddMovie_Click);
+                                btnAddMovie.CssClass = "info link2";
+                                btnAddMovie.Text = "Add Movie";
+                                btnAddMovie.CommandName = "addMovie";
+                                btnAddMovie.CommandArgument = movie.imdbID;
+
+                                phMovieResults.Controls.Add(btnAddMovie);
+
+                                html = "";
+                                html += "\t</div>";
+                                html += "</div>\n";
+                                html += "</div>";
+                                phMovieResults.Controls.Add(new Literal { Text = html });
+                            }
+
 
                             html = "";
-                            html += "\t</div>";
                             html += "</div>\n";
-                            html += "</div>";
                             phMovieResults.Controls.Add(new Literal { Text = html });
+
                         }
+                        else
+                        {
+                            String html = "";
+                            html += "<li>\n";
+                            html += "\t<p>Movie not Found!!!</p>\n";
+                            html += "</li>\n";
+                            phMovieResults.Controls.Add(new Literal { Text = html });
 
-
-                        html = "";
-                        html += "</div>\n";
-                        phMovieResults.Controls.Add(new Literal { Text = html });
-
+                        }
                     }
-                    else
-                    {
-                        String html = "";
-                        html += "<li>\n";
-                        html += "\t<p>Movie not Found!!!</p>\n";
-                        html += "</li>\n";
-                        phMovieResults.Controls.Add(new Literal { Text = html });
-
-                    }
+                } catch (Exception)
+                {
+                    lblResult.Text = "Unable to fetch movies";
                 }
             }
 
@@ -137,34 +143,40 @@ namespace MovieNight
         {
             var btn = (LinkButton)sender;
             var date = DateTime.Now;
-            switch(btn.CommandName)
-            {
-                case "addMovie":
-                    //SQL to add movie goes here
-                    Movie newMovie = new Movie();
-                    newMovie = db.movies.SqlQuery("SELECT * FROM Movie WHERE omdbCode= '" + btn.CommandArgument + "'").FirstOrDefault();
-
-                    if (newMovie == null)
-                    {
-                        db.Database.ExecuteSqlCommand("INSERT INTO Movie (omdbCode) VALUES ('" + btn.CommandArgument + "')");
+            try {
+                switch (btn.CommandName)
+                {
+                    case "addMovie":
+                        //SQL to add movie goes here
+                        Movie newMovie = new Movie();
                         newMovie = db.movies.SqlQuery("SELECT * FROM Movie WHERE omdbCode= '" + btn.CommandArgument + "'").FirstOrDefault();
 
-                    }
+                        if (newMovie == null)
+                        {
+                            db.Database.ExecuteSqlCommand("INSERT INTO Movie (omdbCode) VALUES ('" + btn.CommandArgument + "')");
+                            newMovie = db.movies.SqlQuery("SELECT * FROM Movie WHERE omdbCode= '" + btn.CommandArgument + "'").FirstOrDefault();
 
-                    UserMovie newUserMovie = new UserMovie();
+                        }
 
-                    newUserMovie.userID = currentUser.userID;
-                    newUserMovie.movieID = newMovie.movieID;
-                    newUserMovie.dateAdded = DateTime.Now;
+                        UserMovie newUserMovie = new UserMovie();
 
-                    MovieNightContext context = new MovieNightContext();
-                    context.userMovie.Add(newUserMovie);
-                    context.SaveChanges();
+                        newUserMovie.userID = currentUser.userID;
+                        newUserMovie.movieID = newMovie.movieID;
+                        newUserMovie.dateAdded = DateTime.Now;
 
-                    //db.Database.ExecuteSqlCommand("INSERT INTO UserMovie (userID, movieID, dateAdded) VALUES (" + currentUser.userID + "," + newMovie.movieID + "," + Convert.ToDateTime(DateTime.Now.ToString()) +")");
-                    //lblResult.Text = "Movie has been added.";                   
+                        MovieNightContext context = new MovieNightContext();
+                        context.userMovie.Add(newUserMovie);
+                        context.SaveChanges();
+                        lblResult.Text = "Movie has been added.";
+                        break;
 
-                    break;
+
+                }
+
+            }
+            catch (Exception)
+            {
+                lblResult.Text = "Unable to add movie (Movie may already have been added)";
             }
 
         }

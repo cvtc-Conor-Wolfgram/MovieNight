@@ -39,7 +39,9 @@
                     <div class="tab-pane fade " id="groupCreate" >
                         <ul class="acctInfo" style="height: 190px;">
                             <li>
-                                <asp:Label ID="lblGroupName" runat="server" Text="Group Name:" CssClass="h5"></asp:Label><asp:TextBox ID="txtGroupName" runat="server" MaxLength="25" class="form-control"></asp:TextBox></li>
+                                <asp:Label ID="lblGroupName" runat="server" Text="Group Name:" CssClass="h5"></asp:Label><asp:TextBox ID="txtGroupName" runat="server" MaxLength="25" class="form-control"></asp:TextBox>
+                                <asp:Label ID="lblCreateResponse" runat="server" Text=""></asp:Label>
+                            </li>
                             <li>
                                 <asp:Button ID="btnCreate" runat="server" Text="Create" OnClick="btnCreate_Click" class="btn btn-primary" /></li>
 
