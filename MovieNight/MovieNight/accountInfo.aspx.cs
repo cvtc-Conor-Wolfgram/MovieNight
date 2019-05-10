@@ -244,10 +244,7 @@ namespace MovieNight
                         }
                         else
                         {
-                            html += "<li>\n";
-                            html += "\t<p>No movies have been added.</p>\n";
-                            html += "</li>\n";
-                            phUserMovies.Controls.Add(new Literal { Text = html });
+                     
 
                         }
 

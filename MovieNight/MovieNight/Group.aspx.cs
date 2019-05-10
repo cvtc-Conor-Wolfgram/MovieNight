@@ -103,7 +103,7 @@ namespace MovieNight
 
                         if (currentEvent != null)
                         {
-                            lblEventInfo.InnerText = "Meet at " + currentEvent.eventLocation + " on " + currentEvent.eventTime.Date + " at " + currentEvent.eventTime.TimeOfDay;
+                            lblEventInfo.InnerText = "Meet at " + currentEvent.eventLocation + " on " + currentEvent.eventTime.Date.ToShortDateString() + " at " + currentEvent.eventTime.ToShortTimeString();
                             displayMovie();
 
                             if (currentUser.userID == picker.userID || currentUser.userID == groupOwner.userID)
