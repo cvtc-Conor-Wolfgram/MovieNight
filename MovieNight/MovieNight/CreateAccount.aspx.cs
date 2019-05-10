@@ -28,61 +28,67 @@ namespace MovieNight
             var email = txtUserEmail.Text.ToString();
 
             Session["userAccount"] = email;
-
-            DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
-
-            if (dvSql.Count == 0)
+            try
             {
-                
 
-                Session["createAccount"] = userName;
+                DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
 
-                DataView dvSql2 = (DataView)UserConnection2.Select(DataSourceSelectArguments.Empty);
-                if (dvSql2.Count == 0)
+                if (dvSql.Count == 0)
                 {
-                    string password = txtUserPass.Text;
-
-                    byte[] salt;
-
-                    new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
-
-                    var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
-
-                    byte[] hash = pbkdf2.GetBytes(20);
-                    byte[] hashBytes = new byte[36];
-
-                    Array.Copy(salt, 0, hashBytes, 0, 16);
-                    Array.Copy(hash, 0, hashBytes, 16, 20);
-
-                    string savedPasswordHash = Convert.ToBase64String(hashBytes);
-
-                    User user = new User();
-
-                    user.userName = txtUserName.Text;
-                    user.fName = txtFName.Text;
-                    user.lName = txtLName.Text;
-                    user.email = txtUserEmail.Text;
-                    user.passwordHash = savedPasswordHash;
 
 
-                    Session.Add("userAccount", user);
+                    Session["createAccount"] = userName;
 
-                    MovieNightContext context = new MovieNightContext();
-                    context.users.Add(user);
-                    context.SaveChanges();
+                    DataView dvSql2 = (DataView)UserConnection2.Select(DataSourceSelectArguments.Empty);
+                    if (dvSql2.Count == 0)
+                    {
+                        string password = txtUserPass.Text;
+
+                        byte[] salt;
+
+                        new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+
+                        var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
+
+                        byte[] hash = pbkdf2.GetBytes(20);
+                        byte[] hashBytes = new byte[36];
+
+                        Array.Copy(salt, 0, hashBytes, 0, 16);
+                        Array.Copy(hash, 0, hashBytes, 16, 20);
+
+                        string savedPasswordHash = Convert.ToBase64String(hashBytes);
+
+                        User user = new User();
+
+                        user.userName = txtUserName.Text;
+                        user.fName = txtFName.Text;
+                        user.lName = txtLName.Text;
+                        user.email = txtUserEmail.Text;
+                        user.passwordHash = savedPasswordHash;
+
+
+                        Session.Add("userAccount", user);
+
+                        MovieNightContext context = new MovieNightContext();
+                        context.users.Add(user);
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        usernameMatchFound.Visible = true;
+                    }
+
                 }
                 else
                 {
-                    usernameMatchFound.Visible = true;
+                    emailMatchFound.Visible = true;
+
+
+
                 }
-                
-            }
-            else
+            } catch (Exception)
             {
-                emailMatchFound.Visible = true;
-
-
-                
+                lblError.Text = "Unable to create account at this time.";
             }
 
         
@@ -100,54 +106,58 @@ namespace MovieNight
 
             Session["userAccount"] = email;
 
-
-            DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
-
-
-
-            if (dvSql.Count == 0)
+            try
             {
-                emailCompare.Visible = true;
-            }
-            else
-            {
-                var query = db.users.SqlQuery("Select * from [User] Where email = '" + email + "'").First();
+                DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
 
-                string savedPasswordHash = query.passwordHash;
-                byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);
 
-                byte[] salt = new byte[16];
-                Array.Copy(hashBytes, 0, salt, 0, 16);
 
-                var pbkdf2 = new Rfc2898DeriveBytes(pass, salt, 10000);
-                byte[] hash = pbkdf2.GetBytes(20);
-
-                int match = 1;
-                for (int i = 0; i < 20; i++)
-                    if (hashBytes[i + 16] != hash[i])
-                        match = 0;
-                if(match == 1)
+                if (dvSql.Count == 0)
                 {
-                    Session["userAccount"] = db.users.SqlQuery("SELECT [User].userID, [User].userName, [User].fName, [User].lName, [User].passwordHash, [User].email " +
-                    "FROM [User] " +
-                    "WHERE email = '" + email + "'").FirstOrDefault();
-                    Response.Redirect("accountinfo.aspx");
-
+                    emailCompare.Visible = true;
                 }
                 else
                 {
-                    passCompare.Visible = true;
+                    var query = db.users.SqlQuery("Select * from [User] Where email = '" + email + "'").First();
+
+                    string savedPasswordHash = query.passwordHash;
+                    byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);
+
+                    byte[] salt = new byte[16];
+                    Array.Copy(hashBytes, 0, salt, 0, 16);
+
+                    var pbkdf2 = new Rfc2898DeriveBytes(pass, salt, 10000);
+                    byte[] hash = pbkdf2.GetBytes(20);
+
+                    int match = 1;
+                    for (int i = 0; i < 20; i++)
+                        if (hashBytes[i + 16] != hash[i])
+                            match = 0;
+                    if (match == 1)
+                    {
+                        Session["userAccount"] = db.users.SqlQuery("SELECT [User].userID, [User].userName, [User].fName, [User].lName, [User].passwordHash, [User].email " +
+                        "FROM [User] " +
+                        "WHERE email = '" + email + "'").FirstOrDefault();
+                        Response.Redirect("accountinfo.aspx");
+
+                    }
+                    else
+                    {
+                        passCompare.Visible = true;
+                    }
+
+
+
+
+
                 }
 
 
 
-                
-                
+            } catch (Exception)
+            {
+                lblError.Text = "Unable to login at this time";
             }
-                
-
-
-            
 
 
 

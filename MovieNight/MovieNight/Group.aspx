@@ -5,6 +5,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="innerContent">
+        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
         <div id="accountInfo" class="card text-white bg-secondary mb-3" style="width: 25rem; height: 100%;">
             <div id="groupName" runat="server" class="card-header"></div>
             <span class="badge badge-warning" id="ownerName" runat="server" style="position: absolute; right: 10px; top: 15px;"></span>

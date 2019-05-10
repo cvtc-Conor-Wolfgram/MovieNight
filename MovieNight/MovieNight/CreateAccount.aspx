@@ -23,6 +23,7 @@
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <ul>
+                        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                         <li>
                             <asp:Label ID="lblActiveEmail" runat="server" Text="Email:"></asp:Label></li>
                         <li class="textBox">
