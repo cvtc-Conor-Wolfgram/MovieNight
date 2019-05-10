@@ -73,9 +73,9 @@
 
 
 
-    <div id="movieShowcase" class="card text-white bg-secondary mb-3" style="max-width: 26rem;">
+    <div id="movieShowcase" class="card text-white bg-secondary mb-3" style="max-width: 26rem; ">
         <div class="card-header">Movies</div>
-        <div class="card-body">
+        <div class="card-body" style="height: 588px;">
             <ul>
                 <li>
                     <ul class="nav nav-tabs">
