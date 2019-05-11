@@ -6,11 +6,14 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System.Net.Mail;
+using System.Net;
 
 namespace MovieNight
 {
     public partial class CreateAccount : System.Web.UI.Page
     {
+         
         private MovieNightContext db = new MovieNightContext();
         public event EventHandler OnTextChanged;
         protected void Page_Load(object sender, EventArgs e)
@@ -23,7 +26,8 @@ namespace MovieNight
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            
+
+
             var userName = txtUserName.Text.ToString();
             var email = txtUserEmail.Text.ToString();
 
@@ -33,9 +37,7 @@ namespace MovieNight
 
             if (dvSql.Count == 0)
             {
-                
 
-                Session["createAccount"] = userName;
 
                 DataView dvSql2 = (DataView)UserConnection2.Select(DataSourceSelectArguments.Empty);
                 if (dvSql2.Count == 0)

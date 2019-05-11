@@ -262,5 +262,11 @@ namespace MovieNight
             }
 
         }
+
+        protected void changePassword_Click(object sender, EventArgs e)
+        {
+            Session["passwordChange"] = currentUser.email;
+            Response.Redirect("ChangePassword.aspx");
+        }
     }
 }
