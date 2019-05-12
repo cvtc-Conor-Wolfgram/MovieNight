@@ -32,7 +32,7 @@
                             <li><strong>Email Address:</strong>
                                 <asp:Label ID="emailLbl" runat="server" Text="Label"></asp:Label></li>
                             <li>
-                                <button type="button" class="btn btn-primary">Change Password</button></li>
+                                <asp:LinkButton ID="changePassword" runat="server" class="btn btn-primary" Onclick="changePassword_Click">Change Password</asp:LinkButton></li>
 
                         </ul>
                     </div>

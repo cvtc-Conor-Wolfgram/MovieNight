@@ -20,6 +20,7 @@ namespace MovieNight
             if (Session["userAccount"] != null)
             {
                 currentUser = (User)Session["userAccount"];
+
             }
             else
             {

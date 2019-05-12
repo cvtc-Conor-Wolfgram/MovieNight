@@ -144,6 +144,7 @@ namespace MovieNight
                     else
                     {
                         passCompare.Visible = true;
+                        Session["userAccount"] = null;
                     }
 
 

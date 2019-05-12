@@ -299,6 +299,7 @@
     <Content Include="Group.aspx" />
     <Content Include="accountInfo.aspx" />
     <Content Include="AllMovies.aspx" />
+    <Content Include="ChangePassword.aspx" />
     <Content Include="YourGroups.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -377,6 +378,13 @@
     </Compile>
     <Compile Include="AllMovies.aspx.designer.cs">
       <DependentUpon>AllMovies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="YourGroups.aspx.cs">
       <DependentUpon>YourGroups.aspx</DependentUpon>
