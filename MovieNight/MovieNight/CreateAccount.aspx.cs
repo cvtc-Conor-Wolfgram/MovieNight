@@ -76,13 +76,14 @@ namespace MovieNight
                     else
                     {
                         usernameMatchFound.Visible = true;
+                        Session["userAccount"] = null;
                     }
 
                 }
                 else
                 {
                     emailMatchFound.Visible = true;
-
+                    Session["userAccount"] = null;
 
 
                 }
@@ -138,7 +139,7 @@ namespace MovieNight
                         Session["userAccount"] = db.users.SqlQuery("SELECT [User].userID, [User].userName, [User].fName, [User].lName, [User].passwordHash, [User].email " +
                         "FROM [User] " +
                         "WHERE email = '" + email + "'").FirstOrDefault();
-                        Response.Redirect("accountinfo.aspx");
+                        Response.Redirect(Session["redirectTo"].ToString());
 
                     }
                     else

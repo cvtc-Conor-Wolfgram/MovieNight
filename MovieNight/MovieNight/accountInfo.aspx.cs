@@ -30,6 +30,7 @@ namespace MovieNight
             }
             else
             {
+                Session["redirectTo"] = "accountInfo.aspx";
                 Response.Redirect("CreateAccount.aspx");
             }
 

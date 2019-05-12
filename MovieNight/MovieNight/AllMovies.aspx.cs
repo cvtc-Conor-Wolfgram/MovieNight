@@ -20,10 +20,11 @@ namespace MovieNight
             if (Session["userAccount"] != null)
             {
                 currentUser = (User)Session["userAccount"];
-
+                
             }
             else
             {
+                Session["redirectTo"] = "AllMovies.aspx"; 
                 Response.Redirect("CreateAccount.aspx");
             }
 

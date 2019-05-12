@@ -44,6 +44,7 @@ namespace MovieNight
             }
 
             displayMoviesList(picker);
+            
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -64,7 +65,72 @@ namespace MovieNight
 
             if (IsPostBack) //Post back rollover of date/time
             {
-                if (Request[txtDate.UniqueID] != null)
+                try
+                {
+                    selectedMovieIndex = movieDropdown.SelectedIndex;
+                    var html = "";
+                    phNextMovies.Controls.Clear();
+                    string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&i=" + movieDropdown.SelectedValue;
+                    using (WebClient wc = new WebClient())
+                    {
+                        var json = wc.DownloadString(url);
+                        JavaScriptSerializer oJS = new JavaScriptSerializer();
+                        ImdbEntity imdbEntity = new ImdbEntity();
+                        imdbEntity = oJS.Deserialize<ImdbEntity>(json);
+                        if (imdbEntity.Response == "True")
+                        {
+
+                            html = "";
+
+
+                            html += "<div \" id=\"" + imdbEntity.imdbID + "\">";
+
+                            html += "\t<div class=\"hovereffect\" style=\"height: 496px; width: 360px;\">\n";
+
+                            if (imdbEntity.Poster == "N/A")
+                            {
+                                html += "\t\t\t<img height=\"496px\" width=\"360px\" class=\"img - responsive\"  src='images/defaultPoster.jpg'>\n";
+                            }
+                            else
+                            {
+                                html += "\t\t<img height=\"496px\" width= \"360px\"  class=\"img - responsive\" src='" + imdbEntity.Poster + "'>\n";
+                            }
+
+                            html += "<div class=\"overlay\">";
+                            html += "\t\t<h2>" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h2>";
+                            html += "<p class=\"text-muted\" style=\"text-align: left; padding: 1rem;\">" + imdbEntity.Plot + "</p>";
+                            html += "<ul>";
+                            html += "<li><p style=\"float: left; padding-left: 1rem;\">Runtime: " + imdbEntity.Runtime + "</p><p style=\"float: right; padding-right: 1rem;\">Rated:" + imdbEntity.Rated + "</li>";
+                            html += "</ul>";
+
+                            html += "\t\t<a class=\"info link1 text-small\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
+                            phNextMovies.Controls.Add(new Literal { Text = html });
+
+                            //Button btnAddMovie = new Button();
+                            //btnAddMovie.ID = "addMovie" + imdbEntity.imdbID;
+                            //btnAddMovie.Click += new EventHandler(btnRemove_Click);
+                            //btnAddMovie.CssClass = "btn btn-primary";
+                            //btnAddMovie.Text = "Remove Movie";
+                            //btnAddMovie.CommandName = "removeMovie";
+                            //btnAddMovie.CommandArgument = imdbEntity.imdbID;
+                            //phNextMovies.Controls.Add(btnAddMovie);
+
+
+                            html = "";
+                            html += "</div>";
+                            html += "</div>";
+                            html += "</div>";
+                            phNextMovies.Controls.Add(new Literal { Text = html });
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    lblMovie.InnerText = "Movie - Unable to get movie";
+                }
+            
+
+            if (Request[txtDate.UniqueID] != null)
                 {
                     if (Request[txtDate.UniqueID].Length > 0)
                     {
@@ -86,6 +152,9 @@ namespace MovieNight
                 txtDate.Text = currentDate.ToString("yyyy-MM-dd");
                 txtTime.Text = currentDate.AddHours(1).Hour.ToString() + ":00";
             }
+
+
+
 
         }
 
