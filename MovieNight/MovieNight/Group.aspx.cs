@@ -61,6 +61,8 @@ namespace MovieNight
                         ownerName.InnerText = "Unable to Retrieve Owner.";
                     }
 
+                    groupCode.InnerText = "Group Code: " + pageGroup.groupCode.ToString();
+
                     try
                     {
                         //Setting members list and who's turn it is to pick

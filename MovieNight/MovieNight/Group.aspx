@@ -20,6 +20,7 @@
                 <ul data-simplebar class="list-group  " style="height: 300px; margin-bottom: 5px;">
                     <asp:PlaceHolder ID="phMembers" runat="server"></asp:PlaceHolder>
                 </ul>
+                <div id="groupCodeHolder"><p id="groupCode" runat="server"></p></div>
 
                   <div class="card bg-light mb-3" style="height: 200px;">
                     <div class="card-body">

@@ -456,3 +456,13 @@ main {
         margin-left: 30%;
        
     }
+
+#welcomeTextHolder {
+    padding-left: 10px;
+}
+
+#groupCodeHolder {
+    display: block;
+    float: inherit;
+    padding: 40px;
+}

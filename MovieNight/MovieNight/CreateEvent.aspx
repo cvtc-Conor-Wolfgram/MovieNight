@@ -5,7 +5,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    
-        <h3 id="welcomeText" runat="server"></h3>
+        <div id="welcomeTextHolder"><h3 id="welcomeText" runat="server"></h3></div>
         <div class="innerContent">
         <div id="createEvent">
             <div class="card text-white bg-secondary mb-3" style="width: 25rem;">
