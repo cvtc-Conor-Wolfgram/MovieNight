@@ -8,7 +8,7 @@
         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
         <div id="accountInfo" class="card text-white bg-secondary mb-3" style="width: 25rem; height: 100%;">
             <div id="groupName" runat="server" class="card-header"></div>
-            <span class="badge badge-warning" id="ownerName" runat="server" style="position: absolute; right: 10px; top: 15px;"></span>
+            <span class="badge badge-primary" id="groupCode" runat="server" style="position: absolute; right: 10px; top: 15px;"></span>
 
 
             
@@ -17,10 +17,11 @@
                     Members
 
                 </div>
+                <span class="badge badge-warning" id="ownerName" runat="server" style="position: absolute; right: 25px; top: 84px;"></span>
                 <ul data-simplebar class="list-group  " style="height: 300px; margin-bottom: 5px;">
                     <asp:PlaceHolder ID="phMembers" runat="server"></asp:PlaceHolder>
                 </ul>
-                <div id="groupCodeHolder"><p id="groupCode" runat="server"></p></div>
+                
 
                   <div class="card bg-light mb-3" style="height: 200px;">
                     <div class="card-body">

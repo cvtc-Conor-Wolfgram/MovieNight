@@ -54,7 +54,7 @@ namespace MovieNight
 
                     if (groupOwner != null)
                     {
-                        ownerName.InnerText = "Group Owner: " + groupOwner.fName + " " + groupOwner.lName;
+                        ownerName.InnerText = "Leader: " + groupOwner.fName + " " + groupOwner.lName;
                     }
                     else
                     {
