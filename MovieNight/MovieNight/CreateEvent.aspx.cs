@@ -203,7 +203,7 @@ namespace MovieNight
                 selectedMovieIndex = movieDropdown.SelectedIndex;
                 var html = "";
                 phNextMovies.Controls.Clear();
-                string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&t=" + movieDropdown.SelectedItem.Text;
+                string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&i=" + movieDropdown.SelectedValue;
                 using (WebClient wc = new WebClient())
                 {
                     var json = wc.DownloadString(url);
@@ -218,21 +218,25 @@ namespace MovieNight
 
                         html += "<div \" id=\"" + imdbEntity.imdbID + "\">";
 
-                        html += "\t<div class=\"well text-center\">\n";
+                        html += "\t<div class=\"hovereffect\" style=\"height: 496px; width: 360px;\">\n";
 
                         if (imdbEntity.Poster == "N/A")
                         {
-                            html += "\t\t<img height=\"420px\" src='images/defaultPoster.jpg'>\n";
+                            html += "\t\t\t<img height=\"496px\" width=\"360px\" class=\"img - responsive\"  src='images/defaultPoster.jpg'>\n";
                         }
                         else
                         {
-                            html += "\t\t<img height=\"420px\" width=\"284px\" style=\"border-radius: 5px; box-shadow: 5px 5px 5px grey; \"src='" + imdbEntity.Poster + "'>\n";
+                            html+="\t\t<img height=\"496px\" width= \"360px\"  class=\"img - responsive\" src='" + imdbEntity.Poster + "'>\n";
                         }
 
-                        html += "\t\t<h5 style=\"text-shadow: 5px 5px 5px grey; \">" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h5>";
+                        html += "<div class=\"overlay\">";
+                        html += "\t\t<h2>" + imdbEntity.Title + " (" + imdbEntity.Year + ")</h2>";
+                        html += "<p class=\"text-muted\" style=\"text-align: left; padding: 1rem;\">" + imdbEntity.Plot + "</p>";
+                        html += "<ul>";
+                        html += "<li><p style=\"float: left; padding-left: 1rem;\">Runtime: " + imdbEntity.Runtime + "</p><p style=\"float: right; padding-right: 1rem;\">Rated:" + imdbEntity.Rated + "</li>";
+                        html += "</ul>";
 
-
-                        html += "\t\t<a class=\"btn btn-primary\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" target=\"_blank\" style=\"margin-right: 1rem\">Link to IMDB</a>";
+                        html += "\t\t<a class=\"info link1 text-small\" href=\"https://www.imdb.com/title/" + imdbEntity.imdbID + "\" style=\"margin-right: 1rem\">Link to IMDB</a>";
                         phNextMovies.Controls.Add(new Literal { Text = html });
 
                         //Button btnAddMovie = new Button();
@@ -248,7 +252,7 @@ namespace MovieNight
                         html = "";
                         html += "</div>";
                         html += "</div>";
-
+                        html += "</div>";
                         phNextMovies.Controls.Add(new Literal { Text = html });
                     }
                 }
@@ -272,34 +276,47 @@ namespace MovieNight
                 String html = "";
                 phNextMovies.Controls.Add(new Literal { Text = html });
 
-                foreach (Movie movie in nextMoviesAvalible)
+                if (nextMoviesAvalible.Count() == 0)
+                {
+                    movieDropdown.Items.Add("No Movies to Display.");
+
+                    html = "";
+                    html += "<p>Add movies to your list <a href=\"movieSearch.aspx\" style=\"color: blue;\">here</a>.</p>";
+                    html += "\t\t\t<img height=\"480px\" width=\"360px\" class=\"img - responsive\"  src='images/defaultPoster.jpg'>\n";
+                    phNextMovies.Controls.Add(new Literal { Text = html });
+                }
+                else
                 {
 
-                    string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&i=" + movie.omdbCode;
-                    using (WebClient wc = new WebClient())
+                    foreach (Movie movie in nextMoviesAvalible)
                     {
-                        var json = wc.DownloadString(url);
-                        JavaScriptSerializer oJS = new JavaScriptSerializer();
-                        ImdbEntity imdbEntity = new ImdbEntity();
-                        imdbEntity = oJS.Deserialize<ImdbEntity>(json);
-                        if (imdbEntity.Response == "True")
+
+                        string url = "http://www.omdbapi.com/?&apikey=b9bb3ece&i=" + movie.omdbCode;
+                        using (WebClient wc = new WebClient())
                         {
-                            ListItem item = new ListItem(imdbEntity.Title.ToString());
+                            var json = wc.DownloadString(url);
+                            JavaScriptSerializer oJS = new JavaScriptSerializer();
+                            ImdbEntity imdbEntity = new ImdbEntity();
+                            imdbEntity = oJS.Deserialize<ImdbEntity>(json);
+                            if (imdbEntity.Response == "True")
+                            {
+                                ListItem item = new ListItem(imdbEntity.Title.ToString(), imdbEntity.imdbID.ToString());
 
-                            movieDropdown.Items.Add(item);
+                                movieDropdown.Items.Add(item);
+                                
 
+
+                            }
+                            else
+                            {
+                                html += "<li>\n";
+                                html += "\t<p>Movie not added</p>\n";
+                                html += "</li>\n";
+
+                            }
 
 
                         }
-                        else
-                        {
-                            html += "<li>\n";
-                            html += "\t<p>Movie not added</p>\n";
-                            html += "</li>\n";
-
-                        }
-
-
                     }
                 }
             } catch (Exception)

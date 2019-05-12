@@ -176,7 +176,19 @@ namespace MovieNight
                 var active = "";
                 var show = "";
                 var space = "";
-                foreach (Movie movie in usersMovies)
+                if (usersMovies.Count() == 0)
+                {
+                    html += "<h4>No Movies to Display.</h4>";
+                    html += "<p>Add movies to your list <a href=\"movieSearch.aspx\" style=\"color: blue;\">here</a>.</p>";
+                    phUserMovieTab.Controls.Add(new Literal { Text = html });
+
+                    html = "";
+                    html += "\t\t\t<img height=\"480px\" width=\"360px\" class=\"img - responsive\"  src='images/defaultPoster.jpg'>\n";
+                    phUserMovies.Controls.Add(new Literal { Text = html });
+                }
+                else
+                {
+                    foreach (Movie movie in usersMovies)
                 {
                     count += 1;
 
@@ -252,8 +264,8 @@ namespace MovieNight
                         }
                         else
                         {
-                     
-
+                            html += "\t\t\t<img height=\"496px\" width=\"360px\" class=\"img - responsive\"  src='images/defaultPoster.jpg'>\n";
+                            phUserMovies.Controls.Add(new Literal { Text = html });
                         }
 
 
@@ -264,6 +276,8 @@ namespace MovieNight
 
 
                 }
+                }
+                
 
             } catch (Exception)
             {
@@ -276,7 +290,7 @@ namespace MovieNight
 
         protected void btnRemove_Click(object sender, EventArgs e)
         {
-            var btn = (Button)sender;
+            var btn = (LinkButton)sender;
 
             switch (btn.CommandName)
             {
