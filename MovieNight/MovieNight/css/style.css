@@ -450,3 +450,9 @@ main {
         font-size: .9em;
     }
 
+    .changePassword {
+        padding-top: 15px;
+        
+        margin-left: 30%;
+       
+    }
