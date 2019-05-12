@@ -52,6 +52,9 @@ namespace MovieNight
                     String sql = "SELECT * FROM [User] WHERE [User].userID = " + pageGroup.ownerID;
                     groupOwner = db.users.SqlQuery("SELECT * FROM [User] WHERE [User].userID = " + pageGroup.ownerID).FirstOrDefault();
 
+                    
+                   
+
                     if (groupOwner != null)
                     {
                         ownerName.InnerText = "Group Owner: " + groupOwner.fName + " " + groupOwner.lName;
@@ -60,6 +63,8 @@ namespace MovieNight
                     {
                         ownerName.InnerText = "Unable to Retrieve Owner.";
                     }
+
+                    groupCode.InnerText = "Group Passcode: " + pageGroup.groupCode.ToString();
 
                     try
                     {

@@ -21,6 +21,8 @@
                     <asp:PlaceHolder ID="phMembers" runat="server"></asp:PlaceHolder>
                 </ul>
 
+                
+
                   <div class="card bg-light mb-3" style="height: 200px;">
                     <div class="card-body">
                         <h4 class="card-title text-dark">Current Event</h4>
@@ -30,10 +32,12 @@
                         <asp:LinkButton ID="finishedMovie" runat="server" OnClick="finishedMovie_Click" CssClass="card-link">Close Event</asp:LinkButton>
                        
                     </div>
+                      
                 </div>
 
-
-
+                <div id="groupCodeHolder"><p id="groupCode" runat="server"></p><br /></div>
+                
+                
             </div>
         </div>
 

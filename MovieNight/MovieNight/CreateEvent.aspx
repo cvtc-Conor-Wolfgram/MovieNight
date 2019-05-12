@@ -4,8 +4,9 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   
-        <h3 id="welcomeText" runat="server"></h3>
+        <div id="welcomeTextHolder">
+            <h3 id="welcomeText" runat="server"></h3>
+        </div>
         <div class="innerContent">
         <div id="createEvent">
             <div class="card text-white bg-secondary mb-3" style="width: 25rem;">
@@ -75,7 +76,7 @@
                                 <li>
                                     <asp:CheckBox ID="cbTheater" Text="In a Theater?" runat="server" OnCheckedChanged="cbTheater_CheckedChanged" AutoPostBack="true" /></li>
                                 <li>
-                                    <asp:RangeValidator ID="rvTickets" runat="server" ControlToValidate="txtTickets" Type="Integer" MinimumValue="0" MaximumValue="100" ErrorMessage="Spots open must be an integer" Display="Dynamic"></asp:RangeValidator></asp:CheckBox>
+                                    <asp:RangeValidator ID="rvTickets" runat="server" ControlToValidate="txtTickets" Type="Integer" MinimumValue="0" MaximumValue="100" ErrorMessage="Spots open must be an integer" Display="Dynamic"></asp:RangeValidator>
                             </ul>
 
 

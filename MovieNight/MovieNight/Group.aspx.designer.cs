@@ -85,6 +85,15 @@ namespace MovieNight {
         protected global::System.Web.UI.WebControls.LinkButton finishedMovie;
         
         /// <summary>
+        /// groupCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl groupCode;
+        
+        /// <summary>
         /// phNextMovies control.
         /// </summary>
         /// <remarks>
