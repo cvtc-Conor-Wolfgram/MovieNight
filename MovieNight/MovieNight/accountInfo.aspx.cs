@@ -45,7 +45,7 @@ namespace MovieNight
 
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {   String html = "";
             var count = 1;
             try
             {
@@ -53,34 +53,43 @@ namespace MovieNight
                 "FROM [Group] INNER JOIN UserGroup on UserGroup.groupID = [Group].groupID " +
                 "WHERE UserGroup.userID = " + currentUser.userID +
                 " ORDER BY [UserGroup].joinNumber DESC").ToList<Group>();
-            
-            
-            String html = "";
-            foreach (Group group in groups)
-            {
-               
-                    int currentGroupID = group.groupID;
-                    members = db.users.SqlQuery("SELECT * " +
-                    "FROM [User] INNER JOIN [UserGroup] ON [User].userID = [UserGroup].userID " +
-                    "WHERE [UserGroup].groupID = " + currentGroupID +
-                    " ORDER BY [UserGroup].joinNumber").ToList<User>();
 
-                html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">\n";
-                html += "\t<a href='Group.aspx?groupID=" + group.groupID + "'>" + group.groupName + "</a>\n";
-                html += "\t<span class=\"badge badge-primary badge - pill\">Members: " + members.Count() + "</span>";
-                html += "</li>\n";
 
-                count += 1;
-                    
-               
+
+                if (groups.Count == 0)
+                {
+                    html = "";
+                    html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\" \">\n";
+                    html += "\tYou haven't joined any groups.\n";
+                    html += "</li>\n";
+                    phGroupList.Controls.Add(new Literal { Text = html });
+                }
+                else
+                {
+                    foreach (Group group in groups)
+                    {
+                        int currentGroupID = group.groupID;
+                        members = db.users.SqlQuery("SELECT * " +
+                            "FROM [User] INNER JOIN [UserGroup] ON [User].userID = [UserGroup].userID " +
+                            "WHERE [UserGroup].groupID = " + currentGroupID +
+                            " ORDER BY [UserGroup].joinNumber").ToList<User>();
+
+                        html = "";
+                        html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">\n";
+                        html += "\t<a href='Group.aspx?groupID=" + group.groupID + "'>" + group.groupName + "</a>\n";
+                        html += "\t<span class=\"badge badge-primary badge - pill\">Members: " + members.Count() + "</span>";
+                        html += "</li>\n";
+
+                        count += 1;
+                    }
+                    phGroupList.Controls.Add(new Literal { Text = html });
+                }
                 
-            }
-
-            phGroupList.Controls.Add(new Literal { Text = html });
             }
             catch (Exception)
             {
-                var html = "<li class=\"list-group-item d-flex justify-content-between align-items-center\">\n";
+                html = "";
+                html += "<li class=\"list-group-item d-flex justify-content-between align-items-center\">\n";
                 html += "\t<p>Unable to Access Groups</p>\n";
                 html += "</li>\n";
                 phGroupList.Controls.Add(new Literal { Text = html });
