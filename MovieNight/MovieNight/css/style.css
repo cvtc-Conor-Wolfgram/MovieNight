@@ -82,7 +82,7 @@ main {
 #mainFooter {
     height: 5rem;
     margin-bottom: 1rem;
-    background: #073642;
+  
 }
 
     #mainFooter p {
@@ -131,8 +131,11 @@ main {
     float: right;
 }
 .innerContent {
-    padding: 20px;
-    width: 875px;
+    padding-bottom: 20px;
+    padding-top:20px;
+    padding-left: 35px;
+    padding-right: 35px;
+    width: 100%;
     margin: auto;
 }
 
@@ -324,9 +327,7 @@ main {
     margin-right: 25%;
     margin-top: 20px;
 }
-.list-group li {
-    background-color: #073642;
-}
+
 
 .movieDropdown {
     color: #fff;
@@ -362,7 +363,7 @@ main {
         top: 0;
         left: 0;
         opacity: 0;
-        background-color: rgba(7,54,56,0.9);
+        background-color: rgba(54,88,124,0.9);
         -webkit-transition: all .4s ease-in-out;
         transition: all .4s ease-in-out
     }

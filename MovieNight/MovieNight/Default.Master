@@ -5,7 +5,7 @@
 <html>
 <head runat="server">
     <title>Movie Night</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap2.css">
     <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
 
@@ -24,7 +24,7 @@
             <form id="form1" runat="server">
                 <div class="panel">
 
-                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                         <a class="navbar-brand" href="#">Movie Night</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -72,7 +72,7 @@
                 </main>--%>
             </form>
 
-            <footer id="mainFooter" class="panel">
+            <footer id="mainFooter" class="panel bg-primary">
                 <p>&copy;2019 Movie Night</p>
             </footer>
 

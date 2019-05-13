@@ -11,7 +11,7 @@
         <table>
             <tbody>
                 <tr>
-                    <td style="padding:10px;"><div class="card bg-dark ">
+                    <td style="padding:10px;"><div class="card bg-light ">
                         <div class="card-body">
                                     <h4 class="card-title">Chris Lastname</h4>
                                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -20,7 +20,7 @@
                             </div>
 
                     </td>
-                     <td style="padding:10px;"><div class="card bg-dark">
+                     <td style="padding:10px;"><div class="card bg-light">
                         <div class="card-body">
                                     <h4 class="card-title">Conor Lastname</h4>
                                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -29,7 +29,7 @@
                             </div>
 
                     </td>
-                     <td style="padding:10px;"><div class="card bg-dark">
+                     <td style="padding:10px;"><div class="card bg-light">
                         <div class="card-body">
                                     <h4 class="card-title">David Kurschner</h4>
                                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>

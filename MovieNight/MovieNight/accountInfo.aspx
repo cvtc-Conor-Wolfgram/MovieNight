@@ -5,7 +5,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="innerContent">
-        <div id="accountInfo" class="card text-white bg-secondary mb-3" style="width: 25rem; height: 100%;">
+        <div id="accountInfo" class="card text-white bg-gradient-primary mb-3" style="width: 35rem; height: 100%;">
             <div class="card-header">Manage Account</div>
             <div class="card-body">
                 <ul class="nav nav-tabs">
@@ -73,7 +73,7 @@
 
 
 
-    <div id="movieShowcase" class="card text-white bg-secondary mb-3" style="max-width: 26rem; ">
+    <div id="movieShowcase" class="card text-white bg-gradient-primary mb-3" style="max-width: 26rem; ">
         <div class="card-header">Movies</div>
         <div class="card-body" style="height: 588px;">
             <ul>

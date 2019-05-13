@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="forms">
         <div class="form-login">
-            <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+            <div class="card text-white bg-gradient-primary mb-3" style="max-width: 25rem;">
                 <div class="card-header">
                     <asp:Label ID="Label1" runat="server" Text="Sign In"></asp:Label>
                 </div>
@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="form-create">
-            <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+            <div class="card text-white bg-gradient-primary mb-3" style="max-width: 25rem;">
                 <div class="card-header">Sign Up</div>
                 <div class="card-body">
                     <table class="table table">

@@ -4,9 +4,9 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="innerContent">
+    <div class="innerContent" style="width: 940px;">
         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-        <div id="accountInfo" class="card text-white bg-secondary mb-3" style="width: 25rem; height: 100%;">
+        <div id="accountInfo" class="card text-white bg-gradient-primary mb-3" style="width: 25rem; height: 100%;">
             <div id="groupName" runat="server" class="card-header"></div>
             <span class="badge badge-primary" id="groupCode" runat="server" style="position: absolute; right: 10px; top: 15px;"></span>
 
@@ -23,7 +23,7 @@
                 </ul>
                 
 
-                  <div class="card bg-light mb-3" style="height: 200px;">
+                  <div class="card bg-primary mb-3" style="height: 200px;">
                     <div class="card-body">
                         <h4 class="card-title text-dark">Current Event</h4>
                         <h6 runat="server" id="lblPicker" class="card-subtitle mb-2 text-dark">*Picker*</h6>
@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <div id="movieShowcase" class="card text-white bg-secondary mb-3" style="max-width: 26rem;">
+        <div id="movieShowcase" class="card text-white bg-gradient-primary mb-3" style="max-width: 26rem;">
             <div class="card-header">
                 Movie
             </div>
