@@ -195,7 +195,7 @@ namespace MovieNight
                 newEvent.groupID = pageGroup.groupID;
                 try
                 {
-                    newEvent.movieID = nextMoviesAvalible[selectedMovieIndex].movieID;
+                    newEvent.movieID = nextMoviesAvalible[selectedMovieIndex - 1].movieID;
                 
 
                     if (cbTheater.Checked == true)
