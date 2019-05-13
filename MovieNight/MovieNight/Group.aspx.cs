@@ -300,6 +300,9 @@ namespace MovieNight
                 db.Database.ExecuteSqlCommand("DELETE FROM [UserMovie] WHERE userID = " + picker.userID + " AND movieID = " + movieToRemoveID);
                 db.SaveChanges();
 
+            } catch (Exception)
+            {
+                lblError.Text = "Unable to remove event.";
             }
 
 

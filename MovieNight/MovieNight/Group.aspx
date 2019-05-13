@@ -5,7 +5,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="innerContent" style="width: 940px;">
-        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+
         <div id="accountInfo" class="card text-white bg-gradient-primary mb-3" style="width: 25rem; height: 100%;">
             <div id="groupName" runat="server" class="card-header"></div>
             <span class="badge badge-primary" id="groupCode" runat="server" style="position: absolute; right: 10px; top: 15px;"></span>
@@ -28,6 +28,7 @@
                         <h4 class="card-title text-dark">Current Event</h4>
                         <h6 runat="server" id="lblPicker" class="card-subtitle mb-2 text-dark">*Picker*</h6>
                         <p runat="server" id="lblEventInfo" class="card-text text-dark">There is no event set up yet.</p>
+                        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                         <asp:LinkButton ID="btnCreateEvent" runat="server" OnClick="createEvent_Click" CssClass="card-link">Create Event</asp:LinkButton>
                         <asp:LinkButton ID="finishedMovie" runat="server" OnClick="finishedMovie_Click" CssClass="card-link">Close Event</asp:LinkButton>
                        
