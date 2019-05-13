@@ -58,7 +58,7 @@ namespace MovieNight
                                 imdbEntity = oJS2.Deserialize<ImdbEntity>(json2);
 
                                 html = "";
-                                html += "<div class=\"col-lg-4\" style=\" margin-top: 1rem; height: 450px; width: 314px\">\n";
+                                html += "<div class=\"col-lg-4\" style=\"padding: 7px, 7px, 7px, 7px; margin-top: 1rem; height: 450px; width: 314px\">\n";
                                 html += "\t<div class=\"hovereffect\" style=\"height: 450px; width: 314px\">\n";
 
                                 if (movie.Poster == "N/A")

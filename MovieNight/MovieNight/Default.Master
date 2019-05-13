@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
-    
+
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -44,11 +44,14 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="AllMovies.aspx">Your Movies</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="about.aspx">About</a>
+                                </li>
 
 
                             </ul>
 
-                            <asp:Button ID="createButton" OnClick="createButtonClick" Text="Sign In/Sign Up" CssClass="btn btn-secondary my-2 my-sm-0" runat="server" TabIndex="99" UseSubmitBehavior="False"></asp:Button>
+                            <asp:Button ID="createButton" OnClick="createButtonClick" Text="Sign In/Sign Up" CssClass="btn btn-primary my-2 my-sm-0" runat="server" TabIndex="99" UseSubmitBehavior="False"></asp:Button>
 
 
 
@@ -63,10 +66,10 @@
                     </asp:ContentPlaceHolder>
 
                 </main>
-                <main class="panel3">
+<%--                <main class="panel3">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                     </asp:ContentPlaceHolder>
-                </main>
+                </main>--%>
             </form>
 
             <footer id="mainFooter" class="panel">
@@ -75,5 +78,6 @@
 
 
         </div>
+    </div>
 </body>
 </html>

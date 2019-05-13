@@ -466,3 +466,7 @@ main {
     float: inherit;
     padding: 40px;
 }
+
+.jumbotron-modify{
+    margin-top: 20px;
+}

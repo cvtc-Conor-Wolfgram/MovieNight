@@ -281,9 +281,7 @@
     </Content>
     <Content Include="CreateAccount.aspx" />
     <Content Include="CreateEvent.aspx" />
-    <Content Include="CreateGroup.aspx" />
     <Content Include="css\bootstrap.css" />
-    <Content Include="css\imagehover.min.css" />
     <Content Include="Global.asax" />
     <Content Include="css\style.css" />
     <Content Include="images\background.png" />
@@ -300,7 +298,7 @@
     <Content Include="accountInfo.aspx" />
     <Content Include="AllMovies.aspx" />
     <Content Include="ChangePassword.aspx" />
-    <Content Include="YourGroups.aspx" />
+    <Content Include="About.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateAccount.aspx.cs">
@@ -316,13 +314,6 @@
     </Compile>
     <Compile Include="CreateEvent.aspx.designer.cs">
       <DependentUpon>CreateEvent.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CreateGroup.aspx.cs">
-      <DependentUpon>CreateGroup.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CreateGroup.aspx.designer.cs">
-      <DependentUpon>CreateGroup.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -386,12 +377,12 @@
     <Compile Include="ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="YourGroups.aspx.cs">
-      <DependentUpon>YourGroups.aspx</DependentUpon>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="YourGroups.aspx.designer.cs">
-      <DependentUpon>YourGroups.aspx</DependentUpon>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
