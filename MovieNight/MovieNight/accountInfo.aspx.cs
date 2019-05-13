@@ -78,7 +78,7 @@ namespace MovieNight
                        
                         html += "<li class=\"list-group-item d-flex justify-content-between align-items-center bg-primary\">\n";
                         html += "\t<a class=\"text-white\" href='Group.aspx?groupID=" + group.groupID + "'>" + group.groupName + "</a>\n";
-                        html += "\t<span class=\"badge badge-primary badge - pill\">Members: " + members.Count() + "</span>";
+                        html += "\t<span class=\"badge badge-light badge - pill\">Members: " + members.Count() + "</span>";
                         html += "</li>\n";
 
                         count += 1;
@@ -227,7 +227,7 @@ namespace MovieNight
                             html = "";
 
                             html += "<li class=\"nav-item\">";
-                            html += "<a class=\"nav-link" + space + active + "\" data-toggle=\"tab\" href=\"#" + movie.omdbCode + "\">Movie " + count + "</a>";
+                            html += "<a class=\"nav-link" + space + active + "\" style=\"padding-left: 17.6px; padding-right: 17.6px;\" data-toggle=\"tab\" href=\"#" + movie.omdbCode + "\">Movie " + count + "</a>";
                             html += "</li>";
                             phUserMovieTab.Controls.Add(new Literal { Text = html });
 

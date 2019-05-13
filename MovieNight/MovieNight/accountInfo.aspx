@@ -5,19 +5,19 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="innerContent">
-        <div id="accountInfo" class="card text-white bg-gradient-primary mb-3" style="width: 35rem; height: 100%;">
+        <div id="accountInfo" class="card text-white bg-gradient-primary mb-3" style="width: 25rem; height: 100%;">
             <div class="card-header">Manage Account</div>
             <div class="card-body">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#profile">Profile</a>
+                <ul class="nav nav-tabs" >
+                    <li class="nav-item"  >
+                        <a class="nav-link active" style="padding:10px;" data-toggle="tab" href="#profile">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#groupCreate">Create Group</a>
+                        <a class="nav-link" style="padding: 10px;" data-toggle="tab" href="#groupCreate">Create Group</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#groupJoin">Join Group</a>
+                        <a class="nav-link" style="padding: 10px;" data-toggle="tab" href="#groupJoin">Join Group</a>
                     </li>
 
 
