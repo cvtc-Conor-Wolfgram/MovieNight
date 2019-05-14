@@ -7,6 +7,7 @@ using System.Web;
 
 namespace MovieNight.Models
 {
+    [Serializable]
     [Table("Group")]
     public class Group
     {

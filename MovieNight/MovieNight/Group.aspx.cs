@@ -36,6 +36,13 @@ namespace MovieNight
             }
             else
             {
+                if (Request.QueryString["groupID"] != null)
+                {
+                    Session["redirectTo"] = "Group.aspx?groupID=" + Request.QueryString["groupID"];
+                } else
+                {
+                    Session["redirectTo"] = "Group.aspx";
+                }
                 Response.Redirect("CreateAccount.aspx");
             }
 
@@ -135,6 +142,17 @@ namespace MovieNight
                                 btnCreateEvent.Visible = false;
                                 finishedMovie.Visible = false;
                             }
+
+                            var html = "";
+                            html += "<div \" id=\"noMovieSelected + \">";
+                            html += "\t<div class=\"well text-center\">\n";
+                            html += "\t\t<img height=\"420px\" src='images/defaultPoster.jpg'>\n";
+                            html += "\t\t<h5 style=\"text-shadow: 5px 5px 5px grey; \">No Movie Selected</h5>";
+                            html += "</div>";
+                            html += "</div>";
+
+                            phNextMovies.Controls.Clear();
+                            phNextMovies.Controls.Add(new Literal { Text = html });
 
                         }
                     } catch (Exception)
