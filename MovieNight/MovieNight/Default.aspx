@@ -37,9 +37,8 @@
                     <td style="padding: 10px;">
                         <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
                             
-                            <div class="card-body">
-                                <h4 class="card-title">Secondary card title</h4>
-                                <p class="card-text">Image Placeholder</p>
+                            <div class="card-body img-holder">
+                                    <asp:Image ID="imgStep1" BorderColor="Black" BorderWidth="10px" width="480" Height="360" runat="server" src="images/Step1.gif"/>   
                             </div>
                         </div>
 
@@ -65,8 +64,7 @@
                         <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
                             
                             <div class="card-body">
-                                <h4 class="card-title">Secondary card title</h4>
-                                <p class="card-text">Image Placeholder</p>
+                                <asp:Image ID="Image1" BorderColor="Black" BorderWidth="10px" width="480" Height="360" runat="server" src="images/Step2.gif"/>
                             </div>
                         </div>
 
@@ -91,8 +89,7 @@
                         <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
                             
                             <div class="card-body">
-                                <h4 class="card-title">Secondary card title</h4>
-                                <p class="card-text">Image Placeholder</p>
+                                <asp:Image ID="Image2" BorderColor="Black" BorderWidth="10px" width="480" Height="360" runat="server" src="images/Step3.gif"/>
                             </div>
                         </div>
 
@@ -102,32 +99,6 @@
                     <td style="padding: 10px;">
                         <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
                             <div id="one" class="card-header">Step 4:</div>
-                            <div class="card-body">
-                                <h4 class="card-title">View your account dashboard!</h4>
-                                <p class="card-text">
-                                    From here you can manage your movies and view movie groups you are a part of! 
-                                    Not in a group yet?  Simply create a new one with Create Group!  Or join a group
-                                    that already exists by entering in their group code! 
-                                </p>
-                            </div>
-                        </div>
-
-                    </td>
-                    <td style="padding: 10px;">
-                        <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            
-                            <div class="card-body">
-                                <h4 class="card-title">Secondary card title</h4>
-                                <p class="card-text">Image Placeholder</p>
-                            </div>
-                        </div>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px;">
-                        <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            <div id="one" class="card-header">Step 5:</div>
                             <div class="card-body">
                                 <h4 class="card-title">View your group info!</h4>
                                 <p class="card-text">
@@ -143,8 +114,7 @@
                         <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
                             
                             <div class="card-body">
-                                <h4 class="card-title">Secondary card title</h4>
-                                <p class="card-text">Image Placeholder</p>
+                                <asp:Image ID="Image3" BorderColor="Black" BorderWidth="10px" width="480" Height="360" runat="server" src="images/Step4.gif"/>
                             </div>
                         </div>
 
@@ -153,7 +123,7 @@
                 <tr>
                     <td style="padding: 10px;">
                         <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            <div id="one" class="card-header">Step 6:</div>
+                            <div id="one" class="card-header">Step 5:</div>
                             <div class="card-body">
                                 <h4 class="card-title">Create an event</h4>
                                 <p class="card-text">
@@ -169,8 +139,7 @@
                         <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
                             
                             <div class="card-body">
-                                <h4 class="card-title">Secondary card title</h4>
-                                <p class="card-text">Image Placeholder</p>
+                                <asp:Image ID="Image4"  BorderColor="Black" BorderWidth="10px" width="480" Height="360" runat="server" src="images/Step5.gif"/>
                             </div>
                         </div>
 
@@ -179,7 +148,7 @@
                 <tr>
                     <td style="padding: 10px;">
                         <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            <div id="one" class="card-header">Step 7:</div>
+                            <div id="one" class="card-header">Step 6:</div>
                             <div class="card-body">
                                 <h4 class="card-title">Thats it!</h4>
                                 <p class="card-text">
