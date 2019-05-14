@@ -72,6 +72,17 @@ namespace MovieNight
                         MovieNightContext context = new MovieNightContext();
                         context.users.Add(user);
                         context.SaveChanges();
+
+                        if (Session["redirectTo"] != null)
+                        {
+                            Response.Redirect(Session["redirectTo"].ToString());
+                        }
+                        else
+                        {
+                            Response.Redirect("accountinfo.aspx");
+                        }
+
+
                     }
                     else
                     {
@@ -139,7 +150,12 @@ namespace MovieNight
                         Session["userAccount"] = db.users.SqlQuery("SELECT [User].userID, [User].userName, [User].fName, [User].lName, [User].passwordHash, [User].email " +
                         "FROM [User] " +
                         "WHERE email = '" + email + "'").FirstOrDefault();
-                        Response.Redirect(Session["redirectTo"].ToString());
+                        if (Session["redirectTo"] != null) {
+                            Response.Redirect(Session["redirectTo"].ToString());
+                        } else
+                        {
+                            Response.Redirect("accountinfo.aspx");
+                        }
 
                     }
                     else
