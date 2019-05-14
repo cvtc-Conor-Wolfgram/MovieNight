@@ -76,9 +76,9 @@ namespace MovieNight
                             " ORDER BY [UserGroup].joinNumber").ToList<User>();
 
                        
-                        html += "<li class=\"list-group-item d-flex justify-content-between align-items-center bg-primary\">\n";
+                        html += "<li class=\"list-group-item d-flex justify-content-between align-items-center bg-light\">\n";
                         html += "\t<a class=\"text-white\" href='Group.aspx?groupID=" + group.groupID + "'>" + group.groupName + "</a>\n";
-                        html += "\t<span class=\"badge badge-light badge - pill\">Members: " + members.Count() + "</span>";
+                        html += "\t<span class=\"badge badge-primary badge - pill\">Members: " + members.Count() + "</span>";
                         html += "</li>\n";
 
                         count += 1;
