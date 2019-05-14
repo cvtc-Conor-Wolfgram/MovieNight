@@ -8,16 +8,16 @@
 
         <div id="accountInfo" class="card text-white bg-gradient-primary mb-3" style="width: 25rem; height: 100%;">
             <div id="groupName" runat="server" class="card-header"></div>
-            <span class="badge badge-primary" id="groupCode" runat="server" style="position: absolute; right: 10px; top: 15px;"></span>
+            <span class="badge badge-success" id="groupCode" runat="server" style="position: absolute; right: 10px; top: 15px;"></span>
 
 
             
             <div class="card-body">
-                <div class="card-header text-dark bg-light">
+                <div class="card-header text-dark bg-primary">
                     Members
 
                 </div>
-                <span class="badge badge-warning" id="ownerName" runat="server" style="position: absolute; right: 25px; top: 84px;"></span>
+                <span class="badge badge-light" id="ownerName" runat="server" style="position: absolute; right: 25px; top: 84px;"></span>
                 <ul data-simplebar class="list-group  " style="height: 300px; margin-bottom: 5px;">
                     <asp:PlaceHolder ID="phMembers" runat="server"></asp:PlaceHolder>
                 </ul>

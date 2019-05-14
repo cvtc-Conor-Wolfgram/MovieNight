@@ -31,6 +31,7 @@ namespace MovieNight
                 Response.Redirect("CreateAccount.aspx");
             }
 
+     
             if (Request.QueryString["title"] != null)
             {
                 try
@@ -63,7 +64,7 @@ namespace MovieNight
 
                                 if (movie.Poster == "N/A")
                                 {
-
+                                    html += "\t\t<h6>" + movie.Title + " (" + movie.Year + ")</h6>";
                                     html += "\t\t\t<img height=\"450px\" width=\"314px\" class=\"img - responsive\"  src='images/defaultPoster.jpg'>\n";
 
 
@@ -128,11 +129,21 @@ namespace MovieNight
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.Cookies["SearchText"] != null)
+
+                txtSearch.Text = Request.Cookies["SearchText"].Value;
+                
 
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            
+            HttpCookie cookie = new HttpCookie("SearchText");
+            cookie.Value = txtSearch.Text;
+            cookie.Expires = DateTime.Now.AddSeconds(2);
+            Response.Cookies.Add(cookie);
+
 
             Response.Redirect("movieSearch.aspx?title=" + txtSearch.Text);
 

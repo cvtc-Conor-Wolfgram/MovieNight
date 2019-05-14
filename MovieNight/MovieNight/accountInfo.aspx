@@ -32,7 +32,7 @@
                             <li><strong>Email Address:</strong>
                                 <asp:Label ID="emailLbl" runat="server" Text="Label"></asp:Label></li>
                             <li>
-                                <asp:LinkButton ID="changePassword" runat="server" class="btn btn-primary" Onclick="changePassword_Click">Change Password</asp:LinkButton></li>
+                                <asp:LinkButton ID="changePassword" runat="server" class="btn btn-success" Onclick="changePassword_Click">Change Password</asp:LinkButton></li>
 
                         </ul>
                     </div>
@@ -62,7 +62,7 @@
                     </div>
 
                 </div>
-                <div class="card-header text-dark bg-light">Your Groups</div>
+                <div class="card-header bg-primary">Your Groups</div>
                 <ul data-simplebar class="list-group" style="height: 45%;">
                     <asp:PlaceHolder ID="phGroupList" runat="server"></asp:PlaceHolder>
                 </ul>

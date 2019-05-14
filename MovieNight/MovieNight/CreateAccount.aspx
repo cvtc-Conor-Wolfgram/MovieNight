@@ -22,36 +22,51 @@
                             <asp:SessionParameter Name="UserName" SessionField="createAccount" DefaultValue="" />
                         </SelectParameters>
                     </asp:SqlDataSource>
-                    <ul>
-                        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-                        <li>
-                            <asp:Label ID="lblActiveEmail" runat="server" Text="Email:"></asp:Label></li>
-                        <li class="textBox">
-                            <asp:TextBox ID="txtActiveEmail" runat="server" class="form-control" ToolTip="Enter Email" OnTextChanged="txtActiveEmail_TextChanged" AutoPostBack="True"></asp:TextBox></li>
-                        <li>
-                            <asp:RequiredFieldValidator ID="rfvActiveEmail" runat="server" ControlToValidate="txtActiveEmail" ErrorMessage="Please Enter Your Email" ValidationGroup="login" ForeColor="#CC0000" Display="Dynamic"></asp:RequiredFieldValidator></li>
-                        <li>
-                            <asp:RegularExpressionValidator ID="revActiveEmail" runat="server" ControlToValidate="txtActiveEmail" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ErrorMessage="Please Enter a Valid Email Address" ValidationGroup="login" ForeColor="#CC0000" Display="Dynamic"></asp:RegularExpressionValidator></li>
-                        <li>
-                            <asp:Label ID="emailCompare" runat="server" Text="Email not found. Please sign up." ForeColor="#CC0000" Display="Dynamic" Visible="False"></asp:Label></li>
 
-                        <li>
-                            <asp:Label ID="lblActivePass" runat="server" Text="Password:"></asp:Label></li>
-                        <li>
-                            <asp:TextBox ID="txtActivePass" runat="server" class="form-control" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox></li>
+                    <table class="table table-borderless table-light text-right text-nowrap align-baseline">
+                        <tbody>
+                            <tr>
+                                <th scope="col" class="align-baseline">
+                                    <asp:Label ID="lblActiveEmail" runat="server" Text="Email:"></asp:Label></th>
+                                <td class="align-baseline">
+                                    <ul>
+                                        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+                                        <li class="textBox">
+                                            <asp:TextBox ID="txtActiveEmail" runat="server" class="form-control" ToolTip="Enter Email" OnTextChanged="txtActiveEmail_TextChanged" AutoPostBack="True"></asp:TextBox></li>
+                                        <li>
+                                            <asp:RequiredFieldValidator ID="rfvActiveEmail" runat="server" ControlToValidate="txtActiveEmail" ErrorMessage="Please Enter Your Email" ValidationGroup="login" ForeColor="#CC0000" Display="Dynamic"></asp:RequiredFieldValidator></li>
+                                        <li>
+                                            <asp:RegularExpressionValidator ID="revActiveEmail" runat="server" ControlToValidate="txtActiveEmail" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ErrorMessage="Please Enter a Valid Email Address" ValidationGroup="login" ForeColor="#CC0000" Display="Dynamic"></asp:RegularExpressionValidator></li>
+                                        <li>
+                                            <asp:Label ID="emailCompare" runat="server" Text="Email not found. Please sign up." ForeColor="#CC0000" Display="Dynamic" Visible="False"></asp:Label></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <th scope="col" class="align-baseline">
+                                    <asp:Label ID="lblActivePass" runat="server" Text="Password:"></asp:Label>
+                                </th>
+                                <td class="align-baseline">
+                                    <ul>
+                                        <li>
+                                            <asp:TextBox ID="txtActivePass" runat="server" class="form-control" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox></li>
 
-                        <li>
-                            <asp:CheckBox ID="checkBoxPasswordToggle" Text="Show Password" runat="server" OnCheckedChanged="Toggle_Password" AutoPostBack="true" /></li>
+                                        <li>
+                                            <asp:CheckBox ID="checkBoxPasswordToggle" Text="Show Password" runat="server" OnCheckedChanged="Toggle_Password" AutoPostBack="true" /></li>
 
-                        <li>
-                            <asp:Label ID="passCompare" runat="server" Text="Password Incorrect." ForeColor="#CC0000" Display="Dynamic" Visible="False"></asp:Label></li>
-                        <li>
-                            <asp:RequiredFieldValidator ID="rfvActivePass" runat="server" ControlToValidate="txtActivePass" ErrorMessage="Please Enter Your Password" ValidationGroup="login" ForeColor="#CC0000" Display="Dynamic"></asp:RequiredFieldValidator></li>
-                        <li>
-                            <asp:Button ID="btnLogin" runat="server" class="btn btn-primary btn-lg" Text="Login" ValidationGroup="login" OnClick="btnLogin_Click" TabIndex="1" UseSubmitBehavior="False" />
-                        </li>
-                    </ul>
+                                        <li>
+                                            <asp:Label ID="passCompare" runat="server" Text="Password Incorrect." ForeColor="#CC0000" Display="Dynamic" Visible="False"></asp:Label></li>
+                                        <li>
+                                            <asp:RequiredFieldValidator ID="rfvActivePass" runat="server" ControlToValidate="txtActivePass" ErrorMessage="Please Enter Your Password" ValidationGroup="login" ForeColor="#CC0000" Display="Dynamic"></asp:RequiredFieldValidator></li>
+                                    </ul>
 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <asp:Button ID="btnLogin" runat="server" class="btn btn-primary btn-lg" Text="Login" ValidationGroup="login" OnClick="btnLogin_Click" TabIndex="1" UseSubmitBehavior="False" />
                 </div>
             </div>
         </div>
@@ -59,12 +74,12 @@
             <div class="card text-white bg-gradient-primary mb-3" style="max-width: 25rem;">
                 <div class="card-header">Sign Up</div>
                 <div class="card-body">
-                    <table class="table table">
+                    <table class="table table-borderless table-light text-right text-nowrap align-baseline">
                         <tbody>
-                            <tr class="table-secondary">
-                                <th scope="col">
+                            <tr>
+                                <th scope="col" class="align-baseline">
                                     <asp:Label ID="lblUserName" runat="server" Text="User Name:"></asp:Label></th>
-                                <td>
+                                <td class="align-baseline">
                                     <ul>
                                         <li>
                                             <asp:TextBox ID="txtUserName" runat="server" class="form-control" OnTextChanged="txtUserName_TextChanged" AutoPostBack="True"></asp:TextBox></li>
@@ -78,10 +93,10 @@
                             </tr>
                         </tbody>
                         <tbody>
-                            <tr class="table-secondary">
-                                <th scope="row">
+                            <tr>
+                                <th scope="row" class="align-baseline">
                                     <asp:Label ID="lblUserEmail" runat="server" Text="Email:"></asp:Label></th>
-                                <td>
+                                <td class="align-baseline">
                                     <ul>
                                         <li>
                                             <asp:TextBox ID="txtUserEmail" runat="server" class="form-control"></asp:TextBox></li>
@@ -96,10 +111,10 @@
                             </tr>
                         </tbody>
                         <tbody>
-                            <tr class="table-secondary">
-                                <th scope="row">
+                            <tr>
+                                <th scope="row" class="align-baseline">
                                     <asp:Label ID="lblFName" runat="server" Text="First Name:"></asp:Label></th>
-                                <td>
+                                <td class="align-baseline">
                                     <ul>
                                         <li>
                                             <asp:TextBox ID="txtFName" runat="server" class="form-control"></asp:TextBox></li>
@@ -109,10 +124,10 @@
                             </tr>
                         </tbody>
                         <tbody>
-                            <tr class="table-secondary">
-                                <th scope="row">
+                            <tr>
+                                <th scope="row" class="align-baseline">
                                     <asp:Label ID="lblLName" runat="server" Text="Last Name:"></asp:Label></th>
-                                <td>
+                                <td class="align-baseline">
                                     <ul>
                                         <li>
                                             <asp:TextBox ID="txtLName" runat="server" class="form-control"></asp:TextBox></li>
@@ -122,10 +137,10 @@
                             </tr>
                         </tbody>
                         <tbody>
-                            <tr class="table-secondary">
-                                <th scope="row">
+                            <tr>
+                                <th scope="row" class="align-baseline">
                                     <asp:Label ID="lblUserPass" runat="server" Text="Password:"></asp:Label></th>
-                                <td>
+                                <td class="align-baseline">
                                     <ul>
                                         <li>
                                             <asp:TextBox ID="txtUserPass" runat="server" class="form-control" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox></li>
@@ -137,10 +152,10 @@
                             </tr>
                         </tbody>
                         <tbody>
-                            <tr class="table-secondary">
-                                <th scope="row">
+                            <tr>
+                                <th scope="row" class="align-baseline">
                                     <asp:Label ID="lblUserPassConfirm" runat="server" Text="Confirm Password:"></asp:Label></th>
-                                <td>
+                                <td class="align-baseline">
                                     <ul>
                                         <li>
                                             <asp:TextBox ID="txtUserPassConfirm" runat="server" class="form-control" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox></li>
