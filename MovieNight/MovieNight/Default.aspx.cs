@@ -18,13 +18,13 @@ namespace MovieNight
             if (Session["userAccount"] != null)
             {
                 currentUser = (User)Session["userAccount"];
-                Response.Redirect("accountInfo.aspx");
+                //Response.Redirect("accountInfo.aspx");
 
 
             }
             else
             {
-                Session["redirectTo"] = "accountInfo.aspx";
+                //Session["redirectTo"] = "accountInfo.aspx";
 
             }
         }
