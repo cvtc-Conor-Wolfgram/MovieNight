@@ -17,152 +17,150 @@
         </p>
         <hr class="my-4">
         <h3>Want to get started?  Heres How!</h3>
-        <table>
-            <tbody>
-                <tr>
-                    <td style="padding: 10px;">
-                        <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            <div id="one" class="card-header">Step 1:</div>
-                            <div class="card-body">
-                                <h4 class="card-title">Create a new Account or Login</h4>
-                                <p class="card-text">
-                                    If you do not have an account with us create one to join our movie loving community!  Or login to
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="padding-left: 65px; padding-right: 10px;">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Step 1:</div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Create a new Account or Login</h4>
+                                    <p class="card-text">
+                                        If you do not have an account with us create one to join our movie loving community!  Or login to
                                     your current account!
-                                </p>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
 
-                    </td>
-                    
-                    <td style="padding: 10px;">
-                        <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            
-                            <div class="card-body img-holder">
-                                    <asp:Image ID="imgStep1" BorderColor="Black" BorderWidth="10px" width="480" Height="360" runat="server" src="images/Step1.gif"/>   
+                        </td>
+
+                        <td style="padding: 10px;">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
+
+                                <div class="card-body img-holder">
+                                    <asp:Image ID="imgStep1" BorderColor="Black" BorderWidth="10px" Width="480" Height="360" runat="server" src="images/Step1.gif" />
+                                </div>
                             </div>
-                        </div>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px;">
-                        <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            <div id="one" class="card-header">Step 2:</div>
-                            <div class="card-body">
-                                <h4 class="card-title">Add movies to your account!</h4>
-                                <p class="card-text">
-                                    Click the Add Movies tab to go to our movie search tool where you simply type your
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 65px; padding-right: 10px;">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Step 2:</div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Add movies to your account!</h4>
+                                    <p class="card-text">
+                                        Click the Add Movies tab to go to our movie search tool where you simply type your
                                     desired movie in and hit search to pull up movie data right from IMDB!  Just hover over
                                     the movies you want attatched to your account and click Add Movie!  Or you can click on 
                                     the other link to bring you to the movies IMDB page!
-                                </p>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
 
-                    </td>
-                    <td style="padding: 10px;">
-                        <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            
-                            <div class="card-body">
-                                <asp:Image ID="Image1" BorderColor="Black" BorderWidth="10px" width="480" Height="360" runat="server" src="images/Step2.gif"/>
+                        </td>
+                        <td style="padding: 10px;">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
+
+                                <div class="card-body">
+                                    <asp:Image ID="Image1" BorderColor="Black" BorderWidth="10px" Width="480" Height="360" runat="server" src="images/Step2.gif" />
+                                </div>
                             </div>
-                        </div>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px;">
-                        <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            <div id="one" class="card-header">Step 3:</div>
-                            <div class="card-body">
-                                <h4 class="card-title">View your account dashboard!</h4>
-                                <p class="card-text">
-                                    From here you can manage your movies and view movie groups you are a part of! 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 65px; padding-right: 10px;">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Step 3:</div>
+                                <div class="card-body">
+                                    <h4 class="card-title">View your account dashboard!</h4>
+                                    <p class="card-text">
+                                        From here you can manage your movies and view movie groups you are a part of! 
                                     Not in a group yet?  Simply create a new one with Create Group!  Or join a group
                                     that already exists by entering in their group code!
-                                </p>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
 
-                    </td>
-                    <td style="padding: 10px;">
-                        <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            
-                            <div class="card-body">
-                                <asp:Image ID="Image2" BorderColor="Black" BorderWidth="10px" width="480" Height="360" runat="server" src="images/Step3.gif"/>
+                        </td>
+                        <td style="padding: 10px;">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
+
+                                <div class="card-body">
+                                    <asp:Image ID="Image2" BorderColor="Black" BorderWidth="10px" Width="480" Height="360" runat="server" src="images/Step3.gif" />
+                                </div>
                             </div>
-                        </div>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px;">
-                        <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            <div id="one" class="card-header">Step 4:</div>
-                            <div class="card-body">
-                                <h4 class="card-title">View your group info!</h4>
-                                <p class="card-text">
-                                     From your account dashboard click on the movie group that you want to view!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 65px; padding-right: 10px;">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Step 4:</div>
+                                <div class="card-body">
+                                    <h4 class="card-title">View your group info!</h4>
+                                    <p class="card-text">
+                                        From your account dashboard click on the movie group that you want to view!
                                     This page will show your group members, currently scheduled movie event and 
                                     whos turn it is to pick the event!
-                                </p>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
 
-                    </td>
-                    <td style="padding: 10px;">
-                        <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            
-                            <div class="card-body">
-                                <asp:Image ID="Image3" BorderColor="Black" BorderWidth="10px" width="480" Height="360" runat="server" src="images/Step4.gif"/>
+                        </td>
+                        <td style="padding: 10px;">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
+
+                                <div class="card-body">
+                                    <asp:Image ID="Image3" BorderColor="Black" BorderWidth="10px" Width="480" Height="360" runat="server" src="images/Step4.gif" />
+                                </div>
                             </div>
-                        </div>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px;">
-                        <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            <div id="one" class="card-header">Step 5:</div>
-                            <div class="card-body">
-                                <h4 class="card-title">Create an event</h4>
-                                <p class="card-text">
-                                    If it is your turn to create a new event just click on the create event button!  Just fill in a few details
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 65px; padding-right: 10px;">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Step 5:</div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Create an event</h4>
+                                    <p class="card-text">
+                                        If it is your turn to create a new event just click on the create event button!  Just fill in a few details
                                     like the name of the event, the date and time, the location of said event and most importantly which film
                                     from your account you want to be the next event!
-                                </p>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
 
-                    </td>
-                    <td style="padding: 10px;">
-                        <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            
-                            <div class="card-body">
-                                <asp:Image ID="Image4"  BorderColor="Black" BorderWidth="10px" width="480" Height="360" runat="server" src="images/Step5.gif"/>
+                        </td>
+                        <td style="padding: 10px;">
+                            <div class="card text-dark bg-light mb-3" style="max-width: 35rem;">
+
+                                <div class="card-body">
+                                    <asp:Image ID="Image4" BorderColor="Black" BorderWidth="10px" Width="480" Height="360" runat="server" src="images/Step5.gif" />
+                                </div>
                             </div>
-                        </div>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px;">
-                        <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                            <div id="one" class="card-header">Step 6:</div>
-                            <div class="card-body">
-                                <h4 class="card-title">Thats it!</h4>
-                                <p class="card-text">
-                                    You are all set to take advantage of Movie Night!  Enjoy your films with friends!
-                                </p>
-                            </div>
-                        </div>
-
-                    </td>
-                    
-                </tr>
-            </tbody>
 
 
-        </table>
+
+
+                        </td>
+
+                    </tr>
+                </tbody>
+
+
+            </table>
+            <div style="text-align:center;">
+                <h3>Thats it!</h3>
+                <h5>
+                    You are all set to take advantage of Movie Night! Enjoy your films with friends!
+                </h5>
+            </div>
+
+        </div>
     </div>
 </asp:Content>
