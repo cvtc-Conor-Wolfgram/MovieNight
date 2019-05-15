@@ -25,7 +25,7 @@
 
                   <div class="card bg-primary mb-3" style="height: 200px;">
                     <div class="card-body">
-                        <h4 class="card-title text-dark">Current Event</h4>
+                        <h4 id="lbleventname" class="card-title text-dark" runat="server">Current Event</h4>
                         <h6 runat="server" id="lblPicker" class="card-subtitle mb-2 text-dark">*Picker*</h6>
                         <p runat="server" id="lblEventInfo" class="card-text text-dark">There is no event set up yet.</p>
                         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
