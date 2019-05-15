@@ -1,0 +1,83 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.Master.cs" Inherits="MovieNight.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Movie Night</title>
+    <link rel="stylesheet" href="css/bootstrap2.css">
+    <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="content">
+            <form id="form1" runat="server">
+                <div class="panel">
+
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                        <a class="navbar-brand" href="#">Movie Night</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarColor02">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Default.aspx">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="accountInfo.aspx">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="movieSearch.aspx">Add Movies</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="AllMovies.aspx">Your Movies</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="about.aspx">About</a>
+                                </li>
+
+
+                            </ul>
+
+                            <asp:Button ID="createButton" OnClick="createButtonClick" Text="Sign In/Sign Up" CssClass="btn btn-primary my-2 my-sm-0" runat="server" TabIndex="99" UseSubmitBehavior="False"></asp:Button>
+
+
+
+                        </div>
+                    </nav>
+
+                </div>
+
+
+                <main class="panel2">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                </main>
+<%--                <main class="panel3">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                    </asp:ContentPlaceHolder>
+                </main>--%>
+            </form>
+
+            <footer id="mainFooter" class="panel bg-primary">
+                <p>&copy;2019 Movie Night</p>
+            </footer>
+
+
+        </div>
+    </div>
+</body>
+</html>
