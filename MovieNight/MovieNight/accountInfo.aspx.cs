@@ -274,8 +274,7 @@ namespace MovieNight
                         }
                         else
                         {
-                            html += "\t\t\t<img height=\"496px\" width=\"360px\" class=\"img - responsive\"  src='images/defaultPoster.jpg'>\n";
-                            phUserMovies.Controls.Add(new Literal { Text = html });
+                           
                         }
 
 
