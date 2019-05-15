@@ -68,6 +68,7 @@ namespace MovieNight
 
 
                         Session.Add("userAccount", user);
+                       
 
                         MovieNightContext context = new MovieNightContext();
                         context.users.Add(user);

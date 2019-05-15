@@ -1197,3 +1197,15 @@ C:\Users\crwol\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\obj\Debug
 C:\Users\crwol\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\obj\Debug\MovieNight.csproj.CopyComplete
 C:\Users\crwol\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\obj\Debug\MovieNight.dll
 C:\Users\crwol\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\obj\Debug\MovieNight.pdb
+C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.DataProtection.dll
+C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.Session.dll
+C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\Microsoft.Win32.Registry.dll
+C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\System.Security.AccessControl.dll
+C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\System.Security.Cryptography.Xml.dll
+C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\System.Security.Permissions.dll
+C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.DataProtection.xml
+C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.DataProtection.Abstractions.xml
+C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.Session.xml
+C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\Microsoft.Extensions.Caching.Abstractions.xml
