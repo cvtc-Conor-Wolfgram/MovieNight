@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
@@ -18,6 +19,7 @@ namespace MovieNight
         private Group pageGroup = new Group();
         private MovieNightContext db = new MovieNightContext();
         private List<Movie> nextMoviesAvalible = new List<Movie>();
+        private List<User> members = new List<User>();
         int selectedMovieIndex;
 
         protected void Page_Init(object sender, EventArgs e)
@@ -185,7 +187,29 @@ namespace MovieNight
             }
             else
             {
+                  members = db.users.SqlQuery("SELECT * " +
+                           "FROM [User] INNER JOIN [UserGroup] ON [User].userID = [UserGroup].userID " +
+                           "WHERE [UserGroup].groupID = " + pageGroup.groupID +
+                           " ORDER BY [UserGroup].joinNumber").ToList<User>();
 
+                   
+                    foreach (User member in members)
+                    {
+                        MailMessage mm = new MailMessage();
+                        mm.To.Add(new MailAddress(member.email.Trim(), "Movie Night Event"));
+                        mm.From = new MailAddress("movienightcapstone@gmail.com");
+                        mm.Body = "A new event has been created for " + pageGroup.groupName + "";
+                        mm.IsBodyHtml = true;
+                        mm.Subject = "Movie Night Event";
+                        SmtpClient smcl = new SmtpClient();
+                        smcl.Host = "smtp.gmail.com";
+                        smcl.Port = 587;
+                        smcl.Credentials = new NetworkCredential("movienightcapstone@gmail.com", "Alohamora");
+                        smcl.EnableSsl = true;
+                        smcl.Send(mm);
+
+
+                    }
                 //lblDateTimeError.Visible = false;  // error display test
                 Event newEvent = new Event();
 
@@ -228,6 +252,9 @@ namespace MovieNight
                     context.SaveChanges();
                     Response.Write("<script>alert('Event created successfully')</script>");
                     Response.Redirect("Group.aspx?groupID=" + pageGroup.groupID);
+
+  
+
                 }
                 catch (ArgumentOutOfRangeException ex)
                 {
