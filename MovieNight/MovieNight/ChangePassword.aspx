@@ -11,13 +11,13 @@
     <div class="changePassword">
         <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
             <div class="card-header">Change Password</div>
-            <div class="card-body">
-                <table class="table table">
+            <div class="card-body bg-light">
+                <table class="table table-borderless table-light text-right text-nowrap align-baseline">
                     <tbody>
-                        <tr class="table-secondary">
-                            <th scope="col">
+                        <tr class="">
+                            <th scope="col" class="align-baseline">
                                 <asp:Label ID="oldPass" runat="server" Text="Old Password:"></asp:Label></th>
-                            <td>
+                            <td class="align-baseline">
                                 <ul>
                                     <li>
                                         <asp:TextBox ID="txtOldPass" runat="server" class="form-control" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox></li>
@@ -33,10 +33,10 @@
                         </tr>
                     </tbody>
                     <tbody>
-                        <tr class="table-secondary">
-                            <th scope="row">
+                        <tr class="">
+                            <th scope="row" class="align-baseline">
                                 <asp:Label ID="newPass" runat="server" Text="New Password:"></asp:Label></th>
-                            <td>
+                            <td class="align-baseline">
                                 <ul>
                                     <li>
                                         <asp:TextBox ID="txtNewPass" runat="server" class="form-control" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox></li>
@@ -47,10 +47,10 @@
                         </tr>
                     </tbody>
                     <tbody>
-                        <tr class="table-secondary">
-                            <th scope="row">
+                        <tr class="">
+                            <th scope="row" class="align-baseline">
                                 <asp:Label ID="confirmPass" runat="server" Text="Confirm Password:"></asp:Label></th>
-                            <td>
+                            <td class="align-baseline">
                                 <ul>
                                     <li>
                                         <asp:TextBox ID="txtConfirmPass" runat="server" class="form-control" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox></li>
@@ -65,8 +65,10 @@
                     </tbody>
                 </table>
 
-
-                <asp:Button ID="btnChange" runat="server" class="btn btn-primary btn-lg" Text="Confirm Change" ValidationGroup="login" OnClick="btnChange_Click" TabIndex="1" UseSubmitBehavior="False" />
+                <div style="text-align:center">
+                    <asp:Button ID="btnChange" runat="server" class="btn btn-primary btn-lg" Text="Confirm Change" ValidationGroup="login" OnClick="btnChange_Click" TabIndex="1" UseSubmitBehavior="False" />
+                </div>
+                
             </div>
         </div>
     </div>

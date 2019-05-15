@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="jumbotron bg-secondary text-white" style="margin: 0px; border-radius: 0;">
-        <p class="lead">Who are we?</p>
+        <h3>Who are we?</h3>
         <hr class="my-4">
         <p>
             Movie Night is an application created by David Kurshner, Chris Nimtz and Conor Wolgram for their IT-Developer Capstone Class at Chippewa
@@ -16,7 +16,7 @@
         <table>
             <tbody>
                 <tr>
-                    <td style="padding:10px;"><div class="card bg-light ">
+                    <td style="padding:30px 10px 0px 10px; width: 325px;"><div class="card bg-light ">
                         <div class="card-body">
                                     <h4 class="card-title">Conor Wolfgram</h4>
                                     <h6 class="card-subtitle mb-2 text-muted">Team Leader</h6>
@@ -25,7 +25,7 @@
                             </div>
 
                     </td>
-                     <td style="padding:10px;"><div class="card bg-light">
+                     <td style="padding:30px 10px 0px 10px; width: 325px;"><div class="card bg-light">
                         <div class="card-body">
                                     <h4 class="card-title">Chris Nimtz</h4>
                                     <h6 class="card-subtitle mb-2 text-muted">Quality Assurance</h6>
@@ -34,7 +34,7 @@
                             </div>
 
                     </td>
-                     <td style="padding:10px;"><div class="card bg-light">
+                     <td style="padding: 30px 10px 0px 10px; width: 325px;"><div class="card bg-light">
                         <div class="card-body">
                                     <h4 class="card-title">David Kurschner</h4>
                                     <h6 class="card-subtitle mb-2 text-muted">User Experiance Designer</h6>
