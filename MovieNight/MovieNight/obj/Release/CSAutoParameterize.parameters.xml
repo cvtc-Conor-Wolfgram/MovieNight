@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="MovieNightContext-Web.config Connection String" description="MovieNightContext Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:movienight20190507045709dbserver.database.windows.net,1433;Initial Catalog=MovieNight20190507045709_db;Persist Security Info=False;User ID=dkurschner;Password=Stella99;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\dkurs\\Documents\\GitHub\\MovieNight\\MovieNight\\MovieNight\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MovieNightContext']/@connectionString" />
-  </parameter>
-  <parameter name="AccountInfoConnection-Web.config Connection String" description="AccountInfoConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\MovieNightDB.mdf;Integrated Security=True;Connect Timeout=30" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\dkurs\\Documents\\GitHub\\MovieNight\\MovieNight\\MovieNight\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AccountInfoConnection']/@connectionString" />
-  </parameter>
-</parameters>

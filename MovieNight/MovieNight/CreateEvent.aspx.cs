@@ -193,23 +193,7 @@ namespace MovieNight
                            " ORDER BY [UserGroup].joinNumber").ToList<User>();
 
                    
-                    foreach (User member in members)
-                    {
-                        MailMessage mm = new MailMessage();
-                        mm.To.Add(new MailAddress(member.email.Trim(), "Movie Night Event"));
-                        mm.From = new MailAddress("movienightcapstone@gmail.com");
-                        mm.Body = "A new event has been created for " + pageGroup.groupName + "";
-                        mm.IsBodyHtml = true;
-                        mm.Subject = "Movie Night Event";
-                        SmtpClient smcl = new SmtpClient();
-                        smcl.Host = "smtp.gmail.com";
-                        smcl.Port = 587;
-                        smcl.Credentials = new NetworkCredential("movienightcapstone@gmail.com", "Alohamora");
-                        smcl.EnableSsl = true;
-                        smcl.Send(mm);
 
-
-                    }
                 //lblDateTimeError.Visible = false;  // error display test
                 Event newEvent = new Event();
 
@@ -245,7 +229,23 @@ namespace MovieNight
 
                     newEvent.eventOwner = currentUser.userID;
 
+                    foreach (User member in members)
+                    {
+                        MailMessage mm = new MailMessage();
+                        mm.To.Add(new MailAddress(member.email.Trim(), "Movie Night Event"));
+                        mm.From = new MailAddress("donotreply@movienightcapstone.site");
+                        mm.Body = "<h4>Dear "+ member.fName.Trim() +",</h4> <p>A new event has been created for " + pageGroup.groupName + "</p><p>Event: " + newEvent.eventName + "</p><p>Location: " + newEvent.eventLocation + "</p><p>Date and Time: " + newEvent.eventTime.ToShortDateString() + " at " + newEvent.eventTime.ToShortTimeString() + "</p>";
+                        mm.IsBodyHtml = true;
+                        mm.Subject = "Movie Night Event";
+                        SmtpClient smcl = new SmtpClient();
+                        smcl.Host = "192.185.7.122";
+                        smcl.Port = 26;
+                        smcl.Credentials = new NetworkCredential("donotreply@movienightcapstone.site", "Alohamora99");
+                        smcl.EnableSsl = false;
+                        smcl.Send(mm);
 
+
+                    }
 
                     MovieNightContext context = new MovieNightContext();
                     context.events.Add(newEvent);

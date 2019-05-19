@@ -12,8 +12,7 @@ namespace MovieNight
     public partial class CreateAccount : System.Web.UI.Page
     {
         private MovieNightContext db = new MovieNightContext();
-        public event EventHandler OnTextChanged;
-        protected void Page_Load(object sender, EventArgs e)
+         protected void Page_Load(object sender, EventArgs e)
         {
             if (this.IsPostBack)
             {
@@ -27,10 +26,10 @@ namespace MovieNight
             var userName = txtUserName.Text.ToString();
             var email = txtUserEmail.Text.ToString();
 
-            Session["userAccount"] = email;
+            
             try
             {
-
+                Session["userAccount"] = email;
                 DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
 
                 if (dvSql.Count == 0)
@@ -102,6 +101,7 @@ namespace MovieNight
             } catch (Exception)
             {
                 lblError.Text = "Unable to create account at this time.";
+                
             }
 
         
@@ -117,10 +117,11 @@ namespace MovieNight
             
             
 
-            Session["userAccount"] = email;
+            
 
             try
             {
+                Session["userAccount"] = email;
                 DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
 
 
@@ -176,6 +177,7 @@ namespace MovieNight
             } catch (Exception)
             {
                 lblError.Text = "Unable to login at this time";
+
             }
 
 

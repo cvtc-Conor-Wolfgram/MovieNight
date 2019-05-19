@@ -422,6 +422,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Default.Master" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\MovieNight2019051402618 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\MovieNight20190514102618 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
