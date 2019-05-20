@@ -14,7 +14,7 @@
 
                     <asp:SqlDataSource ID="UserConnection" runat="server" ConnectionString="<%$ ConnectionStrings:MovieNightContext %>" SelectCommand="SELECT email, passwordHash FROM [User] WHERE email = @email">
                         <SelectParameters>
-                            <asp:SessionParameter Name="email" SessionField="userAccount" DefaultValue="" />
+                            <asp:SessionParameter Name="email" SessionField="userEmail" DefaultValue="" />
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <asp:SqlDataSource ID="UserConnection2" runat="server" ConnectionString="<%$ ConnectionStrings:MovieNightContext %>" SelectCommand="SELECT Username FROM [User] WHERE Username = @Username">
