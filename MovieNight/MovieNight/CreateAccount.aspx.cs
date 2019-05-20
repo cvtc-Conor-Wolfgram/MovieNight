@@ -26,7 +26,7 @@ namespace MovieNight
             var userName = txtUserName.Text.ToString();
             var email = txtUserEmail.Text.ToString();
 
-            
+            Session["userEmail"] = email;
             try
             {
                 Session["userAccount"] = email;
@@ -117,7 +117,7 @@ namespace MovieNight
             
             
 
-            
+            Session["userEmail"] = email;
 
             try
             {

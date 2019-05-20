@@ -1209,3 +1209,15 @@ C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\Microsoft.A
 C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.DataProtection.Abstractions.xml
 C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.Session.xml
 C:\Users\dkurs\Documents\GitHub\MovieNight\MovieNight\MovieNight\bin\Microsoft.Extensions.Caching.Abstractions.xml
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.DataProtection.dll
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.Session.dll
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\Microsoft.Extensions.Caching.Abstractions.dll
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\Microsoft.Win32.Registry.dll
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\System.Security.AccessControl.dll
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\System.Security.Cryptography.Xml.dll
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\System.Security.Permissions.dll
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.DataProtection.xml
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.DataProtection.Abstractions.xml
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\Microsoft.AspNetCore.Session.xml
+E:\OneDrive\CVTC\Capstone\MovieNight\MovieNight\MovieNight\bin\Microsoft.Extensions.Caching.Abstractions.xml
