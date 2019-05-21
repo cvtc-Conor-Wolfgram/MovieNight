@@ -5,6 +5,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="forms">
+        <asp:Label ID="lblError" runat="server" Text="" ForeColor="#CC0000"></asp:Label>
         <div class="form-login">
             <div class="card text-white bg-gradient-primary mb-3" style="max-width: 25rem;">
                 <div class="card-header">
@@ -19,7 +20,7 @@
                     </asp:SqlDataSource>
                     <asp:SqlDataSource ID="UserConnection2" runat="server" ConnectionString="<%$ ConnectionStrings:MovieNightContext %>" SelectCommand="SELECT Username FROM [User] WHERE Username = @Username">
                         <SelectParameters>
-                            <asp:SessionParameter Name="UserName" SessionField="createAccount" DefaultValue="" />
+                            <asp:SessionParameter Name="UserName" SessionField="userAccount" DefaultValue="" />
                         </SelectParameters>
                     </asp:SqlDataSource>
 
@@ -30,7 +31,7 @@
                                     <asp:Label ID="lblActiveEmail" runat="server" Text="Email:"></asp:Label></th>
                                 <td class="align-baseline">
                                     <ul>
-                                        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+                                        
                                         <li class="textBox">
                                             <asp:TextBox ID="txtActiveEmail" runat="server" class="form-control" ToolTip="Enter Email" OnTextChanged="txtActiveEmail_TextChanged" AutoPostBack="True"></asp:TextBox></li>
                                         <li>

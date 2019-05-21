@@ -25,22 +25,26 @@ namespace MovieNight
             
             var userName = txtUserName.Text.ToString();
             var email = txtUserEmail.Text.ToString();
-
+            Session["userAccount"] = email;
             
             try
             {
-                Session["userAccount"] = email;
+               
                 DataView dvSql = (DataView)UserConnection.Select(DataSourceSelectArguments.Empty);
 
                 if (dvSql.Count == 0)
                 {
+                    Session["userAccount"] = null;
 
 
-                    Session["createAccount"] = userName;
+
+                    Session["userAccount"] = userName;
 
                     DataView dvSql2 = (DataView)UserConnection2.Select(DataSourceSelectArguments.Empty);
+
                     if (dvSql2.Count == 0)
                     {
+                        Session["userAccount"] = null;
                         string password = txtUserPass.Text;
 
                         byte[] salt;
